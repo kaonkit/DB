@@ -29,62 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.правкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редактироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cmbInfo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.coursesDataSet = new Course.CoursesDataSet();
-            this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.courseTableAdapter = new Course.CoursesDataSetTableAdapters.CourseTableAdapter();
-            this.disciplineBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.disciplineTableAdapter = new Course.CoursesDataSetTableAdapters.DisciplineTableAdapter();
-            this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupTableAdapter = new Course.CoursesDataSetTableAdapters.GroupTableAdapter();
-            this.paymentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
-            this.specialityBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.specialityTableAdapter = new Course.CoursesDataSetTableAdapters.SpecialityTableAdapter();
-            this.traineesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.traineesTableAdapter = new Course.CoursesDataSetTableAdapters.TraineesTableAdapter();
-            this.examTableAdapter = new Course.CoursesDataSetTableAdapters.ExamTableAdapter();
-            this.timeSheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
-            this.timeSheetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.lecturerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lecturerTableAdapter = new Course.CoursesDataSetTableAdapters.LecturerTableAdapter();
-            this.examBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.courseDataSet = new Course.CourseDataSet();
+            this.coursesDataSet = new Course.CoursesDataSet();
+            this.courseTableAdapter = new Course.CoursesDataSetTableAdapters.CourseTableAdapter();
+            this.disciplineTableAdapter = new Course.CoursesDataSetTableAdapters.DisciplineTableAdapter();
+            this.examTableAdapter = new Course.CoursesDataSetTableAdapters.ExamTableAdapter();
+            this.groupTableAdapter = new Course.CoursesDataSetTableAdapters.GroupTableAdapter();
+            this.lecturerTableAdapter = new Course.CoursesDataSetTableAdapters.LecturerTableAdapter();
+            this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
+            this.specialityTableAdapter = new Course.CoursesDataSetTableAdapters.SpecialityTableAdapter();
+            this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
+            this.traineesTableAdapter = new Course.CoursesDataSetTableAdapters.TraineesTableAdapter();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.specialityBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.traineesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeSheetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeSheetBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lecturerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.courseDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.правкаToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(698, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // файлToolStripMenuItem
             // 
@@ -114,12 +81,24 @@
             this.редактироватьToolStripMenuItem.Name = "редактироватьToolStripMenuItem";
             this.редактироватьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.редактироватьToolStripMenuItem.Text = "&Редактировать";
+            this.редактироватьToolStripMenuItem.Click += new System.EventHandler(this.редактироватьToolStripMenuItem_Click);
             // 
             // удалитьToolStripMenuItem
             // 
             this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
             this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.удалитьToolStripMenuItem.Text = "&Удалить";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.файлToolStripMenuItem,
+            this.правкаToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(698, 24);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // cmbInfo
             // 
@@ -143,107 +122,51 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.coursesDataSet;
+            this.bindingSource1.Position = 0;
+            // 
             // coursesDataSet
             // 
             this.coursesDataSet.DataSetName = "CoursesDataSet";
             this.coursesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // courseBindingSource
-            // 
-            this.courseBindingSource.DataMember = "Course";
-            this.courseBindingSource.DataSource = this.coursesDataSet;
-            // 
             // courseTableAdapter
             // 
             this.courseTableAdapter.ClearBeforeFill = true;
-            // 
-            // disciplineBindingSource
-            // 
-            this.disciplineBindingSource.DataMember = "Discipline";
-            this.disciplineBindingSource.DataSource = this.coursesDataSet;
             // 
             // disciplineTableAdapter
             // 
             this.disciplineTableAdapter.ClearBeforeFill = true;
             // 
-            // groupBindingSource
+            // examTableAdapter
             // 
-            this.groupBindingSource.DataMember = "Group";
-            this.groupBindingSource.DataSource = this.coursesDataSet;
+            this.examTableAdapter.ClearBeforeFill = true;
             // 
             // groupTableAdapter
             // 
             this.groupTableAdapter.ClearBeforeFill = true;
             // 
-            // paymentBindingSource
+            // lecturerTableAdapter
             // 
-            this.paymentBindingSource.DataMember = "Payment";
-            this.paymentBindingSource.DataSource = this.coursesDataSet;
+            this.lecturerTableAdapter.ClearBeforeFill = true;
             // 
             // paymentTableAdapter
             // 
             this.paymentTableAdapter.ClearBeforeFill = true;
             // 
-            // specialityBindingSource
-            // 
-            this.specialityBindingSource.DataMember = "Speciality";
-            this.specialityBindingSource.DataSource = this.coursesDataSet;
-            // 
             // specialityTableAdapter
             // 
             this.specialityTableAdapter.ClearBeforeFill = true;
-            // 
-            // traineesBindingSource
-            // 
-            this.traineesBindingSource.DataMember = "Trainees";
-            this.traineesBindingSource.DataSource = this.coursesDataSet;
-            // 
-            // traineesTableAdapter
-            // 
-            this.traineesTableAdapter.ClearBeforeFill = true;
-            // 
-            // examTableAdapter
-            // 
-            this.examTableAdapter.ClearBeforeFill = true;
-            // 
-            // timeSheetBindingSource
-            // 
-            this.timeSheetBindingSource.DataMember = "TimeSheet";
-            this.timeSheetBindingSource.DataSource = this.coursesDataSet;
             // 
             // timeSheetTableAdapter
             // 
             this.timeSheetTableAdapter.ClearBeforeFill = true;
             // 
-            // timeSheetBindingSource1
+            // traineesTableAdapter
             // 
-            this.timeSheetBindingSource1.DataMember = "TimeSheet";
-            this.timeSheetBindingSource1.DataSource = this.coursesDataSet;
-            // 
-            // lecturerBindingSource
-            // 
-            this.lecturerBindingSource.DataMember = "Lecturer";
-            this.lecturerBindingSource.DataSource = this.coursesDataSet;
-            // 
-            // lecturerTableAdapter
-            // 
-            this.lecturerTableAdapter.ClearBeforeFill = true;
-            // 
-            // examBindingSource
-            // 
-            this.examBindingSource.DataMember = "Exam";
-            this.examBindingSource.DataSource = this.coursesDataSet;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.AllowNew = false;
-            this.bindingSource1.DataSource = this.coursesDataSet;
-            this.bindingSource1.Position = 0;
-            // 
-            // courseDataSet
-            // 
-            this.courseDataSet.DataSetName = "CourseDataSet";
-            this.courseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.traineesTableAdapter.ClearBeforeFill = true;
             // 
             // Main
             // 
@@ -262,19 +185,8 @@
             this.Resize += new System.EventHandler(this.Main_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.specialityBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.traineesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeSheetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeSheetBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lecturerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.courseDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,36 +194,25 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ComboBox cmbInfo;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem правкаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
-        private CoursesDataSet coursesDataSet;
-        private System.Windows.Forms.BindingSource courseBindingSource;
-        private CoursesDataSetTableAdapters.CourseTableAdapter courseTableAdapter;
-        private System.Windows.Forms.BindingSource disciplineBindingSource;
-        private CoursesDataSetTableAdapters.DisciplineTableAdapter disciplineTableAdapter;
-        private System.Windows.Forms.BindingSource groupBindingSource;
-        private CoursesDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
-        private System.Windows.Forms.BindingSource paymentBindingSource;
-        private CoursesDataSetTableAdapters.PaymentTableAdapter paymentTableAdapter;
-        private System.Windows.Forms.BindingSource specialityBindingSource;
-        private CoursesDataSetTableAdapters.SpecialityTableAdapter specialityTableAdapter;
-        private System.Windows.Forms.BindingSource traineesBindingSource;
-        private CoursesDataSetTableAdapters.TraineesTableAdapter traineesTableAdapter;
-        private CoursesDataSetTableAdapters.ExamTableAdapter examTableAdapter;
-        private System.Windows.Forms.BindingSource timeSheetBindingSource;
-        private CoursesDataSetTableAdapters.TimeSheetTableAdapter timeSheetTableAdapter;
-        private System.Windows.Forms.BindingSource timeSheetBindingSource1;
-        private System.Windows.Forms.BindingSource lecturerBindingSource;
-        private CoursesDataSetTableAdapters.LecturerTableAdapter lecturerTableAdapter;
-        private System.Windows.Forms.BindingSource examBindingSource;
+        private System.Windows.Forms.ComboBox cmbInfo;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private CourseDataSet courseDataSet;
+        private CoursesDataSet coursesDataSet;
+        private CoursesDataSetTableAdapters.CourseTableAdapter courseTableAdapter;
+        private CoursesDataSetTableAdapters.DisciplineTableAdapter disciplineTableAdapter;
+        private CoursesDataSetTableAdapters.ExamTableAdapter examTableAdapter;
+        private CoursesDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
+        private CoursesDataSetTableAdapters.LecturerTableAdapter lecturerTableAdapter;
+        private CoursesDataSetTableAdapters.PaymentTableAdapter paymentTableAdapter;
+        private CoursesDataSetTableAdapters.SpecialityTableAdapter specialityTableAdapter;
+        private CoursesDataSetTableAdapters.TimeSheetTableAdapter timeSheetTableAdapter;
+        private CoursesDataSetTableAdapters.TraineesTableAdapter traineesTableAdapter;
+        public System.Windows.Forms.MenuStrip menuStrip1;
 
     }
 }
