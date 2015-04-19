@@ -12,6 +12,9 @@ namespace Course
 {
     public partial class Information : Form
     {
+        private BindingSource currentBindingSource;
+        private string forFilter;
+        private string forSort;
         public Information()
         {
             InitializeComponent();
@@ -24,16 +27,35 @@ namespace Course
             switch (sourse)
             {
                 case "слушатели":
-                    dataGridView1.DataSource = traineesBindingSource;
+                    currentBindingSource = traineesBindingSource;
+                    clbFilter.Items.AddRange(new object[]{"ФИО слушателя","Группа", "E-mail"});
+                    
                     break;
                 case "преподаватели":
-                    dataGridView1.DataSource = lecturerBindingSource;
+                    currentBindingSource = lecturerBindingSource;
                     break;
                 case "экзамены":
-                    dataGridView1.DataSource = examBindingSource;
+                    currentBindingSource = examBindingSource;
                     break;
             }
-            
+            dataGridView1.DataSource = currentBindingSource;
+        }
+
+        private void getFilter()
+        {
+            switch (clbFilter.Text)
+            {
+                case "ФИО слушателя":
+                    forFilter = "FIO";
+                    break;
+                case "Группа":
+                    forFilter = "Group";
+                    break;
+                case "E-mail":
+                    forFilter = "Email";
+                    break;
+
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -53,5 +75,26 @@ namespace Course
             courseTableAdapter.Fill(coursesDataSet.Course);
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                getFilter();
+                currentBindingSource.Filter = forFilter + " LIKE '%" + txtSearch.Text + "%'";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("\tВыберите поле для поиска\t", "Ошибка");
+            }
+            
+        }
+
+        private void clbFilter_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            var list = sender as CheckedListBox;
+            if (e.NewValue == CheckState.Checked)
+                foreach (var index in list.CheckedIndices.Cast<int>().Where(index => index != e.Index))
+                    list.SetItemChecked(index, false);
+        }
     }
 }
