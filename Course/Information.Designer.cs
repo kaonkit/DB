@@ -56,6 +56,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.clbFilter = new System.Windows.Forms.CheckedListBox();
+            this.btnSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
@@ -195,6 +196,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSort);
             this.groupBox1.Controls.Add(this.clbSort);
             this.groupBox1.Location = new System.Drawing.Point(478, 13);
             this.groupBox1.Name = "groupBox1";
@@ -205,11 +207,13 @@
             // 
             // clbSort
             // 
+            this.clbSort.CheckOnClick = true;
             this.clbSort.FormattingEnabled = true;
             this.clbSort.Location = new System.Drawing.Point(6, 19);
             this.clbSort.Name = "clbSort";
             this.clbSort.Size = new System.Drawing.Size(230, 79);
             this.clbSort.TabIndex = 0;
+            this.clbSort.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSort_ItemCheck);
             // 
             // groupBox2
             // 
@@ -241,6 +245,16 @@
             this.clbFilter.Size = new System.Drawing.Size(230, 64);
             this.clbFilter.TabIndex = 0;
             this.clbFilter.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbFilter_ItemCheck);
+            // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(79, 111);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(92, 23);
+            this.btnSort.TabIndex = 1;
+            this.btnSort.Text = "Сортировать";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // Information
             // 
@@ -303,5 +317,6 @@
        private System.Windows.Forms.GroupBox groupBox3;
        private System.Windows.Forms.CheckedListBox clbFilter;
        private System.Windows.Forms.CheckedListBox clbSort;
+       private System.Windows.Forms.Button btnSort;
        }
 }

@@ -29,7 +29,7 @@ namespace Course
                 case "слушатели":
                     currentBindingSource = traineesBindingSource;
                     clbFilter.Items.AddRange(new object[]{"ФИО слушателя","Группа", "E-mail"});
-                    
+                    clbSort.Items.AddRange(new object[] { "ФИО слушателя", "Группа", "Дата рождения", "E-mail" });
                     break;
                 case "преподаватели":
                     currentBindingSource = lecturerBindingSource;
@@ -39,6 +39,26 @@ namespace Course
                     break;
             }
             dataGridView1.DataSource = currentBindingSource;
+        }
+
+        private void getSort()
+        {
+            switch (clbSort.Text)
+            {
+                case "ФИО слушателя":
+                    forSort = "FIO";
+                    break;
+                case "Группа":
+                    forSort = "Group";
+                    break;
+                case "Дата рождения":
+                    forSort = "DOB";
+                    break;
+                case "E-mail":
+                    forSort = "Email";
+                    break;
+
+            }
         }
 
         private void getFilter()
@@ -90,6 +110,27 @@ namespace Course
         }
 
         private void clbFilter_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            var list = sender as CheckedListBox;
+            if (e.NewValue == CheckState.Checked)
+                foreach (var index in list.CheckedIndices.Cast<int>().Where(index => index != e.Index))
+                    list.SetItemChecked(index, false);
+        }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                getSort();
+                currentBindingSource.Sort = forSort;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("\tВыберите поле для сортировки\t", "Ошибка");
+            }
+        }
+
+        private void clbSort_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             var list = sender as CheckedListBox;
             if (e.NewValue == CheckState.Checked)
