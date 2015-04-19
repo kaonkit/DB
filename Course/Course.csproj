@@ -49,6 +49,9 @@
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -63,20 +66,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CourseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CourseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="CoursesDataSet.cs">
-      <DependentUpon>CoursesDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CoursesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CoursesDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Edit.cs">
       <SubType>Form</SubType>
@@ -99,6 +92,18 @@
     <Compile Include="Information.Designer.cs">
       <DependentUpon>Information.cs</DependentUpon>
     </Compile>
+    <Compile Include="Querry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Querry.Designer.cs">
+      <DependentUpon>Querry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,30 +123,22 @@
     <EmbeddedResource Include="Information.resx">
       <DependentUpon>Information.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="CourseDataSet.xsc">
-      <DependentUpon>CourseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CourseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CourseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CourseDataSet.xss">
-      <DependentUpon>CourseDataSet.xsd</DependentUpon>
-    </None>
+    <EmbeddedResource Include="Querry.resx">
+      <DependentUpon>Querry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="CoursesDataSet.xsc">
       <DependentUpon>CoursesDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="CoursesDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>CoursesDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="CoursesDataSet.xss">
       <DependentUpon>CoursesDataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -174,19 +171,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Course.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Courses.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Courses_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>Courses.mdf</DependentUpon>
-    </Content>
-    <Content Include="Course_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Course.mdf</DependentUpon>
+      <DependentUpon>Courses.mdf</DependentUpon>
     </Content>
     <None Include="Resources\forward.png" />
     <None Include="Resources\back.png" />
