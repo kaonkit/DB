@@ -124,7 +124,7 @@
             this.отчетыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(698, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(731, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -160,12 +160,14 @@
             this.преподавателиToolStripMenuItem.Name = "преподавателиToolStripMenuItem";
             this.преподавателиToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.преподавателиToolStripMenuItem.Text = "&Преподаватели";
+            this.преподавателиToolStripMenuItem.Click += new System.EventHandler(this.преподавателиToolStripMenuItem_Click);
             // 
             // курсыToolStripMenuItem
             // 
             this.курсыToolStripMenuItem.Name = "курсыToolStripMenuItem";
             this.курсыToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.курсыToolStripMenuItem.Text = "&Курсы";
+            this.курсыToolStripMenuItem.Click += new System.EventHandler(this.курсыToolStripMenuItem_Click);
             // 
             // результатыЭкзаменовToolStripMenuItem
             // 
@@ -184,6 +186,7 @@
             this.нагрузкаПреподавателейToolStripMenuItem.Name = "нагрузкаПреподавателейToolStripMenuItem";
             this.нагрузкаПреподавателейToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.нагрузкаПреподавателейToolStripMenuItem.Text = "&Нагрузка преподавателей";
+            this.нагрузкаПреподавателейToolStripMenuItem.Click += new System.EventHandler(this.нагрузкаПреподавателейToolStripMenuItem_Click);
             // 
             // cmbInfo
             // 
@@ -298,7 +301,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(698, 343);
+            this.ClientSize = new System.Drawing.Size(731, 376);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cmbInfo);
             this.Controls.Add(this.menuStrip1);

@@ -17,6 +17,8 @@ namespace Course
         public Querry()
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void txtDo_Click(object sender, EventArgs e)

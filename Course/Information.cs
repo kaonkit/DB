@@ -15,6 +15,8 @@ namespace Course
         public Information()
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public Information(string sourse) : this()
@@ -41,22 +43,6 @@ namespace Course
 
         private void Information_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.Lecturer". При необходимости она может быть перемещена или удалена.
-            this.lecturerTableAdapter.Fill(this.coursesDataSet.Lecturer);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.Payment". При необходимости она может быть перемещена или удалена.
-            this.paymentTableAdapter.Fill(this.coursesDataSet.Payment);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.TimeSheet". При необходимости она может быть перемещена или удалена.
-            this.timeSheetTableAdapter.Fill(this.coursesDataSet.TimeSheet);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.Trainees". При необходимости она может быть перемещена или удалена.
-            this.traineesTableAdapter.Fill(this.coursesDataSet.Trainees);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.Group". При необходимости она может быть перемещена или удалена.
-            this.groupTableAdapter.Fill(this.coursesDataSet.Group);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.Exam". При необходимости она может быть перемещена или удалена.
-            this.examTableAdapter.Fill(this.coursesDataSet.Exam);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.Discipline". При необходимости она может быть перемещена или удалена.
-            this.disciplineTableAdapter.Fill(this.coursesDataSet.Discipline);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "coursesDataSet.Course". При необходимости она может быть перемещена или удалена.
-            this.courseTableAdapter.Fill(this.coursesDataSet.Course);
             traineesTableAdapter.Fill(coursesDataSet.Trainees);
             timeSheetTableAdapter.Fill(coursesDataSet.TimeSheet);
             paymentTableAdapter.Fill(coursesDataSet.Payment);

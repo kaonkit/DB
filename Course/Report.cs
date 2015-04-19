@@ -20,6 +20,7 @@ namespace Course
         Excel.Worksheet xlSheet;
         //Выделеная область
         Excel.Range xlSheetRange;
+
         public Report(DataTable dt)
         {
             InitializeComponent();
@@ -60,7 +61,7 @@ namespace Course
                     xlSheet.Cells[1, i + 1] = data;
 
                     //выделяем первую строку
-                    xlSheetRange = xlSheet.get_Range("A1:Z1", Type.Missing);
+                    xlSheetRange = xlSheet.Range["A1:Z1", Type.Missing];
 
                     //делаем полужирный текст и перенос слов
                     xlSheetRange.WrapText = true;
@@ -120,6 +121,11 @@ namespace Course
             {
                 GC.Collect();
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
     }

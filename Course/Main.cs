@@ -68,7 +68,7 @@ namespace Course
 
         private void DoSql(string querr)
         {
-
+            CloseForms();
             try
             {
                 using (SqlConnection sqlCon = new SqlConnection(Connection))
@@ -77,8 +77,9 @@ namespace Course
                     SqlDataAdapter sda = new SqlDataAdapter(querr, sqlCon);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
-                    report = new Report(dt);
+                    report = new Report(dt) { MdiParent = this };
                     report.Show();
+                    Main_Resize(this, EventArgs.Empty);
                 }
             }
             catch (Exception ex)
@@ -86,6 +87,11 @@ namespace Course
                 MessageBox.Show(@"Error: " + ex.Message);
             }
 
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            FillDb();
         }
 
         private void Main_Resize(object sender, EventArgs e)
@@ -100,7 +106,6 @@ namespace Course
                 querry.ClientSize = new Size(this.ClientSize.Width - 10, this.ClientSize.Height - 30);
                 querry.Location = new Point(0, 0);
             }
-
             if (report != null)
             {
                 report.ClientSize = new Size(this.ClientSize.Width - 10, this.ClientSize.Height - 30);
@@ -167,6 +172,7 @@ namespace Course
             CloseForms();
             querry = new Querry() { MdiParent = this };
             querry.Show();
+            Main_Resize(this, EventArgs.Empty);
         }
 
         private void слушателиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -174,13 +180,38 @@ namespace Course
             sqlquerry =
                 "SELECT T.FIO as 'ФИО слушателя', C.CourseFulName as 'Курс', T.Phone as 'Номер телефона', T.Email as 'E-mail' " +
                 "FROM Trainees T, [Group] G, [Course] C " +
-                "WHERE T.[Group] = G.GroupNum AND C.CourseAbbr = G.[Course];";
+                "WHERE T.[Group] = G.GroupNum AND C.CourseAbbr = G.[Course] " +
+                "ORDER BY T.FIO;";
             DoSql(sqlquerry);
         }
 
-        private void Main_Load(object sender, EventArgs e)
+        private void преподавателиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FillDb();
+            sqlquerry = "SELECT DISTINCT L.FIO as 'ФИО преподавателя', L.Qualification as 'Квалификация', C.CourseFulName as 'Курс', L.Phone as 'Номер телефона', L.Email as 'E-mail' " +
+                        "FROM Lecturer L, TimeSheet TS, Discipline D, Course C " +
+                        "WHERE L.Id = TS.LectureID AND TS.DisciplineID = D.Id AND D.CourseAbbr = C.CourseAbbr " +
+                        "ORDER BY L.FIO;";
+            DoSql(sqlquerry);
+        }
+
+        private void курсыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sqlquerry = "SELECT C.CourseFulName as 'Название курса', SUM(G.NumberOfTrainees) as 'Количество слушателей' " +
+                        "FROM [Group] G, Discipline D, Course C " +
+                        "WHERE C.CourseAbbr = D.CourseAbbr AND D.[Group] = G.GroupNum " +
+                        "GROUP BY C.CourseFulName " +
+                        "ORDER BY C.CourseFulName;";
+            DoSql(sqlquerry);
+        }
+
+        private void нагрузкаПреподавателейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sqlquerry = "SELECT L.FIO as 'ФИО преподавателя', C.CourseFulName as 'Курс', SUM(TS.NumberOfHours) as 'Количество часов' " +
+                        "FROM Lecturer L, TimeSheet TS, Discipline D, Course C " +
+                        "WHERE L.Id = TS.LectureID AND TS.DisciplineID = D.Id AND D.CourseAbbr = C.CourseAbbr " +
+                        "GROUP BY L.FIO, C.CourseFulName " +
+                        "ORDER BY L.FIO;";
+            DoSql(sqlquerry);
         }
 
     }
