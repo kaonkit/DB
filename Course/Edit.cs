@@ -169,7 +169,6 @@ namespace Course
         {
             this.traineesTableAdapter.Fill(this.coursesDataSet.Trainees);
             this.timeSheetTableAdapter.Fill(this.coursesDataSet.TimeSheet);
-            this.specialityTableAdapter.Fill(this.coursesDataSet.Speciality);
             this.paymentTableAdapter.Fill(this.coursesDataSet.Payment);
             this.lecturerTableAdapter.Fill(this.coursesDataSet.Lecturer);
             this.groupTableAdapter.Fill(this.coursesDataSet.Group);

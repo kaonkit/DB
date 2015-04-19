@@ -46,7 +46,6 @@
             this.paymentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
             this.specialityBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.specialityTableAdapter = new Course.CoursesDataSetTableAdapters.SpecialityTableAdapter();
             this.timeSheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
             this.traineesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -148,15 +147,6 @@
             // 
             this.paymentTableAdapter.ClearBeforeFill = true;
             // 
-            // specialityBindingSource
-            // 
-            this.specialityBindingSource.DataMember = "Speciality";
-            this.specialityBindingSource.DataSource = this.bindingSource1;
-            // 
-            // specialityTableAdapter
-            // 
-            this.specialityTableAdapter.ClearBeforeFill = true;
-            // 
             // timeSheetBindingSource
             // 
             this.timeSheetBindingSource.DataMember = "TimeSheet";
@@ -219,7 +209,6 @@
         private System.Windows.Forms.BindingSource paymentBindingSource;
         private CoursesDataSetTableAdapters.PaymentTableAdapter paymentTableAdapter;
         private System.Windows.Forms.BindingSource specialityBindingSource;
-        private CoursesDataSetTableAdapters.SpecialityTableAdapter specialityTableAdapter;
         private System.Windows.Forms.BindingSource timeSheetBindingSource;
         private CoursesDataSetTableAdapters.TimeSheetTableAdapter timeSheetTableAdapter;
         private System.Windows.Forms.BindingSource traineesBindingSource;
