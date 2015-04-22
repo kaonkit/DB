@@ -13,8 +13,8 @@ namespace Course
     public partial class Information : Form
     {
         private BindingSource currentBindingSource;
-        private string forFilter;
-        private string forSort;
+        private string forFilter, forSort;
+        private bool isInt;
         public Information()
         {
             InitializeComponent();
@@ -28,14 +28,18 @@ namespace Course
             {
                 case "слушатели":
                     currentBindingSource = traineesBindingSource;
-                    clbFilter.Items.AddRange(new object[]{"ФИО слушателя","Группа", "E-mail"});
-                    clbSort.Items.AddRange(new object[] { "ФИО слушателя", "Группа", "Дата рождения", "E-mail" });
+                    clbFilter.Items.AddRange(new object[]{"ФИО","Группа", "E-mail"});
+                    clbSort.Items.AddRange(new object[] { "ФИО", "Группа", "Дата рождения", "E-mail" });
                     break;
                 case "преподаватели":
                     currentBindingSource = lecturerBindingSource;
+                    clbFilter.Items.AddRange(new object[]{"ФИО","Квалификация","Стаж работы", "E-mail"});
+                    clbSort.Items.AddRange(new object[] { "ФИО", "Квалификация", "Стаж работы", "E-mail" });
                     break;
                 case "экзамены":
                     currentBindingSource = examBindingSource;
+                    clbFilter.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Оценка" });
+                    clbSort.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Оценка" });
                     break;
             }
             dataGridView1.DataSource = currentBindingSource;
@@ -45,7 +49,7 @@ namespace Course
         {
             switch (clbSort.Text)
             {
-                case "ФИО слушателя":
+                case "ФИО":
                     forSort = "FIO";
                     break;
                 case "Группа":
@@ -57,7 +61,24 @@ namespace Course
                 case "E-mail":
                     forSort = "Email";
                     break;
-
+                case "Квалификация":
+                    forSort = "Qualification";
+                    break;
+                case "Стаж работы":
+                    forSort = "RecordOfService";
+                    break;
+                case "ID слушателя":
+                    forSort = "TraineeID";
+                    break;
+                case "ID дисциплины":
+                    forSort = "DiscID";
+                    break;
+                case "Дата":
+                    forSort = "Data";
+                    break;
+                case "Оценка":
+                    forSort = "Mark";
+                    break;
             }
         }
 
@@ -65,7 +86,7 @@ namespace Course
         {
             switch (clbFilter.Text)
             {
-                case "ФИО слушателя":
+                case "ФИО":
                     forFilter = "FIO";
                     break;
                 case "Группа":
@@ -74,7 +95,28 @@ namespace Course
                 case "E-mail":
                     forFilter = "Email";
                     break;
-
+                case "Квалификация":
+                    forFilter = "Qualification";
+                    break;
+                case "Стаж работы":
+                    forFilter = "RecordOfService";
+                    isInt = true;
+                    break;
+                case "ID слушателя":
+                    forFilter = "TraineeID";
+                    isInt = true;
+                    break;
+                case "ID дисциплины":
+                    forFilter = "DiscID";
+                    isInt = true;
+                    break;
+                case "Дата":
+                    forFilter = "Data";
+                    break;
+                case "Оценка":
+                    forFilter = "Mark";
+                    isInt = true;
+                    break;
             }
         }
 
@@ -100,9 +142,9 @@ namespace Course
             try
             {
                 getFilter();
-                currentBindingSource.Filter = forFilter + " LIKE '%" + txtSearch.Text + "%'";
+                currentBindingSource.Filter = forFilter + (isInt ? ("=" + txtSearch.Text) : (" LIKE '%" + txtSearch.Text + "%'"));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("\tВыберите поле для поиска\t", "Ошибка");
             }
@@ -124,7 +166,7 @@ namespace Course
                 getSort();
                 currentBindingSource.Sort = forSort;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("\tВыберите поле для сортировки\t", "Ошибка");
             }
@@ -136,6 +178,18 @@ namespace Course
             if (e.NewValue == CheckState.Checked)
                 foreach (var index in list.CheckedIndices.Cast<int>().Where(index => index != e.Index))
                     list.SetItemChecked(index, false);
+        }
+
+        private void Information_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            traineesTableAdapter.Dispose();
+            timeSheetTableAdapter.Dispose();
+            paymentTableAdapter.Dispose();
+            lecturerTableAdapter.Dispose();
+            groupTableAdapter.Dispose();
+            examTableAdapter.Dispose();
+            disciplineTableAdapter.Dispose();
+            courseTableAdapter.Dispose();
         }
     }
 }

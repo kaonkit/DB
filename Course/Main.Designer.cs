@@ -43,6 +43,7 @@
             this.результатыЭкзаменовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оплатаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.нагрузкаПреподавателейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.расписаниеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbInfo = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
@@ -121,7 +122,8 @@
             this.файлToolStripMenuItem,
             this.правкаToolStripMenuItem,
             this.запросToolStripMenuItem,
-            this.отчетыToolStripMenuItem});
+            this.отчетыToolStripMenuItem,
+            this.расписаниеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(731, 24);
@@ -188,6 +190,13 @@
             this.нагрузкаПреподавателейToolStripMenuItem.Text = "&Нагрузка преподавателей";
             this.нагрузкаПреподавателейToolStripMenuItem.Click += new System.EventHandler(this.нагрузкаПреподавателейToolStripMenuItem_Click);
             // 
+            // расписаниеToolStripMenuItem
+            // 
+            this.расписаниеToolStripMenuItem.Name = "расписаниеToolStripMenuItem";
+            this.расписаниеToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.расписаниеToolStripMenuItem.Text = "&Расписание";
+            this.расписаниеToolStripMenuItem.Click += new System.EventHandler(this.расписаниеToolStripMenuItem_Click);
+            // 
             // cmbInfo
             // 
             this.cmbInfo.FormattingEnabled = true;
@@ -195,14 +204,14 @@
             "слушатели",
             "преподаватели",
             "экзамены"});
-            this.cmbInfo.Location = new System.Drawing.Point(353, 0);
+            this.cmbInfo.Location = new System.Drawing.Point(454, 1);
             this.cmbInfo.Name = "cmbInfo";
             this.cmbInfo.Size = new System.Drawing.Size(121, 21);
             this.cmbInfo.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(517, 1);
+            this.button1.Location = new System.Drawing.Point(581, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(67, 20);
             this.button1.TabIndex = 3;
@@ -369,6 +378,7 @@
         private System.Windows.Forms.BindingSource lecturerBindingSource;
         private CoursesDataSetTableAdapters.LecturerTableAdapter lecturerTableAdapter;
         private CoursesDataSet coursesDataSet1;
+        private System.Windows.Forms.ToolStripMenuItem расписаниеToolStripMenuItem;
     }
 }
 
