@@ -316,6 +316,5 @@ namespace Course
             }
             return table;
         }
-
     }
 }

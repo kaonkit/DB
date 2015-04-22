@@ -19,14 +19,19 @@ namespace Course
         private string querry;
         private DataTable dt;
 
+        private Excel.Application xlApp;
+        private Excel.Worksheet xlSheet;
+        private Excel.Range xlSheetRange;
+
         public Report()
         {
             InitializeComponent();
         }
 
-        public Report(string owner, string querry):this()
+        public Report(string owner, string querry)
+            : this()
         {
-            
+
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.owner = owner;
@@ -69,7 +74,7 @@ namespace Course
                 {
                     sqlCon.Open();
                     SqlDataAdapter sda = new SqlDataAdapter(completeSql(filter), sqlCon);
-                    DataTable dt = new DataTable();
+                    dt = new DataTable();
                     sda.Fill(dt);
                     dataGridView1.DataSource = dt;
                 }
@@ -107,14 +112,8 @@ namespace Course
 
         public void toExcel(DataTable dtDataTable)
         {
-            //Екземпляр приложения Excel
-            Excel.Application xlApp = new Excel.Application();
-            //Лист
-            Excel.Worksheet xlSheet = new Excel.Worksheet();
-            //Выделеная область
-            Excel.Range xlSheetRange;
 
-
+            xlApp = new Excel.Application();
             try
             {
                 //добавляем книгу
@@ -163,6 +162,26 @@ namespace Course
                 //выравниваем строки и колонки по их содержимому
                 xlSheetRange.Columns.AutoFit();
                 xlSheetRange.Rows.AutoFit();
+
+                if (owner == "курсы")
+                {
+                    //xlArea, xlBar, xlColumn, xlLine, xlPie, xlRadar, xlXYScatter, xlCombination, xl3DArea, xl3DBar, xl3DColumn, xl3DLine, xl3DPie, xl3DSurface, xlDoughnut, xlDefaultAutoFormat.
+                    Excel.ChartObjects chartsobjrcts =
+                        (Excel.ChartObjects)xlSheet.ChartObjects(Type.Missing);
+                    Excel.ChartObject chartsobjrct = chartsobjrcts.Add(10, 200, 500, 400);
+                    chartsobjrct.Chart.ChartWizard(xlSheet.get_Range("a1", "b" + (dtDataTable.Rows.Count + 1)),
+                        Excel.XlChartType.xlPie,
+                        Type.Missing,
+                        Excel.XlRowCol.xlColumns,
+                        Type.Missing,
+                        Type.Missing,
+                        true,
+                        "Посещаемость курсов",
+                        Type.Missing,
+                        Type.Missing,
+                        Type.Missing
+                        );
+                }
             }
             catch (Exception ex)
             {
@@ -178,15 +197,39 @@ namespace Course
                 xlApp.UserControl = true;
 
                 //Отсоединяемся от Excel
-                //releaseObject(xlSheetRange);
+                releaseObject(xlSheetRange);
                 releaseObject(xlSheet);
                 releaseObject(xlApp);
             }
         }
 
+        private void createDiagr()
+        {
+            Excel.Application excelapp;
+            Excel.Workbooks excelappworkbooks;
+            Excel.Workbook excelappworkbook;
+            Excel.Sheets excelsheets;
+            Excel.Worksheet excelworksheet;
+            Excel.Range excelcells;
+            Excel.Window excelWindow;
+
+            excelapp = new Excel.Application();
+            excelapp.Visible = true;
+
+
+            excelworksheet = xlSheet;
+            Excel.ChartObjects chartsobjrcts =
+             (Excel.ChartObjects)excelworksheet.ChartObjects(Type.Missing);
+            Excel.ChartObject chartsobjrct = chartsobjrcts.Add(10, 200, 500, 400);
+            chartsobjrct.Chart.ChartWizard(excelworksheet.get_Range("D8", "K10"),
+            Excel.XlChartType.xl3DArea, 2, Excel.XlRowCol.xlRows, Type.Missing,
+              0, true, "Продажа рогов и копыт за неделю", "Дни недели", "Рога\\Копыта", Type.Missing);
+        }
+
         private void btneExcel_Click(object sender, EventArgs e)
         {
             toExcel(dt);
+            //createDiagr();
         }
 
         private void releaseObject(object obj)
