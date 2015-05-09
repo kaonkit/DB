@@ -12,9 +12,10 @@ namespace Course
 {
     public partial class Information : Form
     {
-        private BindingSource currentBindingSource;
+        private BindingSource currentBindingSource, forSearchBindingSource;
         private string forFilter, forSort;
-        private bool isInt;
+        private int colnum;
+        private bool forSearch;
         public Information()
         {
             InitializeComponent();
@@ -22,23 +23,24 @@ namespace Course
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        public Information(string sourse) : this()
+        public Information(string sourse)
+            : this()
         {
             switch (sourse)
             {
                 case "слушатели":
                     currentBindingSource = traineesBindingSource;
-                    clbFilter.Items.AddRange(new object[]{"ФИО","Группа", "E-mail"});
+                    clbSearch.Items.AddRange(new object[] { "ФИО", "Группа", "E-mail" });
                     clbSort.Items.AddRange(new object[] { "ФИО", "Группа", "Дата рождения", "E-mail" });
                     break;
                 case "преподаватели":
                     currentBindingSource = lecturerBindingSource;
-                    clbFilter.Items.AddRange(new object[]{"ФИО","Квалификация","Стаж работы", "E-mail"});
+                    clbSearch.Items.AddRange(new object[] { "ФИО", "Квалификация", "Стаж работы", "E-mail" });
                     clbSort.Items.AddRange(new object[] { "ФИО", "Квалификация", "Стаж работы", "E-mail" });
                     break;
                 case "экзамены":
                     currentBindingSource = examBindingSource;
-                    clbFilter.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Оценка" });
+                    clbSearch.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Оценка" });
                     clbSort.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Оценка" });
                     break;
             }
@@ -84,38 +86,44 @@ namespace Course
 
         private void getFilter()
         {
-            switch (clbFilter.Text)
+            forSearch = true;
+            switch (clbSearch.Text)
             {
                 case "ФИО":
                     forFilter = "FIO";
+                    colnum = 1;
                     break;
                 case "Группа":
                     forFilter = "Group";
+                    colnum = 2;
                     break;
                 case "E-mail":
                     forFilter = "Email";
+                    colnum = 5;
                     break;
                 case "Квалификация":
                     forFilter = "Qualification";
+                    colnum = 2;
                     break;
                 case "Стаж работы":
                     forFilter = "RecordOfService";
-                    isInt = true;
+                    colnum = 3;
                     break;
                 case "ID слушателя":
                     forFilter = "TraineeID";
-                    isInt = true;
+                    colnum = 0;
                     break;
                 case "ID дисциплины":
                     forFilter = "DiscID";
-                    isInt = true;
+                    colnum = 1;
                     break;
                 case "Дата":
                     forFilter = "Data";
+                    colnum = 2;
                     break;
                 case "Оценка":
                     forFilter = "Mark";
-                    isInt = true;
+                    colnum = 3;
                     break;
             }
         }
@@ -139,16 +147,25 @@ namespace Course
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            try
-            {
-                getFilter();
-                currentBindingSource.Filter = forFilter + (isInt ? ("=" + txtSearch.Text) : (" LIKE '%" + txtSearch.Text + "%'"));
-            }
-            catch (Exception ex)
+            getFilter();
+            if (!forSearch)
             {
                 MessageBox.Show("\tВыберите поле для поиска\t", "Ошибка");
+                return;
             }
-            
+            dataGridView1.ClearSelection();
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1[colnum, i].Value.ToString().ToUpper().Contains(txtSearch.Text.ToUpper()))
+                    dataGridView1.Rows[i].Selected = true;
+            }
+        }
+
+        private void btnStopSearch_Click(object sender, EventArgs e)
+        {
+            dataGridView1.ClearSelection();
+            txtSearch.Clear();
+            forSearch = false;
         }
 
         private void clbFilter_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -161,10 +178,14 @@ namespace Course
 
         private void btnSort_Click(object sender, EventArgs e)
         {
+            if (clbSearch.CheckedItems == null)
+                forSearch = false;
             try
             {
                 getSort();
                 currentBindingSource.Sort = forSort;
+                if (forSearch)
+                    btnSearch_Click(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {
@@ -191,5 +212,6 @@ namespace Course
             disciplineTableAdapter.Dispose();
             courseTableAdapter.Dispose();
         }
+
     }
 }

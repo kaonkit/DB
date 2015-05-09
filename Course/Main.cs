@@ -252,6 +252,7 @@ namespace Course
             //foreach (var c in timetable)
             //   count += c.Count;
             (new Report()).toExcel(GetTable());
+            timetable.Clear();
         }
 
         private void fillTimetable(int step, int row, int quantity)

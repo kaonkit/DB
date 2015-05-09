@@ -32,6 +32,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.coursesDataSet = new Course.CoursesDataSet();
             this.disciplineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.examBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -45,9 +47,7 @@
             this.btnSort = new System.Windows.Forms.Button();
             this.clbSort = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.clbFilter = new System.Windows.Forms.CheckedListBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.coursesDataSet = new Course.CoursesDataSet();
+            this.clbSearch = new System.Windows.Forms.CheckedListBox();
             this.courseTableAdapter = new Course.CoursesDataSetTableAdapters.CourseTableAdapter();
             this.disciplineTableAdapter = new Course.CoursesDataSetTableAdapters.DisciplineTableAdapter();
             this.examTableAdapter = new Course.CoursesDataSetTableAdapters.ExamTableAdapter();
@@ -56,9 +56,12 @@
             this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
             this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
             this.lecturerTableAdapter = new Course.CoursesDataSetTableAdapters.LecturerTableAdapter();
+            this.btnStopSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
@@ -68,8 +71,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.lecturerBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -98,6 +99,16 @@
             // 
             this.courseBindingSource.DataMember = "Course";
             this.courseBindingSource.DataSource = this.bindingSource1;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.coursesDataSet;
+            this.bindingSource1.Position = 0;
+            // 
+            // coursesDataSet
+            // 
+            this.coursesDataSet.DataSetName = "CoursesDataSet";
+            this.coursesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // disciplineBindingSource
             // 
@@ -143,7 +154,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(84, 111);
+            this.btnSearch.Location = new System.Drawing.Point(44, 111);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 3;
@@ -184,8 +195,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.clbFilter);
+            this.groupBox2.Controls.Add(this.clbSearch);
             this.groupBox2.Controls.Add(this.txtSearch);
+            this.groupBox2.Controls.Add(this.btnStopSearch);
             this.groupBox2.Controls.Add(this.btnSearch);
             this.groupBox2.Location = new System.Drawing.Point(230, 13);
             this.groupBox2.Name = "groupBox2";
@@ -194,25 +206,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Поиск";
             // 
-            // clbFilter
+            // clbSearch
             // 
-            this.clbFilter.CheckOnClick = true;
-            this.clbFilter.FormattingEnabled = true;
-            this.clbFilter.Location = new System.Drawing.Point(6, 19);
-            this.clbFilter.Name = "clbFilter";
-            this.clbFilter.Size = new System.Drawing.Size(230, 64);
-            this.clbFilter.TabIndex = 0;
-            this.clbFilter.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbFilter_ItemCheck);
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = this.coursesDataSet;
-            this.bindingSource1.Position = 0;
-            // 
-            // coursesDataSet
-            // 
-            this.coursesDataSet.DataSetName = "CoursesDataSet";
-            this.coursesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.clbSearch.CheckOnClick = true;
+            this.clbSearch.FormattingEnabled = true;
+            this.clbSearch.Location = new System.Drawing.Point(6, 19);
+            this.clbSearch.Name = "clbSearch";
+            this.clbSearch.Size = new System.Drawing.Size(230, 64);
+            this.clbSearch.TabIndex = 0;
+            this.clbSearch.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbFilter_ItemCheck);
             // 
             // courseTableAdapter
             // 
@@ -246,6 +248,16 @@
             // 
             this.lecturerTableAdapter.ClearBeforeFill = true;
             // 
+            // btnStopSearch
+            // 
+            this.btnStopSearch.Location = new System.Drawing.Point(125, 111);
+            this.btnStopSearch.Name = "btnStopSearch";
+            this.btnStopSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnStopSearch.TabIndex = 3;
+            this.btnStopSearch.Text = "Сброс";
+            this.btnStopSearch.UseVisualStyleBackColor = true;
+            this.btnStopSearch.Click += new System.EventHandler(this.btnStopSearch_Click);
+            // 
             // Information
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,6 +274,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
@@ -272,8 +286,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,8 +316,9 @@
        private System.Windows.Forms.Button btnSearch;
        private System.Windows.Forms.GroupBox groupBox1;
        private System.Windows.Forms.GroupBox groupBox2;
-       private System.Windows.Forms.CheckedListBox clbFilter;
+       private System.Windows.Forms.CheckedListBox clbSearch;
        private System.Windows.Forms.CheckedListBox clbSort;
        private System.Windows.Forms.Button btnSort;
+       private System.Windows.Forms.Button btnStopSearch;
        }
 }

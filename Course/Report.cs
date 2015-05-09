@@ -190,8 +190,9 @@ namespace Course
             finally
             {
                 //Показываем ексель
+                xlApp.WindowState = Excel.XlWindowState.xlMaximized;
                 xlApp.Visible = true;
-
+                
                 xlApp.Interactive = true;
                 xlApp.ScreenUpdating = true;
                 xlApp.UserControl = true;
@@ -203,33 +204,9 @@ namespace Course
             }
         }
 
-        private void createDiagr()
-        {
-            Excel.Application excelapp;
-            Excel.Workbooks excelappworkbooks;
-            Excel.Workbook excelappworkbook;
-            Excel.Sheets excelsheets;
-            Excel.Worksheet excelworksheet;
-            Excel.Range excelcells;
-            Excel.Window excelWindow;
-
-            excelapp = new Excel.Application();
-            excelapp.Visible = true;
-
-
-            excelworksheet = xlSheet;
-            Excel.ChartObjects chartsobjrcts =
-             (Excel.ChartObjects)excelworksheet.ChartObjects(Type.Missing);
-            Excel.ChartObject chartsobjrct = chartsobjrcts.Add(10, 200, 500, 400);
-            chartsobjrct.Chart.ChartWizard(excelworksheet.get_Range("D8", "K10"),
-            Excel.XlChartType.xl3DArea, 2, Excel.XlRowCol.xlRows, Type.Missing,
-              0, true, "Продажа рогов и копыт за неделю", "Дни недели", "Рога\\Копыта", Type.Missing);
-        }
-
         private void btneExcel_Click(object sender, EventArgs e)
         {
             toExcel(dt);
-            //createDiagr();
         }
 
         private void releaseObject(object obj)
