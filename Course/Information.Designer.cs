@@ -1,11 +1,15 @@
-﻿namespace Course
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using Course.CoursesDataSetTableAdapters;
+
+namespace Course
 {
     partial class Information
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -292,33 +296,33 @@
 
         #endregion
 
-       private System.Windows.Forms.PictureBox pictureBox1;
-       public System.Windows.Forms.DataGridView dataGridView1;
+       private PictureBox pictureBox1;
+       public DataGridView dataGridView1;
        private CoursesDataSet coursesDataSet;
-       private System.Windows.Forms.BindingSource bindingSource1;
-       private System.Windows.Forms.BindingSource courseBindingSource;
-       private CoursesDataSetTableAdapters.CourseTableAdapter courseTableAdapter;
-       private System.Windows.Forms.BindingSource disciplineBindingSource;
-       private CoursesDataSetTableAdapters.DisciplineTableAdapter disciplineTableAdapter;
-       private System.Windows.Forms.BindingSource examBindingSource;
-       private CoursesDataSetTableAdapters.ExamTableAdapter examTableAdapter;
-       private System.Windows.Forms.BindingSource groupBindingSource;
-       private CoursesDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
-       private System.Windows.Forms.BindingSource traineesBindingSource;
-       private CoursesDataSetTableAdapters.TraineesTableAdapter traineesTableAdapter;
-       private System.Windows.Forms.BindingSource timeSheetBindingSource;
-       private CoursesDataSetTableAdapters.TimeSheetTableAdapter timeSheetTableAdapter;
-       private System.Windows.Forms.BindingSource paymentBindingSource;
-       private CoursesDataSetTableAdapters.PaymentTableAdapter paymentTableAdapter;
-       private System.Windows.Forms.BindingSource lecturerBindingSource;
-       private CoursesDataSetTableAdapters.LecturerTableAdapter lecturerTableAdapter;
-       private System.Windows.Forms.TextBox txtSearch;
-       private System.Windows.Forms.Button btnSearch;
-       private System.Windows.Forms.GroupBox groupBox1;
-       private System.Windows.Forms.GroupBox groupBox2;
-       private System.Windows.Forms.CheckedListBox clbSearch;
-       private System.Windows.Forms.CheckedListBox clbSort;
-       private System.Windows.Forms.Button btnSort;
-       private System.Windows.Forms.Button btnStopSearch;
+       private BindingSource bindingSource1;
+       private BindingSource courseBindingSource;
+       private CourseTableAdapter courseTableAdapter;
+       private BindingSource disciplineBindingSource;
+       private DisciplineTableAdapter disciplineTableAdapter;
+       private BindingSource examBindingSource;
+       private ExamTableAdapter examTableAdapter;
+       private BindingSource groupBindingSource;
+       private GroupTableAdapter groupTableAdapter;
+       private BindingSource traineesBindingSource;
+       private TraineesTableAdapter traineesTableAdapter;
+       private BindingSource timeSheetBindingSource;
+       private TimeSheetTableAdapter timeSheetTableAdapter;
+       private BindingSource paymentBindingSource;
+       private PaymentTableAdapter paymentTableAdapter;
+       private BindingSource lecturerBindingSource;
+       private LecturerTableAdapter lecturerTableAdapter;
+       private TextBox txtSearch;
+       private Button btnSearch;
+       private GroupBox groupBox1;
+       private GroupBox groupBox2;
+       private CheckedListBox clbSearch;
+       private CheckedListBox clbSort;
+       private Button btnSort;
+       private Button btnStopSearch;
        }
 }

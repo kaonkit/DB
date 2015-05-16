@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Course
 {
     public partial class Information : Form
     {
-        private BindingSource currentBindingSource, forSearchBindingSource;
+        private BindingSource currentBindingSource;
         private string forFilter, forSort;
         private int colnum;
         private bool forSearch;
@@ -42,6 +36,31 @@ namespace Course
                     currentBindingSource = examBindingSource;
                     clbSearch.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Оценка" });
                     clbSort.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Оценка" });
+                    break;
+                case "группы":
+                    currentBindingSource = groupBindingSource;
+                    clbSearch.Items.AddRange(new object[] { "Группа", "Курс", "Количество слушателей" });
+                    clbSort.Items.AddRange(new object[] { "Группа", "Курс", "Количество слушателей" });
+                    break;
+                case "курсы":
+                    currentBindingSource = courseBindingSource;
+                    clbSearch.Items.AddRange(new object[] { "Аббревиатура курса", "Полное название курса" });
+                    clbSort.Items.AddRange(new object[] { "Аббревиатура курса", "Полное название курса" });
+                    break;
+                case "дисциплины":
+                    currentBindingSource = disciplineBindingSource;
+                    clbSearch.Items.AddRange(new object[] { "ID дисциплины", "Группа", "Количество часов", "Курс" });
+                    clbSort.Items.AddRange(new object[] { "ID дисциплины", "Группа", "Количество часов", "Курс" });
+                    break;
+                case "оплата":
+                    currentBindingSource = paymentBindingSource;
+                    clbSearch.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Дата", "Сумма" });
+                    clbSort.Items.AddRange(new object[] { "ID слушателя", "ID дисциплины", "Дата", "Сумма" });
+                    break;
+                case "нагрузки":
+                    currentBindingSource = timeSheetBindingSource;
+                    clbSearch.Items.AddRange(new object[] { "ID нагрузки", "ID дисциплины", "ID преподавателя",  "Вид занятия", "Количество часов", "Оплата" });
+                    clbSort.Items.AddRange(new object[] { "ID нагрузки", "ID дисциплины", "ID преподавателя", "Вид занятия", "Количество часов", "Оплата" });
                     break;
             }
             dataGridView1.DataSource = currentBindingSource;
@@ -80,6 +99,29 @@ namespace Course
                     break;
                 case "Оценка":
                     forSort = "Mark";
+                    break;
+                case "Курс":
+                case "Аббревиатура курса":
+                    forSort = "CourseAbbr";
+                    break;
+                case "Количество слушателей":
+                    forSort = "NumberOfTrainees";
+                    break;
+                case "Полное название курса":
+                    forSort = "CourseFulName";
+                    break;
+                case "Количество часов":
+                case "Часы":
+                    forSort = "NumberOfHours";
+                    break;
+                case "Сумма":
+                    forSort = "Summa";
+                    break;
+                case "Вид занятия":
+                    forSort = "TypeOfTraining";
+                    break;
+                case "Оплата":
+                    forSort = "Payment";
                     break;
             }
         }
@@ -124,6 +166,42 @@ namespace Course
                 case "Оценка":
                     forFilter = "Mark";
                     colnum = 3;
+                    break;
+                case "Курс":
+                    forFilter = "CourseAbbr";
+                    colnum = 3;
+                    break;
+                case "Аббревиатура курса":
+                    forFilter = "CourseAbbr";
+                    colnum = 0;
+                    break;
+                case "Полное название курса":
+                    forFilter = "CourseFulName";
+                    colnum = 1;
+                    break;
+                case "Количество слушателей":
+                    forFilter = "NumberOfTrainees";
+                    colnum = 2;
+                    break;
+                case "Количество часов":
+                    forFilter = "NumberOfHours";
+                    colnum = 2;//disc
+                    break;
+                case "Часы":
+                    forFilter = "NumberOfHours";
+                    colnum = 4;//timesh
+                    break;
+                case "Сумма":
+                    forFilter = "Summa";
+                    colnum = 3;
+                    break;
+                case "Вид занятия":
+                    forFilter = "TypeOfTraining";
+                    colnum = 3;
+                    break;
+                case "Оплата":
+                    forFilter = "Payment";
+                    colnum = 5;
                     break;
             }
         }

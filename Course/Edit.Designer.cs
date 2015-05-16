@@ -1,11 +1,15 @@
-﻿namespace Course
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using Course.CoursesDataSetTableAdapters;
+
+namespace Course
 {
     partial class Edit
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -192,26 +196,26 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private Button btnOK;
+        private Button btnCancel;
+        private BindingSource bindingSource1;
         private CoursesDataSet coursesDataSet;
-        private System.Windows.Forms.BindingSource disciplineBindingSource;
-        private CoursesDataSetTableAdapters.DisciplineTableAdapter disciplineTableAdapter;
-        private System.Windows.Forms.BindingSource courseBindingSource;
-        private CoursesDataSetTableAdapters.CourseTableAdapter courseTableAdapter;
-        private System.Windows.Forms.BindingSource examBindingSource;
-        private CoursesDataSetTableAdapters.ExamTableAdapter examTableAdapter;
-        private System.Windows.Forms.BindingSource groupBindingSource;
-        private CoursesDataSetTableAdapters.GroupTableAdapter groupTableAdapter;
-        private System.Windows.Forms.BindingSource lecturerBindingSource;
-        private CoursesDataSetTableAdapters.LecturerTableAdapter lecturerTableAdapter;
-        private System.Windows.Forms.BindingSource paymentBindingSource;
-        private CoursesDataSetTableAdapters.PaymentTableAdapter paymentTableAdapter;
-        private System.Windows.Forms.BindingSource specialityBindingSource;
-        private System.Windows.Forms.BindingSource timeSheetBindingSource;
-        private CoursesDataSetTableAdapters.TimeSheetTableAdapter timeSheetTableAdapter;
-        private System.Windows.Forms.BindingSource traineesBindingSource;
-        private CoursesDataSetTableAdapters.TraineesTableAdapter traineesTableAdapter;
+        private BindingSource disciplineBindingSource;
+        private DisciplineTableAdapter disciplineTableAdapter;
+        private BindingSource courseBindingSource;
+        private CourseTableAdapter courseTableAdapter;
+        private BindingSource examBindingSource;
+        private ExamTableAdapter examTableAdapter;
+        private BindingSource groupBindingSource;
+        private GroupTableAdapter groupTableAdapter;
+        private BindingSource lecturerBindingSource;
+        private LecturerTableAdapter lecturerTableAdapter;
+        private BindingSource paymentBindingSource;
+        private PaymentTableAdapter paymentTableAdapter;
+        private BindingSource specialityBindingSource;
+        private BindingSource timeSheetBindingSource;
+        private TimeSheetTableAdapter timeSheetTableAdapter;
+        private BindingSource traineesBindingSource;
+        private TraineesTableAdapter traineesTableAdapter;
     }
 }

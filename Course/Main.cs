@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.IO;
-using Course.CoursesDataSetTableAdapters;
 
 namespace Course
 {
@@ -69,7 +64,7 @@ namespace Course
             courseTableAdapter.Fill(coursesDataSet.Course);
         }
 
-        private void reportForm(string querr, string owner)
+        private void ReportForm(string querr, string owner)
         {
             CloseForms();
             report = new Report(owner, querr) { MdiParent = this };
@@ -86,17 +81,17 @@ namespace Course
         {
             if (info != null)
             {
-                info.ClientSize = new Size(this.ClientSize.Width - 10, this.ClientSize.Height - 30);
+                info.ClientSize = new Size(ClientSize.Width - 10, ClientSize.Height - 30);
                 info.Location = new Point(0, 0);
             }
             if (querry != null)
             {
-                querry.ClientSize = new Size(this.ClientSize.Width - 10, this.ClientSize.Height - 30);
+                querry.ClientSize = new Size(ClientSize.Width - 10, ClientSize.Height - 30);
                 querry.Location = new Point(0, 0);
             }
             if (report != null)
             {
-                report.ClientSize = new Size(this.ClientSize.Width - 10, this.ClientSize.Height - 30);
+                report.ClientSize = new Size(ClientSize.Width - 10, ClientSize.Height - 30);
                 report.Location = new Point(0, 0);
             }
         }
@@ -148,6 +143,36 @@ namespace Course
                     lecturerTableAdapter.FillBy(st1, Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value));
                     args = st1.Rows[0].ItemArray;
                     break;
+                case "группы":
+                    var st2 = new CoursesDataSet.GroupDataTable();
+                    groupTableAdapter.FillBy(st2, info.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    args = st2.Rows[0].ItemArray;
+                    break;
+                case "курсы":
+                    var st3 = new CoursesDataSet.CourseDataTable();
+                    courseTableAdapter.FillBy(st3, info.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    args = st3.Rows[0].ItemArray;
+                    break;
+                case "экзамены":
+                    var st4 = new CoursesDataSet.ExamDataTable();
+                    examTableAdapter.FillBy(st4, info.dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[2].Value));
+                    args = st4.Rows[0].ItemArray;
+                    break;
+                case "дисциплины":
+                    var st5 = new CoursesDataSet.DisciplineDataTable();
+                    disciplineTableAdapter.FillBy(st5, Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value));
+                    args = st5.Rows[0].ItemArray;
+                    break;
+                case "оплата":
+                    var st6 = new CoursesDataSet.PaymentDataTable();
+                    paymentTableAdapter.FillBy(st6, Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value), Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[1].Value));
+                    args = st6.Rows[0].ItemArray;
+                    break;
+                case "нагрузки":
+                    var st7 = new CoursesDataSet.TimeSheetDataTable();
+                    timeSheetTableAdapter.FillBy(st7, Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value));
+                    args = st7.Rows[0].ItemArray;
+                    break;
             }
             (new Edit(cmbInfo.Text, args)).ShowDialog();
             coursesDataSet.AcceptChanges();
@@ -165,6 +190,24 @@ namespace Course
                 case "преподаватели":
                     lecturerTableAdapter.DeleteQuery(Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value));
                     break;
+                case "группы":
+                    groupTableAdapter.DeleteQuery(info.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    break;
+                case "курсы":
+                    courseTableAdapter.DeleteQuery(info.dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                    break;
+                case "экзамены":
+                    examTableAdapter.DeleteQuery(info.dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[2].Value));
+                    break;
+                case "дисциплины":
+                    disciplineTableAdapter.DeleteQuery(Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value));
+                    break;
+                case "оплата":
+                    paymentTableAdapter.DeleteQuery(Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value), Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[1].Value));
+                    break;
+                case "нагрузки":
+                    timeSheetTableAdapter.DeleteQuery(Convert.ToInt32(info.dataGridView1.SelectedRows[0].Cells[0].Value));
+                    break;
             }
             coursesDataSet.AcceptChanges();
             FillDb();
@@ -174,7 +217,7 @@ namespace Course
         private void запросToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseForms();
-            querry = new Querry() { MdiParent = this };
+            querry = new Querry { MdiParent = this };
             querry.Show();
             Main_Resize(this, EventArgs.Empty);
         }
@@ -185,7 +228,7 @@ namespace Course
                 "SELECT T.FIO as 'ФИО слушателя', C.CourseFulName as 'Курс', T.Phone as 'Номер телефона', T.Email as 'E-mail' " +
                 "FROM Trainees T, [Group] G, [Course] C " +
                 "WHERE T.[Group] = G.GroupNum AND C.CourseAbbr = G.[Course];";
-            reportForm(sqlquerry, "слушатели");
+            ReportForm(sqlquerry, "слушатели");
         }
 
         private void преподавателиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,7 +236,7 @@ namespace Course
             sqlquerry = "SELECT DISTINCT L.FIO as 'ФИО преподавателя', L.Qualification as 'Квалификация', C.CourseFulName as 'Курс', L.Phone as 'Номер телефона', L.Email as 'E-mail' " +
                         "FROM Lecturer L, TimeSheet TS, Discipline D, Course C " +
                         "WHERE L.Id = TS.LectureID AND TS.DisciplineID = D.Id AND D.CourseAbbr = C.CourseAbbr;";
-            reportForm(sqlquerry, "преподаватели");
+            ReportForm(sqlquerry, "преподаватели");
         }
 
         private void курсыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,7 +246,7 @@ namespace Course
                         "WHERE C.CourseAbbr = D.CourseAbbr AND D.[Group] = G.GroupNum " +
                         "GROUP BY C.CourseFulName " +
                         "ORDER BY C.CourseFulName;";
-            reportForm(sqlquerry, "курсы");
+            ReportForm(sqlquerry, "курсы");
         }
 
         private void нагрузкаПреподавателейToolStripMenuItem_Click(object sender, EventArgs e)
@@ -213,14 +256,14 @@ namespace Course
                         "WHERE L.Id = TS.LectureID AND TS.DisciplineID = D.Id AND D.CourseAbbr = C.CourseAbbr " +
                         "GROUP BY L.FIO, C.CourseFulName " +
                         "ORDER BY L.FIO;";
-            reportForm(sqlquerry, "преподаватели");
+            ReportForm(sqlquerry, "преподаватели");
         }
 
         private void расписаниеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                using (SqlConnection sqlCon = new SqlConnection(Main.Connection))
+                using (SqlConnection sqlCon = new SqlConnection(Connection))
                 {
                     string querr = "SELECT L.FIO, C.CourseFulName, D.[Group], TS.TypeOfTraining, TS.NumberOfHours " +
                                    "FROM Lecturer L, TimeSheet TS, Discipline D, Course C " +
@@ -246,7 +289,7 @@ namespace Course
             {
                 int quantity = Int32.Parse(dt.Rows[i][4].ToString()) / 2;
                 int t1 = 30 / quantity;
-                fillTimetable(t1, i, quantity);
+                FillTimetable(t1, i, quantity);
                 // countall += quantity;
             }
             //foreach (var c in timetable)
@@ -255,7 +298,7 @@ namespace Course
             timetable.Clear();
         }
 
-        private void fillTimetable(int step, int row, int quantity)
+        private void FillTimetable(int step, int row, int quantity)
         {
             int count = 0;
             var max = timetable.Max(x => x.Count);
@@ -286,10 +329,10 @@ namespace Course
                     }
                     continue;
                 }
-                timetable[i].Add(dt.Rows[row][0].ToString()+ "_" + 
-                    dt.Rows[row][1].ToString() + "_" + 
-                    dt.Rows[row][2].ToString() + "_" + 
-                    dt.Rows[row][3].ToString());
+                timetable[i].Add(dt.Rows[row][0]+ "_" + 
+                    dt.Rows[row][1] + "_" + 
+                    dt.Rows[row][2] + "_" + 
+                    dt.Rows[row][3]);
                 count++;
                 i += step;
                 repeat = 0;
@@ -317,5 +360,7 @@ namespace Course
             }
             return table;
         }
+
     }
 }
+ 

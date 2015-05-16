@@ -1,11 +1,14 @@
-﻿namespace Course
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace Course
 {
     partial class Report
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -132,13 +135,13 @@
 
         #endregion
 
-        public System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btneExcel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckedListBox clbFilter;
-        private System.Windows.Forms.Button btnFilter;
-        private System.Windows.Forms.Button btnReset;
+        public DataGridView dataGridView1;
+        private Button btneExcel;
+        private PictureBox pictureBox1;
+        private GroupBox groupBox3;
+        private CheckedListBox clbFilter;
+        private Button btnFilter;
+        private Button btnReset;
 
     }
 }

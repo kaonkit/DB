@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using Application = Microsoft.Office.Interop.Excel.Application;
+using DataTable = System.Data.DataTable;
 
 namespace Course
 {
@@ -19,9 +16,9 @@ namespace Course
         private string querry;
         private DataTable dt;
 
-        private Excel.Application xlApp;
-        private Excel.Worksheet xlSheet;
-        private Excel.Range xlSheetRange;
+        private Application xlApp;
+        private Worksheet xlSheet;
+        private Range xlSheetRange;
 
         public Report()
         {
@@ -113,7 +110,7 @@ namespace Course
         public void toExcel(DataTable dtDataTable)
         {
 
-            xlApp = new Excel.Application();
+            xlApp = new Application();
             try
             {
                 //добавляем книгу
@@ -124,7 +121,7 @@ namespace Course
                 xlApp.EnableEvents = false;
 
                 //выбираем лист на котором будем работать (Лист 1)
-                xlSheet = (Excel.Worksheet)xlApp.Sheets[1];
+                xlSheet = (Worksheet)xlApp.Sheets[1];
                 //Название листа
                 xlSheet.Name = "Данные";
 
@@ -135,7 +132,7 @@ namespace Course
                 //называем колонки
                 for (int i = 0; i < dtDataTable.Columns.Count; i++)
                 {
-                    data = dtDataTable.Columns[i].ColumnName.ToString();
+                    data = dtDataTable.Columns[i].ColumnName;
                     xlSheet.Cells[1, i + 1] = data;
 
                     //выделяем первую строку
@@ -166,13 +163,13 @@ namespace Course
                 if (owner == "курсы")
                 {
                     //xlArea, xlBar, xlColumn, xlLine, xlPie, xlRadar, xlXYScatter, xlCombination, xl3DArea, xl3DBar, xl3DColumn, xl3DLine, xl3DPie, xl3DSurface, xlDoughnut, xlDefaultAutoFormat.
-                    Excel.ChartObjects chartsobjrcts =
-                        (Excel.ChartObjects)xlSheet.ChartObjects(Type.Missing);
-                    Excel.ChartObject chartsobjrct = chartsobjrcts.Add(10, 200, 500, 400);
+                    ChartObjects chartsobjrcts =
+                        (ChartObjects)xlSheet.ChartObjects(Type.Missing);
+                    ChartObject chartsobjrct = chartsobjrcts.Add(10, 200, 500, 400);
                     chartsobjrct.Chart.ChartWizard(xlSheet.get_Range("a1", "b" + (dtDataTable.Rows.Count + 1)),
-                        Excel.XlChartType.xlPie,
+                        XlChartType.xlPie,
                         Type.Missing,
-                        Excel.XlRowCol.xlColumns,
+                        XlRowCol.xlColumns,
                         Type.Missing,
                         Type.Missing,
                         true,
@@ -190,7 +187,7 @@ namespace Course
             finally
             {
                 //Показываем ексель
-                xlApp.WindowState = Excel.XlWindowState.xlMaximized;
+                xlApp.WindowState = XlWindowState.xlMaximized;
                 xlApp.Visible = true;
                 
                 xlApp.Interactive = true;
@@ -213,7 +210,7 @@ namespace Course
         {
             try
             {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                Marshal.ReleaseComObject(obj);
                 obj = null;
             }
             catch (Exception ex)
