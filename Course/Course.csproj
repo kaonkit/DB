@@ -84,6 +84,12 @@
     <Compile Include="Edit.Designer.cs">
       <DependentUpon>Edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="IntelliSenseTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IntelliSenseTextBox.Designer.cs">
+      <DependentUpon>IntelliSenseTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoadSave.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>

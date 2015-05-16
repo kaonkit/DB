@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -8,19 +9,31 @@ namespace Course
 {
     public partial class Querry : Form
     {
+        private IntelliSenseTextBox txtInput;
+
         public Querry()
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            txtInput = new IntelliSenseTextBox(listBox1)
+            {
+                Location = new Point(50, 20),
+                Size = new Size(650, 105),
+                Multiline = true
+            };
+            Controls.Add(txtInput);
             autoComplete();
         }
 
         private void autoComplete(string s = null)
         {
-
-            //AddRange(new string[]{"SELECT","SELECcsacascascT","UPDATE","DELETE"});
-            comboBox1.AutoCompleteCustomSource.AddRange(new[] { "SELECT", "UPDATE", "DELETE" });
+            List<string> ISList = new List<string>(new string[] { "SELECT", "FROM", "WHERE", "COUNT", "HAVING", "GROUP BY", "MAX", "MIN", "AVG", "SUM", "ANY", "ALL" });
+            ISList.AddRange(new string[] { "Course", "Discipline", "Exam", "Group", "Lecturer", "Payment", "TimeSheet", "Trainees" });
+            ISList.AddRange(new string[] { "CourseAbbr", "CourseFulName", "Id", "NumberOfHours", "TraineeID", "DiscID", "Data", "Mark", "GroupNum", "NumberOfTrainees", "FIO", "Qualification", "RecordOfService", "Phone", "Email", "DisciplineID", "TraineesID", "Summa", "LectureID", "TypeOfTraining", "Payment", "DOB" });
+            
+            txtInput.Dictionary = ISList;
+            
         }
 
         private void txtDo_Click(object sender, EventArgs e)
@@ -44,32 +57,24 @@ namespace Course
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtInput.Text = "SELECT";
+            txtInput.Clear();
         }
 
         private void txtInput_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == (Keys.Control | Keys.Space))
-            {
-                ListBox tip = new ListBox
-                {
-                    Location =
-                        new Point(txtInput.Left + txtInput.TextLength * 2, txtInput.Right + txtInput.SelectionStart)
-                };
-                tip.Items.AddRange(new object[] { "select", "update" });
-                Controls.Add(tip);
-            }
+
             Keys keysmod2 = ModifierKeys;
-
-            if (keysmod2 == Keys.Shift)
+            //tip;
+            if (keysmod2 == Keys.Control)
             {
 
-                if (e.KeyCode == Keys.X)
+                if (e.KeyCode == Keys.Space)
                 {
                     ListBox tip = new ListBox
                     {
                         Location =
-                            new Point(5,5)
+                            new Point(Int32.Parse(txtInput.Location.X.ToString()) + 40, Int32.Parse(txtInput.Location.Y.ToString()) + 40)
+
                     };
                     tip.Items.AddRange(new object[] { "select", "update" });
                     Controls.Add(tip);

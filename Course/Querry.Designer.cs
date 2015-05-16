@@ -34,9 +34,7 @@ namespace Course
             this.txtDo = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.splitter1 = new System.Windows.Forms.Splitter();
-            this.txtInput = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,43 +66,21 @@ namespace Course
             this.dataGridView1.Size = new System.Drawing.Size(662, 141);
             this.dataGridView1.TabIndex = 2;
             // 
-            // splitter1
+            // listBox1
             // 
-            this.splitter1.Location = new System.Drawing.Point(0, 0);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(35, 326);
-            this.splitter1.TabIndex = 3;
-            this.splitter1.TabStop = false;
-            // 
-            // txtInput
-            // 
-            this.txtInput.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtInput.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtInput.Location = new System.Drawing.Point(58, 12);
-            this.txtInput.Multiline = true;
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(662, 59);
-            this.txtInput.TabIndex = 4;
-            this.txtInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInput_KeyDown);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(84, 95);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(557, 21);
-            this.comboBox1.TabIndex = 5;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(258, 34);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.TabIndex = 4;
+            this.listBox1.Visible = false;
             // 
             // Querry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(732, 326);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.txtInput);
-            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.txtDo);
@@ -113,7 +89,6 @@ namespace Course
             this.Text = "Querry";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -122,8 +97,6 @@ namespace Course
         private Button txtDo;
         private Button btnClear;
         private DataGridView dataGridView1;
-        private Splitter splitter1;
-        private TextBox txtInput;
-        private ComboBox comboBox1;
+        private ListBox listBox1;
     }
 }
