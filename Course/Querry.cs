@@ -60,28 +60,6 @@ namespace Course
             txtInput.Clear();
         }
 
-        private void txtInput_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            Keys keysmod2 = ModifierKeys;
-            //tip;
-            if (keysmod2 == Keys.Control)
-            {
-
-                if (e.KeyCode == Keys.Space)
-                {
-                    ListBox tip = new ListBox
-                    {
-                        Location =
-                            new Point(Int32.Parse(txtInput.Location.X.ToString()) + 40, Int32.Parse(txtInput.Location.Y.ToString()) + 40)
-
-                    };
-                    tip.Items.AddRange(new object[] { "select", "update" });
-                    Controls.Add(tip);
-                }
-
-            }
-        }
     }
 
 }
