@@ -19,28 +19,28 @@ namespace Course
             forEdit = args != null;
             switch (owner)
             {
-                case "слушатели":
+                case "btnTrainees":
                     ForTrainees(args);
                     break;
-                case "преподаватели":
+                case "btnLectures":
                     ForLectures(args);
                     break;
-                case "экзамены":
+                case "btnExams":
                     ForExams(args);
                     break;
-                case "группы":
+                case "btnGroup":
                     ForGroups(args);
                     break;
-                case "курсы":
+                case "btnCourses":
                     ForCourses(args);
                     break;
-                case "дисциплины":
+                case "btnDiscipline":
                     ForDisciplines(args);
                     break;
-                case "оплата":
+                case "btnPayment":
                     ForPayment(args);
                     break;
-                case "нагрузки":
+                case "btnTimeSheet":
                     ForTimeSheets(args);
                     break;
             }
@@ -58,7 +58,7 @@ namespace Course
                     {
                         switch (owner)
                         {
-                            case "слушатели":
+                            case "btnTrainees":
                                 traineesTableAdapter.Insert(
                                     Controls[2].Text,
                                     Controls[3].Text,
@@ -67,7 +67,7 @@ namespace Course
                                     Controls[6].Text
                                     );
                                 break;
-                            case "преподаватели":
+                            case "btnLectures":
                                 lecturerTableAdapter.Insert(
                                     Controls[2].Text,
                                     Controls[3].Text,
@@ -76,38 +76,38 @@ namespace Course
                                     Controls[6].Text
                                     );
                                 break;
-                            case "группы":
+                            case "btnGroup":
                                 groupTableAdapter.Insert(
                                     Controls[2].Text,
                                     Controls[3].Text,
                                     Int32.Parse(Controls[4].Text));
                                 break;
-                            case "курсы":
+                            case "btnCourses":
                                 courseTableAdapter.Insert(
                                     Controls[2].Text,
                                     Controls[3].Text);
                                 break;
-                            case "экзамены":
+                            case "btnExams":
                                 examTableAdapter.Insert(
                                     Int32.Parse(Controls[2].Text),
                                     Int32.Parse(Controls[3].Text),
                                     ((DateTimePicker)Controls[4]).Value,
                                     Int32.Parse(Controls[5].Text));
                                 break;
-                            case "дисциплины":
+                            case "btnDiscipline":
                                 disciplineTableAdapter.Insert(
                                     Controls[2].Text,
                                     Int32.Parse(Controls[3].Text),
                                     Controls[5].Text);
                                 break;
-                            case "оплата":
+                            case "btnPayment":
                                 paymentTableAdapter.Insert(
                                     Int32.Parse(Controls[2].Text),
                                     Int32.Parse(Controls[3].Text),
                                     ((DateTimePicker)Controls[4]).Value,
                                     Int32.Parse(Controls[5].Text));
                                 break;
-                            case "нагрузки":
+                            case "btnTimeSheet":
                                 timeSheetTableAdapter.Insert(
                                     Int32.Parse(Controls[2].Text),
                                     Int32.Parse(((ComboBox)Controls[3]).Text),
@@ -121,7 +121,7 @@ namespace Course
                     {
                         switch (owner)
                         {
-                            case "слушатели":
+                            case "btnTrainees":
                                 traineesTableAdapter.UpdateQuery(
                                     Controls[2].Text,
                                     Controls[3].Text,
@@ -130,7 +130,7 @@ namespace Course
                                     Controls[6].Text,
                                     Int32.Parse(id));
                                 break;
-                            case "преподаватели":
+                            case "btnLectures":
                                 lecturerTableAdapter.UpdateQuery(
                                     Controls[2].Text,
                                     Controls[3].Text,
@@ -139,42 +139,42 @@ namespace Course
                                     Controls[6].Text,
                                     Int32.Parse(id));
                                 break;
-                            case "группы":
+                            case "btnGroup":
                                 groupTableAdapter.UpdateQuery(
                                     Controls[2].Text,
                                     Controls[3].Text,
                                     Int32.Parse(Controls[4].Text));
                                 break;
-                            case "курсы":
+                            case "btnCourses":
                                 courseTableAdapter.UpdateQuery(
                                     Controls[2].Text,
                                     Controls[3].Text);
                                 break;
-                            case "экзамены":
+                            case "btnExams":
                                 examTableAdapter.UpdateQuery(
                                     Int32.Parse(Controls[2].Text),
                                     Int32.Parse(Controls[3].Text),
                                     ((DateTimePicker)Controls[4]).Value.ToString(),
                                     Int32.Parse(Controls[5].Text));
                                 break;
-                            case "дисциплины":
+                            case "btnDiscipline":
                                 disciplineTableAdapter.UpdateQuery(
                                     Controls[2].Text,
                                     Int32.Parse(Controls[3].Text),
                                     Controls[5].Text,
                                     Int32.Parse(id));
                                 break;
-                            case "оплата":
+                            case "btnPayment":
                                 paymentTableAdapter.UpdateQuery(
-                                    (int)new SqlCommand(("SELECT Id FROM Trainees WHERE FIO LIKE N'" + Controls[2].Text + "';"), sqlCon).ExecuteScalar(),
+                                    Int32.Parse(Controls[2].Text),
                                     Int32.Parse(Controls[3].Text),
                                     ((DateTimePicker)Controls[4]).Value.ToString(),
                                     Int32.Parse(Controls[5].Text));
                                 break;
-                            case "нагрузки":
+                            case "btnTimeSheet":
                                 timeSheetTableAdapter.UpdateQuery(
                                     Int32.Parse(Controls[2].Text),
-                                    (int)new SqlCommand(("SELECT Id FROM Lecturer WHERE FIO LIKE N'" + Controls[3].Text + "';"), sqlCon).ExecuteScalar(),
+                                    Int32.Parse(Controls[3].Text),
                                     Controls[4].Text,
                                     Int32.Parse(Controls[5].Text),
                                     Int32.Parse(Controls[6].Text),
@@ -212,12 +212,13 @@ namespace Course
 
         private void ForTrainees(object[] args = null)
         {
-            Label lbl1 = new Label { AutoSize = true, Text = "Введите ФИО", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "Введите ФИО", Location = new Point(100, 33) };
             TextBox txtFIO = new TextBox
             {
-                Location = new Point(lbl1.Width + 65, 30),
+                Location = new Point(lbl1.Width + 160, 30),
                 Text = args == null ? "Введите ФИО" : args[1].ToString(),
-                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText
+                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200,20)
             };
             txtFIO.GotFocus += delegate
             {
@@ -232,39 +233,42 @@ namespace Course
                 txtFIO.ForeColor = SystemColors.GrayText;
             };
 
-            Label lbl2 = new Label { AutoSize = true, Text = "Выберите группу", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "Выберите группу", Location = new Point(100, 83) };
             ComboBox cmbGroup = new ComboBox
             {
                 Text = !forEdit ? "Выберите группу" : args[2].ToString(),
-                Location = new Point(lbl1.Width + 65, 70),
+                Location = new Point(lbl1.Width + 160, 80),
                 DataSource = groupBindingSource,
                 DisplayMember = "GroupNum",
                 FormattingEnabled = true,
-                ValueMember = "GroupNum"
+                ValueMember = "GroupNum",
+                Size = new Size(200,20)
             };
 
-            Label lbl3 = new Label { AutoSize = true, Text = "Выберите дату рождения", Location = new Point(20, 113) };
+            Label lbl3 = new Label { AutoSize = true, Text = "Выберите дату рождения", Location = new Point(20, 133) };
             DateTimePicker datetimeDOB = new DateTimePicker
             {
-                Location = new Point(lbl3.Width + 65, 110),
-                Size = new Size(150, 10),
+                Location = new Point(lbl3.Width + 160, 130),
+                Size = new Size(200,20),
                 Value = !forEdit ? DateTime.Now : DateTime.Parse(args[3].ToString())
             };
 
-            Label lbl4 = new Label { AutoSize = true, Text = "Введите номер телефлона", Location = new Point(20, 153) };
+            Label lbl4 = new Label { AutoSize = true, Text = "Введите номер телефлона", Location = new Point(20, 183) };
             MaskedTextBox mtxtPhone = new MaskedTextBox
             {
-                Location = new Point(lbl4.Width + 65, 150),
+                Location = new Point(lbl4.Width + 160, 180),
                 Mask = "+38 (000) 000 0000",
-                Text = !forEdit ? "" : args[4].ToString()
+                Text = !forEdit ? "" : args[4].ToString(),
+                Size = new Size(200,20)
             };
 
-            Label lbl5 = new Label { AutoSize = true, Text = "Введите e-mail", Location = new Point(50, 193) };
+            Label lbl5 = new Label { AutoSize = true, Text = "Введите e-mail", Location = new Point(100, 233) };
             TextBox txtEmail = new TextBox
             {
-                Location = new Point(lbl5.Width + 65, 190),
+                Location = new Point(lbl5.Width + 160, 230),
                 Text = !forEdit ? "Введите e-mail" : args[5].ToString(),
-                ForeColor = args == null ? SystemColors.GrayText : SystemColors.WindowText
+                ForeColor = args == null ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200, 20)
             };
             txtEmail.GotFocus += delegate
             {
@@ -285,12 +289,13 @@ namespace Course
 
         private void ForLectures(object[] args = null)
         {
-            Label lbl1 = new Label { AutoSize = true, Text = "Введите ФИО", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "Введите ФИО", Location = new Point(100, 33) };
             TextBox txtFIO = new TextBox
             {
-                Location = new Point(lbl1.Width + 65, 30),
+                Location = new Point(lbl1.Width + 160, 30),
                 Text = args == null ? "Введите ФИО" : args[1].ToString(),
-                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText
+                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200, 20)
             };
             txtFIO.GotFocus += delegate
             {
@@ -305,12 +310,13 @@ namespace Course
                 txtFIO.ForeColor = SystemColors.GrayText;
             };
 
-            Label lbl2 = new Label { AutoSize = true, Text = "Введите квалификацию", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "Введите квалификацию", Location = new Point(100, 83) };
             TextBox txtQual = new TextBox
             {
-                Location = new Point(lbl1.Width + 65, 73),
-                Text = args == null ? "Введите квалификацию" : args[1].ToString(),
-                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText
+                Location = new Point(lbl1.Width + 160, 83),
+                Text = args == null ? "Введите квалификацию" : args[2].ToString(),
+                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200, 20)
             };
             txtQual.GotFocus += delegate
             {
@@ -325,31 +331,32 @@ namespace Course
                 txtQual.ForeColor = SystemColors.GrayText;
             };
 
-            Label lbl3 = new Label { AutoSize = true, Text = "Введите стаж работы", Location = new Point(20, 113) };
+            Label lbl3 = new Label { AutoSize = true, Text = "Введите стаж работы", Location = new Point(20, 133) };
 
             NumericUpDown nudRecordOfService = new NumericUpDown
             {
-                Location = new Point(lbl3.Width + 65, 110),
-                Size = new Size(150, 10),
+                Location = new Point(lbl3.Width + 160, 130),
+                Size = new Size(200,20),
                 Value = !forEdit ? 0 : Int32.Parse(args[3].ToString())
             };
 
-            Label lbl4 = new Label { AutoSize = true, Text = "Введите номер телефлона", Location = new Point(20, 153) };
+            Label lbl4 = new Label { AutoSize = true, Text = "Введите номер телефлона", Location = new Point(20, 183) };
 
             MaskedTextBox mtxtPhone = new MaskedTextBox
             {
-                Location = new Point(lbl4.Width + 65, 150),
+                Location = new Point(lbl4.Width + 160, 180),
                 Mask = "+38 (000) 000 0000",
                 Text = !forEdit ? "" : args[4].ToString()
             };
 
-            Label lbl5 = new Label { AutoSize = true, Text = "Введите e-mail", Location = new Point(50, 193) };
+            Label lbl5 = new Label { AutoSize = true, Text = "Введите e-mail", Location = new Point(100, 223) };
 
             TextBox txtEmail = new TextBox
             {
-                Location = new Point(lbl5.Width + 65, 190),
+                Location = new Point(lbl5.Width + 160, 220),
                 Text = !forEdit ? "Введите e-mail" : args[5].ToString(),
-                ForeColor = args == null ? SystemColors.GrayText : SystemColors.WindowText
+                ForeColor = args == null ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200, 20)
             };
             txtEmail.GotFocus += delegate
             {
@@ -370,45 +377,47 @@ namespace Course
 
         private void ForExams(object[] args = null)
         {
-            Label lbl1 = new Label { AutoSize = true, Text = "Слушатель", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "Слушатель", Location = new Point(100, 33) };
             ComboBox cmbTrainee = new ComboBox
             {
                 Text = !forEdit ? "ID Слушателя" : args[0].ToString(),
-                Location = new Point(lbl1.Width + 65, 30),
+                Location = new Point(lbl1.Width + 160, 30),
                 DataSource = traineesBindingSource,
                 DisplayMember = "FIO",
                 FormattingEnabled = true,
                 ValueMember = "Id",
-                Enabled = !forEdit
+                Enabled = !forEdit,
+                Size = new Size(200, 20)
             };
 
-            Label lbl2 = new Label { AutoSize = true, Text = "ID дисциплины", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "ID дисциплины", Location = new Point(100, 103) };
             ComboBox cmbDisc = new ComboBox
             {
                 Text = !forEdit ? "ID дисциплины" : args[1].ToString(),
-                Location = new Point(lbl2.Width + 65, 70),
+                Location = new Point(lbl2.Width + 160, 100),
                 DataSource = traineesBindingSource,
                 DisplayMember = "Id",
                 FormattingEnabled = true,
                 ValueMember = "Id",
-                Enabled = !forEdit
+                Enabled = !forEdit,
+                Size = new Size(200, 20)
             };
 
-            Label lbl3 = new Label { AutoSize = true, Text = "Выберите дату", Location = new Point(20, 113) };
+            Label lbl3 = new Label { AutoSize = true, Text = "Выберите дату", Location = new Point(20, 173) };
             DateTimePicker date = new DateTimePicker
             {
-                Location = new Point(lbl3.Width + 65, 110),
-                Size = new Size(150, 10),
+                Location = new Point(lbl3.Width + 160, 170),
+                Size = new Size(200,20),
                 Value = !forEdit ? DateTime.Now : DateTime.Parse(args[2].ToString()),
                 Enabled = !forEdit
             };
 
-            Label lbl4 = new Label { AutoSize = true, Text = "Введите оценку", Location = new Point(20, 153) };
+            Label lbl4 = new Label { AutoSize = true, Text = "Введите оценку", Location = new Point(20, 243) };
             NumericUpDown nudMark = new NumericUpDown
             {
                 Minimum = 0,
                 Maximum = 5,
-                Location = new Point(lbl4.Width + 65, 150),
+                Location = new Point(lbl4.Width + 160, 240),
                 Text = !forEdit ? "0" : args[3].ToString()
             };
 
@@ -417,13 +426,14 @@ namespace Course
 
         private void ForGroups(object[] args = null)
         {
-            Label lbl1 = new Label { AutoSize = true, Text = "Название группы", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "Название группы", Location = new Point(100, 33) };
 
             TextBox txtGroup = new TextBox
             {
-                Location = new Point(lbl1.Width + 65, 30),
+                Location = new Point(lbl1.Width + 160, 30),
                 Text = args == null ? "Введите группу" : args[0].ToString(),
-                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText
+                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200, 20)
             };
             txtGroup.GotFocus += delegate
             {
@@ -438,25 +448,24 @@ namespace Course
                 txtGroup.ForeColor = SystemColors.GrayText;
             };
 
-            Label lbl2 = new Label { AutoSize = true, Text = "Выберите курс", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "Выберите курс", Location = new Point(100, 113) };
 
             ComboBox cmbCourse = new ComboBox
             {
                 Text = !forEdit ? "Выберите курс" : args[1].ToString(),
-                Location = new Point(lbl1.Width + 65, 70),
+                Location = new Point(lbl1.Width + 160, 100),
                 DataSource = courseBindingSource,
                 DisplayMember = "CourseAbbr",
                 FormattingEnabled = true,
                 ValueMember = "CourseAbbr"
             };
 
-            Label lbl3 = new Label { AutoSize = true, Text = "Выберите количество\n слушателей", Location = new Point(20, 113) };
+            Label lbl3 = new Label { AutoSize = true, Text = "Выберите количество\n слушателей", Location = new Point(20, 183) };
 
             NumericUpDown nudNumberOfTr = new NumericUpDown
             {
-                Location = new Point(lbl3.Width + 65, 110),
+                Location = new Point(lbl3.Width + 160, 180),
                 Text = !forEdit ? "0" : args[2].ToString()
-
             };
 
             Controls.AddRange(new Control[] { txtGroup, cmbCourse, nudNumberOfTr, lbl1, lbl2, lbl3 });
@@ -464,13 +473,14 @@ namespace Course
 
         private void ForCourses(object[] args = null)
         {
-            Label lbl1 = new Label { AutoSize = true, Text = "Введите аббревиатуру курса", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "Введите аббревиатуру курса", Location = new Point(100, 83) };
 
             TextBox txtCourse = new TextBox
             {
-                Location = new Point(lbl1.Width + 65, 30),
+                Location = new Point(lbl1.Width + 160, 80),
                 Text = args == null ? "Введите аббревиатуру курса" : args[0].ToString(),
-                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText
+                ForeColor = !forEdit ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200, 20)
             };
             txtCourse.GotFocus += delegate
             {
@@ -485,13 +495,14 @@ namespace Course
                 txtCourse.ForeColor = SystemColors.GrayText;
             };
 
-            Label lbl2 = new Label { AutoSize = true, Text = "Введите название курса", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "Введите название курса", Location = new Point(100, 163) };
 
             TextBox txtFull = new TextBox
             {
-                Location = new Point(lbl2.Width + 65, 70),
+                Location = new Point(lbl2.Width + 160, 160),
                 Text = !forEdit ? "Введите название курса" : args[1].ToString(),
-                ForeColor = args == null ? SystemColors.GrayText : SystemColors.WindowText
+                ForeColor = args == null ? SystemColors.GrayText : SystemColors.WindowText,
+                Size = new Size(200, 20)
             };
             txtFull.GotFocus += delegate
             {
@@ -511,22 +522,22 @@ namespace Course
 
         private void ForDisciplines(object[] args = null)
         {
-            Label lbl1 = new Label { AutoSize = true, Text = "Выберите группу", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "Выберите группу", Location = new Point(100, 33) };
             ComboBox cmbGroup = new ComboBox
             {
                 Text = !forEdit ? "Выберите группу" : args[1].ToString(),
-                Location = new Point(lbl1.Width + 65, 30),
+                Location = new Point(lbl1.Width + 160, 30),
                 DataSource = groupBindingSource,
                 DisplayMember = "GroupNum",
                 FormattingEnabled = true,
                 ValueMember = "GroupNum"
             };
 
-            Label lbl2 = new Label { AutoSize = true, Text = "Количество часов", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "Количество часов", Location = new Point(100, 73) };
             NumericUpDown nudNumbOfHours = new NumericUpDown
             {
                 Minimum = 0,
-                Location = new Point(lbl2.Width + 65, 70),
+                Location = new Point(lbl2.Width + 160, 70),
                 Text = !forEdit ? "0" : args[2].ToString()
             };
 
@@ -534,7 +545,7 @@ namespace Course
             ComboBox cmbCourse = new ComboBox
             {
                 Text = !forEdit ? "Выберите группу" : args[3].ToString(),
-                Location = new Point(lbl1.Width + 65, 30),
+                Location = new Point(lbl1.Width + 160, 30),
                 DataSource = coursesDataSet,
                 DisplayMember = "CourseAbbr",
                 FormattingEnabled = true,
@@ -546,44 +557,26 @@ namespace Course
 
         private void ForPayment(object[] args = null)
         {
-            string s = "";
-            using (SqlConnection sqlCon = new SqlConnection(Main.Connection))
-            {
-                sqlCon.Open();
-                s = !forEdit
-                    ? "ID Слушателя" : (string)
-                        new SqlCommand(("SELECT FIO FROM Trainees WHERE Id = " + args[0] + ";"), sqlCon).ExecuteScalar();
-            }
-
-            Label lbl1 = new Label { AutoSize = true, Text = "Слушатель", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "Слушатель", Location = new Point(100, 33) };
             ComboBox cmbTrainee = new ComboBox
             {
-                Text = s,
-                Location = new Point(lbl1.Width + 65, 30),
-                DataSource = traineesBindingSource,
-                DisplayMember = "FIO",
-                FormattingEnabled = true,
-                ValueMember = "Id",
+                Text = !forEdit ? "ID Слушателя" : args[0].ToString(),
+                Location = new Point(lbl1.Width + 160, 30),
                 Enabled = !forEdit
-                
             };
 
-            Label lbl2 = new Label { AutoSize = true, Text = "ID дисциплины", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "ID дисциплины", Location = new Point(100, 73) };
             ComboBox cmbDisc = new ComboBox
             {
                 Text = !forEdit ? "ID дисциплины" : args[1].ToString(),
-                Location = new Point(lbl2.Width + 65, 70),
-                DataSource = disciplineBindingSource,
-                DisplayMember = "Id",
-                FormattingEnabled = true,
-                ValueMember = "Id",
+                Location = new Point(lbl2.Width + 160, 70),
                 Enabled = !forEdit
             };
 
             Label lbl3 = new Label { AutoSize = true, Text = "Выберите дату", Location = new Point(20, 113) };
             DateTimePicker date = new DateTimePicker
             {
-                Location = new Point(lbl3.Width + 65, 110),
+                Location = new Point(lbl3.Width + 160, 110),
                 Size = new Size(150, 10),
                 Value = !forEdit ? DateTime.Now : DateTime.Parse(args[2].ToString())
             };
@@ -591,8 +584,8 @@ namespace Course
             Label lbl4 = new Label { AutoSize = true, Text = "Введите сумму", Location = new Point(20, 153) };
             NumericUpDown nudSum = new NumericUpDown
             {
-                Maximum = 10000,
-                Location = new Point(lbl4.Width + 65, 150),
+                Maximum = 16000,
+                Location = new Point(lbl4.Width + 160, 150),
                 Text = !forEdit ? "0" : args[3].ToString()
             };
 
@@ -602,39 +595,25 @@ namespace Course
 
         private void ForTimeSheets(object[] args = null)
         {
-            Label lbl1 = new Label { AutoSize = true, Text = "ID дисциплины", Location = new Point(50, 33) };
+            Label lbl1 = new Label { AutoSize = true, Text = "ID дисциплины", Location = new Point(100, 33) };
             ComboBox cmbDisc = new ComboBox
             {
                 Text = !forEdit ? "ID дисциплины" : args[1].ToString(),
-                Location = new Point(lbl1.Width + 65, 30),
-                DataSource = disciplineBindingSource,
-                DisplayMember = "Id",
-                FormattingEnabled = true,
-                ValueMember = "Id"
+                Location = new Point(lbl1.Width + 160, 30),
             };
-            string s = "";
-            using (SqlConnection sqlCon = new SqlConnection(Main.Connection))
-            {
-                sqlCon.Open();
-                s = !forEdit ? "ID Слушателя" : (string)new SqlCommand(("SELECT FIO FROM Lecturer WHERE Id = " + args[2] + ";"), sqlCon).ExecuteScalar();
-            }
 
-            Label lbl2 = new Label { AutoSize = true, Text = "Преподаватель", Location = new Point(50, 73) };
+            Label lbl2 = new Label { AutoSize = true, Text = "Преподаватель", Location = new Point(100, 73) };
             ComboBox cmbLecturer = new ComboBox
             {
-                Text = s,
-                Location = new Point(lbl2.Width + 65, 70),
-                DataSource = lecturerBindingSource,
-                DisplayMember = "FIO",
-                FormattingEnabled = true,
-                ValueMember = "Id"
+                Text = !forEdit ? "ID Слушателя" : args[2].ToString(),
+                Location = new Point(lbl2.Width + 160, 70),
             };
 
             Label lbl3 = new Label { AutoSize = true, Text = "Выберите тип", Location = new Point(20, 113) };
             ComboBox cmbType = new ComboBox
             {
                 Text = !forEdit ? "Выберите тип" : args[3].ToString(),
-                Location = new Point(lbl3.Width + 65, 110),
+                Location = new Point(lbl3.Width + 160, 110),
                 Items = { "лекция", "пз" }
             };
 
@@ -642,16 +621,16 @@ namespace Course
             NumericUpDown nudNumbOfHours = new NumericUpDown
              {
                  Minimum = 0,
-                 Location = new Point(lbl4.Width + 65, 150),
+                 Location = new Point(lbl4.Width + 160, 150),
                  Text = !forEdit ? "0" : args[4].ToString()
              };
 
-            Label lbl5 = new Label { AutoSize = true, Text = "Оплата", Location = new Point(50, 193) };
+            Label lbl5 = new Label { AutoSize = true, Text = "Оплата", Location = new Point(100, 193) };
             NumericUpDown nudPayment = new NumericUpDown
             {
                 Minimum = 0,
-                Maximum = 10000,
-                Location = new Point(lbl5.Width + 65, 190),
+                Maximum = 16000,
+                Location = new Point(lbl5.Width + 160, 190),
                 Text = !forEdit ? "0" : args[5].ToString()
             };
             Controls.AddRange(new Control[] { cmbDisc, cmbLecturer, cmbType, nudNumbOfHours, nudPayment, lbl1, lbl2, lbl3, lbl4, lbl5 });

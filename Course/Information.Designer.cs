@@ -33,6 +33,7 @@ namespace Course
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Information));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -52,6 +53,7 @@ namespace Course
             this.clbSort = new System.Windows.Forms.CheckedListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbSearch = new System.Windows.Forms.CheckedListBox();
+            this.btnStopSearch = new System.Windows.Forms.Button();
             this.courseTableAdapter = new Course.CoursesDataSetTableAdapters.CourseTableAdapter();
             this.disciplineTableAdapter = new Course.CoursesDataSetTableAdapters.DisciplineTableAdapter();
             this.examTableAdapter = new Course.CoursesDataSetTableAdapters.ExamTableAdapter();
@@ -60,7 +62,10 @@ namespace Course
             this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
             this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
             this.lecturerTableAdapter = new Course.CoursesDataSetTableAdapters.LecturerTableAdapter();
-            this.btnStopSearch = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.bthDel = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
@@ -86,12 +91,12 @@ namespace Course
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(657, 165);
+            this.dataGridView1.Size = new System.Drawing.Size(657, 223);
             this.dataGridView1.TabIndex = 0;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Course.Properties.Resources.back;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(34, 34);
@@ -153,7 +158,7 @@ namespace Course
             // 
             this.txtSearch.Location = new System.Drawing.Point(6, 85);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(230, 20);
+            this.txtSearch.Size = new System.Drawing.Size(230, 21);
             this.txtSearch.TabIndex = 2;
             // 
             // btnSearch
@@ -170,7 +175,8 @@ namespace Course
             // 
             this.groupBox1.Controls.Add(this.btnSort);
             this.groupBox1.Controls.Add(this.clbSort);
-            this.groupBox1.Location = new System.Drawing.Point(478, 13);
+            this.groupBox1.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.Location = new System.Drawing.Point(454, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(242, 140);
             this.groupBox1.TabIndex = 4;
@@ -193,7 +199,7 @@ namespace Course
             this.clbSort.FormattingEnabled = true;
             this.clbSort.Location = new System.Drawing.Point(6, 19);
             this.clbSort.Name = "clbSort";
-            this.clbSort.Size = new System.Drawing.Size(230, 79);
+            this.clbSort.Size = new System.Drawing.Size(230, 68);
             this.clbSort.TabIndex = 0;
             this.clbSort.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSort_ItemCheck);
             // 
@@ -203,7 +209,8 @@ namespace Course
             this.groupBox2.Controls.Add(this.txtSearch);
             this.groupBox2.Controls.Add(this.btnStopSearch);
             this.groupBox2.Controls.Add(this.btnSearch);
-            this.groupBox2.Location = new System.Drawing.Point(230, 13);
+            this.groupBox2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox2.Location = new System.Drawing.Point(206, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(242, 140);
             this.groupBox2.TabIndex = 4;
@@ -216,9 +223,19 @@ namespace Course
             this.clbSearch.FormattingEnabled = true;
             this.clbSearch.Location = new System.Drawing.Point(6, 19);
             this.clbSearch.Name = "clbSearch";
-            this.clbSearch.Size = new System.Drawing.Size(230, 64);
+            this.clbSearch.Size = new System.Drawing.Size(230, 52);
             this.clbSearch.TabIndex = 0;
             this.clbSearch.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbFilter_ItemCheck);
+            // 
+            // btnStopSearch
+            // 
+            this.btnStopSearch.Location = new System.Drawing.Point(125, 111);
+            this.btnStopSearch.Name = "btnStopSearch";
+            this.btnStopSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnStopSearch.TabIndex = 3;
+            this.btnStopSearch.Text = "Сброс";
+            this.btnStopSearch.UseVisualStyleBackColor = true;
+            this.btnStopSearch.Click += new System.EventHandler(this.btnStopSearch_Click);
             // 
             // courseTableAdapter
             // 
@@ -252,21 +269,70 @@ namespace Course
             // 
             this.lecturerTableAdapter.ClearBeforeFill = true;
             // 
-            // btnStopSearch
+            // btnAdd
             // 
-            this.btnStopSearch.Location = new System.Drawing.Point(125, 111);
-            this.btnStopSearch.Name = "btnStopSearch";
-            this.btnStopSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnStopSearch.TabIndex = 3;
-            this.btnStopSearch.Text = "Сброс";
-            this.btnStopSearch.UseVisualStyleBackColor = true;
-            this.btnStopSearch.Click += new System.EventHandler(this.btnStopSearch_Click);
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnAdd.Location = new System.Drawing.Point(52, 32);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(137, 37);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "Добавить запись";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnEdit.Location = new System.Drawing.Point(52, 68);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(137, 37);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Text = "Редактировать запись";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // bthDel
+            // 
+            this.bthDel.FlatAppearance.BorderSize = 0;
+            this.bthDel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.bthDel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.bthDel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bthDel.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bthDel.Location = new System.Drawing.Point(52, 104);
+            this.bthDel.Name = "bthDel";
+            this.bthDel.Size = new System.Drawing.Size(137, 37);
+            this.bthDel.TabIndex = 5;
+            this.bthDel.Text = "Удалить запись";
+            this.bthDel.UseVisualStyleBackColor = true;
+            this.bthDel.Click += new System.EventHandler(this.bthDel_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(331, 400);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 6;
+            this.btnNext.Text = "Далее";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // Information
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 326);
+            this.ClientSize = new System.Drawing.Size(732, 446);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.bthDel);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
@@ -324,5 +390,9 @@ namespace Course
        private CheckedListBox clbSort;
        private Button btnSort;
        private Button btnStopSearch;
+       private Button btnAdd;
+       private Button btnEdit;
+       private Button bthDel;
+       private Button btnNext;
        }
 }

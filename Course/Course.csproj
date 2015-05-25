@@ -90,7 +90,6 @@
     <Compile Include="IntelliSenseTextBox.Designer.cs">
       <DependentUpon>IntelliSenseTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoadSave.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

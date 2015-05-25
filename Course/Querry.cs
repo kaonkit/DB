@@ -20,7 +20,8 @@ namespace Course
             {
                 Location = new Point(50, 20),
                 Size = new Size(650, 105),
-                Multiline = true
+                Multiline = true,
+                Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)))
             };
             Controls.Add(txtInput);
             autoComplete();
@@ -58,6 +59,12 @@ namespace Course
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtInput.Clear();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Main.firstNeedOpen = true;
+            Close();
         }
 
     }

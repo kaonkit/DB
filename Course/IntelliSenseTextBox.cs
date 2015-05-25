@@ -139,7 +139,6 @@ namespace Course
                 {
                     listbox.Focus();
                     listbox.SelectedIndex = 0;
-                    inList = true;
                 }
                 else
                     this.Focus();

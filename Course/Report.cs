@@ -226,6 +226,7 @@ namespace Course
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            Main.firstNeedOpen = true;
             Close();
         }
 

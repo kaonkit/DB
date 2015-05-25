@@ -69,9 +69,10 @@ namespace Course
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(73, 293);
+            this.btnOK.Location = new System.Drawing.Point(51, 316);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
+            this.btnOK.Size = new System.Drawing.Size(100, 25);
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -79,9 +80,10 @@ namespace Course
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(304, 293);
+            this.btnCancel.Location = new System.Drawing.Point(405, 316);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(100, 25);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -171,11 +173,13 @@ namespace Course
             // 
             // Edit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 333);
+            this.ClientSize = new System.Drawing.Size(556, 359);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
+            this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Edit";
             this.Text = "Edit";
             this.Load += new System.EventHandler(this.Edit_Load);
