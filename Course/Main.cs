@@ -256,7 +256,7 @@ namespace Course
                 "SELECT T.FIO as 'ФИО слушателя', C.CourseFulName as 'Курс', T.Phone as 'Номер телефона', T.Email as 'E-mail' " +
                 "FROM Trainees T, [Group] G, [Course] C " +
                 "WHERE T.[Group] = G.GroupNum AND C.CourseAbbr = G.[Course];";
-            ReportForm(sqlquerry, "слушатели");
+            ReportForm(sqlquerry, "trainees");
         }
 
         private void btnLcInfo_Click(object sender, EventArgs e)
@@ -264,7 +264,7 @@ namespace Course
             sqlquerry = "SELECT DISTINCT L.FIO as 'ФИО преподавателя', L.Qualification as 'Квалификация', C.CourseFulName as 'Курс', L.Phone as 'Номер телефона', L.Email as 'E-mail' " +
                         "FROM Lecturer L, TimeSheet TS, Discipline D, Course C " +
                         "WHERE L.Id = TS.LectureID AND TS.DisciplineID = D.Id AND D.CourseAbbr = C.CourseAbbr;";
-            ReportForm(sqlquerry, "преподаватели");
+            ReportForm(sqlquerry, "lecturer");
         }
 
         private void btnTimeSheetStat_Click(object sender, EventArgs e)
@@ -272,9 +272,8 @@ namespace Course
             sqlquerry = "SELECT L.FIO as 'ФИО преподавателя', C.CourseFulName as 'Курс', SUM(TS.NumberOfHours) as 'Количество часов' " +
                         "FROM Lecturer L, TimeSheet TS, Discipline D, Course C " +
                         "WHERE L.Id = TS.LectureID AND TS.DisciplineID = D.Id AND D.CourseAbbr = C.CourseAbbr " +
-                        "GROUP BY L.FIO, C.CourseFulName " +
-                        "ORDER BY L.FIO;";
-            ReportForm(sqlquerry, "преподаватели");
+                        "GROUP BY L.FIO, C.CourseFulName;";
+            ReportForm(sqlquerry, "timesheet");
         }
 
         private void btnCoursesStat_Click(object sender, EventArgs e)
@@ -282,9 +281,8 @@ namespace Course
             sqlquerry = "SELECT C.CourseFulName as 'Название курса', SUM(G.NumberOfTrainees) as 'Количество слушателей' " +
             "FROM [Group] G, Discipline D, Course C " +
             "WHERE C.CourseAbbr = D.CourseAbbr AND D.[Group] = G.GroupNum " +
-            "GROUP BY C.CourseFulName " +
-            "ORDER BY C.CourseFulName;";
-            ReportForm(sqlquerry, "курсы");
+            "GROUP BY C.CourseFulName;";
+            ReportForm(sqlquerry, "courses");
         }
 
         private void btnTimeTable_Click(object sender, EventArgs e)

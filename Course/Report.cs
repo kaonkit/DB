@@ -12,8 +12,7 @@ namespace Course
 {
     public partial class Report : Form
     {
-        private string owner;
-        private string querry;
+        private string owner, querry, forFilter;
         private DataTable dt;
 
         private Application xlApp;
@@ -34,44 +33,53 @@ namespace Course
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.owner = owner;
             this.querry = querry;
+
         }
 
-        private string completeSql(string filter)
+        private string completeSql(string filter, bool having)
         {
+
             StringBuilder res = new StringBuilder();
             if (filter == "") return querry;
-            if (!querry.Contains("GROUP BY"))
+            if (!having)
             {
-                res.Append(querry.Substring(0, querry.Length - 1) + filter + ";");
-                return res.ToString();
-            }
-            string[] words = querry.Split();
-            for (int i = 0; i < words.Length - 1; i++)
-            {
-                if (words[i] == "GROUP" && words[i + 1] == "BY")
+                if (!querry.Contains("GROUP BY"))
                 {
-                    for (int k = 0; k < i; k++)
+                    res.Append(querry.Substring(0, querry.Length - 1) + filter + ";");
+                    return res.ToString();
+                }
+                string[] words = querry.Split();
+                for (int i = 0; i < words.Length - 1; i++)
+                {
+                    if (words[i] == "GROUP" && words[i + 1] == "BY")
                     {
-                        res.Append(words[k] + " ");
-                    }
-                    res.Append(filter + " ");
-                    for (int k = i; k < words.Length; k++)
-                    {
-                        res.Append(words[k] + " ");
+                        for (int k = 0; k < i; k++)
+                        {
+                            res.Append(words[k] + " ");
+                        }
+                        res.Append(filter + " ");
+                        for (int k = i; k < words.Length; k++)
+                        {
+                            res.Append(words[k] + " ");
+                        }
                     }
                 }
+                return res.ToString();
             }
-            return res.ToString();
+            else {
+                string c = querry.Substring(0, querry.Length - 1) + filter + ";";
+                return c;
+            }
         }
 
-        private void doSql(string filter)
+        private void doSql(string filter, bool having)
         {
             try
             {
                 using (SqlConnection sqlCon = new SqlConnection(Main.Connection))
                 {
                     sqlCon.Open();
-                    SqlDataAdapter sda = new SqlDataAdapter(completeSql(filter), sqlCon);
+                    SqlDataAdapter sda = new SqlDataAdapter(completeSql(filter, having), sqlCon);
                     dt = new DataTable();
                     sda.Fill(dt);
                     dataGridView1.DataSource = dt;
@@ -190,7 +198,7 @@ namespace Course
                 //Показываем ексель
                 xlApp.WindowState = XlWindowState.xlMaximized;
                 xlApp.Visible = true;
-                
+
                 xlApp.Interactive = true;
                 xlApp.ScreenUpdating = true;
                 xlApp.UserControl = true;
@@ -233,29 +241,57 @@ namespace Course
 
         private void Report_Load(object sender, EventArgs e)
         {
+            txtCondition.Visible = false;
+            lstCondition.Visible = false;
             switch (owner)
             {
-                case "слушатели":
-                    clbFilter.Items.AddRange(getFilter("SELECT CourseFulName FROM Course;"));
+                case "trainees":
+                    lstFilter.Items.AddRange(new string[] { "по курсу" });
                     break;
-                case "преподаватели":
-                    clbFilter.Items.AddRange(getFilter("SELECT CourseFulName FROM Course;"));
+                case "lecturer":
+                    lstFilter.Items.AddRange(new string[] { "по курсу", "по квалификации" });
+                    break;
+                case "timesheet":
+                    lstFilter.Items.AddRange(new string[] { "по курсу", "по количеству часов" });
+                    break;
+                case "courses":
+                    lstFilter.Items.AddRange(new string[] { "по количеству слушателей" });
                     break;
             }
-            doSql("");
+            doSql("", false);
 
             main = (Main)this.MdiParent;
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            switch (owner)
+            switch (forFilter)
             {
-                case "слушатели":
-                    doSql(" AND C.CourseFulName = N'" + clbFilter.Text + "'");
+                case "по курсу":
+                    doSql(" AND C.CourseFulName LIKE N'" + lstCondition.SelectedItem.ToString() + "'", false);
                     break;
-                case "преподаватели":
-                    doSql(" AND C.CourseFulName = N'" + clbFilter.Text + "'");
+                case "по квалификации":
+                    doSql(" AND L.Qualification LIKE N'" + lstCondition.SelectedItem.ToString() + "'", false);
+                    break;
+                case "по количеству часов":
+                    doSql(" HAVING SUM(TS.NumberOfHours) " + txtCondition.Text + "", true);
+                    break;
+                case "по количеству слушателей":
+                    doSql(" HAVING SUM(G.NumberOfTrainees) " + txtCondition.Text + "", true);
+                    break;
+
+
+                case "btnGroup":
+                    break;
+                case "btnCourses":
+                    break;
+                case "btnExams":
+                    break;
+                case "btnDiscipline":
+                    break;
+                case "btnPayment":
+                    break;
+                case "btnTimeSheet":
                     break;
             }
         }
@@ -270,7 +306,38 @@ namespace Course
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            doSql("");
+            doSql("", false);
+            txtCondition.Clear();
+        }
+
+        private void lstFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            forFilter = lstFilter.SelectedItem.ToString();
+            switch (forFilter)
+            {
+                case "по курсу":
+                    lstCondition.Items.Clear();
+                    lstCondition.Visible = true;
+                    txtCondition.Visible = false;
+                    lstCondition.Items.AddRange(getFilter("SELECT CourseFulName FROM Course;"));
+                    break;
+                case "по квалификации":
+                    lstCondition.Items.Clear();
+                    lstCondition.Visible = true;
+                    txtCondition.Visible = false;
+                    lstCondition.Items.AddRange(getFilter("SELECT DISTINCT Qualification FROM Lecturer;"));
+                    break;
+                case "по количеству часов":
+                    lstCondition.Visible = false;
+                    txtCondition.Visible = true;
+                    txtCondition.Clear();
+                    break;
+                case "по количеству слушателей":
+                    lstCondition.Visible = false;
+                    txtCondition.Visible = true;
+                    txtCondition.Clear();
+                    break;
+            }
         }
 
     }
