@@ -20,9 +20,9 @@ namespace Course {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("CoursesDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("CourseDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class CoursesDataSet : global::System.Data.DataSet {
+    public partial class CourseDataSet : global::System.Data.DataSet {
         
         private CourseDataTable tableCourse;
         
@@ -64,7 +64,7 @@ namespace Course {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public CoursesDataSet() {
+        public CourseDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -75,7 +75,7 @@ namespace Course {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected CoursesDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected CourseDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -252,7 +252,7 @@ namespace Course {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            CoursesDataSet cln = ((CoursesDataSet)(base.Clone()));
+            CourseDataSet cln = ((CourseDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -397,9 +397,9 @@ namespace Course {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "CoursesDataSet";
+            this.DataSetName = "CourseDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/CoursesDataSet.xsd";
+            this.Namespace = "http://tempuri.org/CourseDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableCourse = new CourseDataTable();
@@ -519,7 +519,7 @@ namespace Course {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            CoursesDataSet ds = new CoursesDataSet();
+            CourseDataSet ds = new CourseDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -803,7 +803,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1115,7 +1115,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1426,7 +1426,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1718,7 +1718,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2055,7 +2055,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2363,7 +2363,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2704,7 +2704,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3045,7 +3045,7 @@ namespace Course {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                CoursesDataSet ds = new CoursesDataSet();
+                CourseDataSet ds = new CourseDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4391,7 +4391,7 @@ namespace Course {
         }
     }
 }
-namespace Course.CoursesDataSetTableAdapters {
+namespace Course.CourseDataSetTableAdapters {
     
     
     /// <summary>
@@ -4566,7 +4566,7 @@ SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CourseAbbr", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "CourseAbbr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT CourseAbbr, CourseFulName FROM dbo.Course\r\nWHERE CourseAbbr = @CourseAbbr";
+            this._commandCollection[2].CommandText = "SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CourseAbbr", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "CourseAbbr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -4582,7 +4582,7 @@ SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.CourseDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.CourseDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4595,9 +4595,9 @@ SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.CourseDataTable GetData() {
+        public virtual CourseDataSet.CourseDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.CourseDataTable dataTable = new CoursesDataSet.CourseDataTable();
+            CourseDataSet.CourseDataTable dataTable = new CourseDataSet.CourseDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4606,7 +4606,7 @@ SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.CourseDataTable dataTable, string CourseAbbr) {
+        public virtual int FillBy(CourseDataSet.CourseDataTable dataTable, string CourseAbbr) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((CourseAbbr == null)) {
                 throw new global::System.ArgumentNullException("CourseAbbr");
@@ -4625,7 +4625,7 @@ SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.CourseDataTable GetDataBy1(string CourseAbbr) {
+        public virtual CourseDataSet.CourseDataTable GetDataBy1(string CourseAbbr) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((CourseAbbr == null)) {
                 throw new global::System.ArgumentNullException("CourseAbbr");
@@ -4633,7 +4633,7 @@ SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(CourseAbbr));
             }
-            CoursesDataSet.CourseDataTable dataTable = new CoursesDataSet.CourseDataTable();
+            CourseDataSet.CourseDataTable dataTable = new CourseDataSet.CourseDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4641,14 +4641,14 @@ SELECT CourseAbbr, CourseFulName FROM Course WHERE (CourseAbbr = @CourseAbbr)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.CourseDataTable dataTable) {
+        public virtual int Update(CourseDataSet.CourseDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Course");
         }
         
@@ -5037,8 +5037,7 @@ SELECT Id, [Group], NumberOfHours, CourseAbbr FROM Discipline WHERE (Id = @Id)";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        Id, [Group], NumberOfHours, CourseAbbr\r\nFROM            Discipline\r" +
-                "\nWHERE        (Id = @Id)";
+            this._commandCollection[2].CommandText = "SELECT CourseAbbr, [Group], Id, NumberOfHours FROM Discipline WHERE (Id = @Id)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -5056,7 +5055,7 @@ SELECT Id, [Group], NumberOfHours, CourseAbbr FROM Discipline WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.DisciplineDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.DisciplineDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5069,9 +5068,9 @@ SELECT Id, [Group], NumberOfHours, CourseAbbr FROM Discipline WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.DisciplineDataTable GetData() {
+        public virtual CourseDataSet.DisciplineDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.DisciplineDataTable dataTable = new CoursesDataSet.DisciplineDataTable();
+            CourseDataSet.DisciplineDataTable dataTable = new CourseDataSet.DisciplineDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5080,7 +5079,7 @@ SELECT Id, [Group], NumberOfHours, CourseAbbr FROM Discipline WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.DisciplineDataTable dataTable, int Id) {
+        public virtual int FillBy(CourseDataSet.DisciplineDataTable dataTable, int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
             if ((this.ClearBeforeFill == true)) {
@@ -5094,10 +5093,10 @@ SELECT Id, [Group], NumberOfHours, CourseAbbr FROM Discipline WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.DisciplineDataTable GetDataBy1(int Id) {
+        public virtual CourseDataSet.DisciplineDataTable GetDataBy1(int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            CoursesDataSet.DisciplineDataTable dataTable = new CoursesDataSet.DisciplineDataTable();
+            CourseDataSet.DisciplineDataTable dataTable = new CourseDataSet.DisciplineDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5105,14 +5104,14 @@ SELECT Id, [Group], NumberOfHours, CourseAbbr FROM Discipline WHERE (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.DisciplineDataTable dataTable) {
+        public virtual int Update(CourseDataSet.DisciplineDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Discipline");
         }
         
@@ -5544,8 +5543,8 @@ SELECT TraineeID, DiscID, Data, Mark FROM Exam WHERE (Data = @Data) AND (DiscID 
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TraineeID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TraineeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT TraineeID, DiscID, Data, Mark FROM dbo.Exam WHERE (Data = @Data) AND (Disc" +
-                "ID = @DiscID) AND (TraineeID = @TraineeID)";
+            this._commandCollection[2].CommandText = "SELECT Data, DiscID, Mark, TraineeID FROM Exam WHERE (Data = @Data) AND (DiscID =" +
+                " @DiscID) AND (TraineeID = @TraineeID)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Data", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Data", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DiscID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DiscID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5566,7 +5565,7 @@ SELECT TraineeID, DiscID, Data, Mark FROM Exam WHERE (Data = @Data) AND (DiscID 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.ExamDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.ExamDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5579,9 +5578,9 @@ SELECT TraineeID, DiscID, Data, Mark FROM Exam WHERE (Data = @Data) AND (DiscID 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.ExamDataTable GetData() {
+        public virtual CourseDataSet.ExamDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.ExamDataTable dataTable = new CoursesDataSet.ExamDataTable();
+            CourseDataSet.ExamDataTable dataTable = new CourseDataSet.ExamDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5590,7 +5589,7 @@ SELECT TraineeID, DiscID, Data, Mark FROM Exam WHERE (Data = @Data) AND (DiscID 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.ExamDataTable dataTable, string Data, int DiscID, int TraineeID) {
+        public virtual int FillBy(CourseDataSet.ExamDataTable dataTable, string Data, int DiscID, int TraineeID) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((Data == null)) {
                 throw new global::System.ArgumentNullException("Data");
@@ -5611,7 +5610,7 @@ SELECT TraineeID, DiscID, Data, Mark FROM Exam WHERE (Data = @Data) AND (DiscID 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.ExamDataTable GetDataBy2(string Data, int DiscID, int TraineeID) {
+        public virtual CourseDataSet.ExamDataTable GetDataBy2(string Data, int DiscID, int TraineeID) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((Data == null)) {
                 throw new global::System.ArgumentNullException("Data");
@@ -5621,7 +5620,7 @@ SELECT TraineeID, DiscID, Data, Mark FROM Exam WHERE (Data = @Data) AND (DiscID 
             }
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(DiscID));
             this.Adapter.SelectCommand.Parameters[2].Value = ((int)(TraineeID));
-            CoursesDataSet.ExamDataTable dataTable = new CoursesDataSet.ExamDataTable();
+            CourseDataSet.ExamDataTable dataTable = new CourseDataSet.ExamDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5629,14 +5628,14 @@ SELECT TraineeID, DiscID, Data, Mark FROM Exam WHERE (Data = @Data) AND (DiscID 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.ExamDataTable dataTable) {
+        public virtual int Update(CourseDataSet.ExamDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Exam");
         }
         
@@ -6015,8 +6014,8 @@ SELECT GroupNum, Course, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupN
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GroupNum", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "GroupNum", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        GroupNum, Course, NumberOfTrainees\r\nFROM            [Group]\r\nWHERE " +
-                "       (GroupNum = @GroupNum)";
+            this._commandCollection[2].CommandText = "SELECT Course, GroupNum, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupNu" +
+                "m)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GroupNum", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "GroupNum", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -6033,7 +6032,7 @@ SELECT GroupNum, Course, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.GroupDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.GroupDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6046,9 +6045,9 @@ SELECT GroupNum, Course, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.GroupDataTable GetData() {
+        public virtual CourseDataSet.GroupDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.GroupDataTable dataTable = new CoursesDataSet.GroupDataTable();
+            CourseDataSet.GroupDataTable dataTable = new CourseDataSet.GroupDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6057,7 +6056,7 @@ SELECT GroupNum, Course, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.GroupDataTable dataTable, string GroupNum) {
+        public virtual int FillBy(CourseDataSet.GroupDataTable dataTable, string GroupNum) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((GroupNum == null)) {
                 throw new global::System.ArgumentNullException("GroupNum");
@@ -6076,7 +6075,7 @@ SELECT GroupNum, Course, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.GroupDataTable GetDataBy1(string GroupNum) {
+        public virtual CourseDataSet.GroupDataTable GetDataBy1(string GroupNum) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((GroupNum == null)) {
                 throw new global::System.ArgumentNullException("GroupNum");
@@ -6084,7 +6083,7 @@ SELECT GroupNum, Course, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupN
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(GroupNum));
             }
-            CoursesDataSet.GroupDataTable dataTable = new CoursesDataSet.GroupDataTable();
+            CourseDataSet.GroupDataTable dataTable = new CourseDataSet.GroupDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6092,14 +6091,14 @@ SELECT GroupNum, Course, NumberOfTrainees FROM [Group] WHERE (GroupNum = @GroupN
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.GroupDataTable dataTable) {
+        public virtual int Update(CourseDataSet.GroupDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Group");
         }
         
@@ -6529,8 +6528,8 @@ SELECT Id, FIO, Qualification, RecordOfService, Phone, Email FROM Lecturer WHERE
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        Id, FIO, Qualification, RecordOfService, Phone, Email\r\nFROM        " +
-                "    Lecturer\r\nWHERE        (Id = @Id)";
+            this._commandCollection[2].CommandText = "SELECT Email, FIO, Id, Phone, Qualification, RecordOfService FROM Lecturer WHERE " +
+                "(Id = @Id)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -6551,7 +6550,7 @@ SELECT Id, FIO, Qualification, RecordOfService, Phone, Email FROM Lecturer WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.LecturerDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.LecturerDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6564,9 +6563,9 @@ SELECT Id, FIO, Qualification, RecordOfService, Phone, Email FROM Lecturer WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.LecturerDataTable GetData() {
+        public virtual CourseDataSet.LecturerDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.LecturerDataTable dataTable = new CoursesDataSet.LecturerDataTable();
+            CourseDataSet.LecturerDataTable dataTable = new CourseDataSet.LecturerDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6575,7 +6574,7 @@ SELECT Id, FIO, Qualification, RecordOfService, Phone, Email FROM Lecturer WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.LecturerDataTable dataTable, int Id) {
+        public virtual int FillBy(CourseDataSet.LecturerDataTable dataTable, int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
             if ((this.ClearBeforeFill == true)) {
@@ -6589,10 +6588,10 @@ SELECT Id, FIO, Qualification, RecordOfService, Phone, Email FROM Lecturer WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.LecturerDataTable GetDataBy1(int Id) {
+        public virtual CourseDataSet.LecturerDataTable GetDataBy1(int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            CoursesDataSet.LecturerDataTable dataTable = new CoursesDataSet.LecturerDataTable();
+            CourseDataSet.LecturerDataTable dataTable = new CourseDataSet.LecturerDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6600,14 +6599,14 @@ SELECT Id, FIO, Qualification, RecordOfService, Phone, Email FROM Lecturer WHERE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.LecturerDataTable dataTable) {
+        public virtual int Update(CourseDataSet.LecturerDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Lecturer");
         }
         
@@ -7087,8 +7086,8 @@ SELECT TraineesID, DisciplineID, Data, Summa FROM Payment WHERE (DisciplineID = 
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DisciplineID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DisciplineID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        TraineesID, DisciplineID, Data, Summa\r\nFROM            Payment\r\nWHE" +
-                "RE        (TraineesID = @TraineesID) AND (DisciplineID = @DisciplineID)";
+            this._commandCollection[2].CommandText = "SELECT Data, DisciplineID, Summa, TraineesID FROM Payment WHERE (TraineesID = @Tr" +
+                "aineesID) AND (DisciplineID = @DisciplineID)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TraineesID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "TraineesID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DisciplineID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "DisciplineID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7108,7 +7107,7 @@ SELECT TraineesID, DisciplineID, Data, Summa FROM Payment WHERE (DisciplineID = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.PaymentDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.PaymentDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7121,9 +7120,9 @@ SELECT TraineesID, DisciplineID, Data, Summa FROM Payment WHERE (DisciplineID = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.PaymentDataTable GetData() {
+        public virtual CourseDataSet.PaymentDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.PaymentDataTable dataTable = new CoursesDataSet.PaymentDataTable();
+            CourseDataSet.PaymentDataTable dataTable = new CourseDataSet.PaymentDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7132,7 +7131,7 @@ SELECT TraineesID, DisciplineID, Data, Summa FROM Payment WHERE (DisciplineID = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.PaymentDataTable dataTable, int TraineesID, int DisciplineID) {
+        public virtual int FillBy(CourseDataSet.PaymentDataTable dataTable, int TraineesID, int DisciplineID) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TraineesID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(DisciplineID));
@@ -7147,11 +7146,11 @@ SELECT TraineesID, DisciplineID, Data, Summa FROM Payment WHERE (DisciplineID = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.PaymentDataTable GetDataBy1(int TraineesID, int DisciplineID) {
+        public virtual CourseDataSet.PaymentDataTable GetDataBy1(int TraineesID, int DisciplineID) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(TraineesID));
             this.Adapter.SelectCommand.Parameters[1].Value = ((int)(DisciplineID));
-            CoursesDataSet.PaymentDataTable dataTable = new CoursesDataSet.PaymentDataTable();
+            CourseDataSet.PaymentDataTable dataTable = new CourseDataSet.PaymentDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7159,14 +7158,14 @@ SELECT TraineesID, DisciplineID, Data, Summa FROM Payment WHERE (DisciplineID = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.PaymentDataTable dataTable) {
+        public virtual int Update(CourseDataSet.PaymentDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Payment");
         }
         
@@ -7579,8 +7578,8 @@ SELECT Id, DisciplineID, LectureID, TypeOfTraining, NumberOfHours, Payment FROM 
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        Id, DisciplineID, LectureID, TypeOfTraining, NumberOfHours, Payment" +
-                "\r\nFROM            TimeSheet\r\nWHERE        (Id = @Id)";
+            this._commandCollection[2].CommandText = "SELECT DisciplineID, Id, LectureID, NumberOfHours, Payment, TypeOfTraining FROM T" +
+                "imeSheet WHERE (Id = @Id)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -7601,7 +7600,7 @@ SELECT Id, DisciplineID, LectureID, TypeOfTraining, NumberOfHours, Payment FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.TimeSheetDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.TimeSheetDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7614,9 +7613,9 @@ SELECT Id, DisciplineID, LectureID, TypeOfTraining, NumberOfHours, Payment FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.TimeSheetDataTable GetData() {
+        public virtual CourseDataSet.TimeSheetDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.TimeSheetDataTable dataTable = new CoursesDataSet.TimeSheetDataTable();
+            CourseDataSet.TimeSheetDataTable dataTable = new CourseDataSet.TimeSheetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7625,7 +7624,7 @@ SELECT Id, DisciplineID, LectureID, TypeOfTraining, NumberOfHours, Payment FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.TimeSheetDataTable dataTable, int Id) {
+        public virtual int FillBy(CourseDataSet.TimeSheetDataTable dataTable, int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
             if ((this.ClearBeforeFill == true)) {
@@ -7639,10 +7638,10 @@ SELECT Id, DisciplineID, LectureID, TypeOfTraining, NumberOfHours, Payment FROM 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.TimeSheetDataTable GetDataBy1(int Id) {
+        public virtual CourseDataSet.TimeSheetDataTable GetDataBy1(int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            CoursesDataSet.TimeSheetDataTable dataTable = new CoursesDataSet.TimeSheetDataTable();
+            CourseDataSet.TimeSheetDataTable dataTable = new CourseDataSet.TimeSheetDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7650,14 +7649,14 @@ SELECT Id, DisciplineID, LectureID, TypeOfTraining, NumberOfHours, Payment FROM 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.TimeSheetDataTable dataTable) {
+        public virtual int Update(CourseDataSet.TimeSheetDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "TimeSheet");
         }
         
@@ -8103,8 +8102,7 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT        Id, FIO, [Group], DOB, Phone, Email\r\nFROM            Trainees\r\nWHER" +
-                "E        (Id = @Id)";
+            this._commandCollection[2].CommandText = "SELECT DOB, Email, FIO, [Group], Id, Phone FROM Trainees WHERE (Id = @Id)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -8124,7 +8122,7 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(CoursesDataSet.TraineesDataTable dataTable) {
+        public virtual int Fill(CourseDataSet.TraineesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8137,9 +8135,9 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual CoursesDataSet.TraineesDataTable GetData() {
+        public virtual CourseDataSet.TraineesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            CoursesDataSet.TraineesDataTable dataTable = new CoursesDataSet.TraineesDataTable();
+            CourseDataSet.TraineesDataTable dataTable = new CourseDataSet.TraineesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8148,7 +8146,7 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillBy(CoursesDataSet.TraineesDataTable dataTable, int Id) {
+        public virtual int FillBy(CourseDataSet.TraineesDataTable dataTable, int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
             if ((this.ClearBeforeFill == true)) {
@@ -8162,10 +8160,10 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CoursesDataSet.TraineesDataTable GetDataBy1(int Id) {
+        public virtual CourseDataSet.TraineesDataTable GetDataBy1(int Id) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
-            CoursesDataSet.TraineesDataTable dataTable = new CoursesDataSet.TraineesDataTable();
+            CourseDataSet.TraineesDataTable dataTable = new CourseDataSet.TraineesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8173,14 +8171,14 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet.TraineesDataTable dataTable) {
+        public virtual int Update(CourseDataSet.TraineesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CoursesDataSet dataSet) {
+        public virtual int Update(CourseDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Trainees");
         }
         
@@ -8708,7 +8706,7 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateUpdatedRows(CoursesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(CourseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._courseTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Course.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -8790,7 +8788,7 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateInsertedRows(CoursesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(CourseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._courseTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Course.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -8864,7 +8862,7 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private int UpdateDeletedRows(CoursesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(CourseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._timeSheetTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.TimeSheet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -8962,7 +8960,7 @@ SELECT Id, FIO, [Group], DOB, Phone, Email FROM Trainees WHERE (Id = @Id)";
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public virtual int UpdateAll(CoursesDataSet dataSet) {
+        public virtual int UpdateAll(CourseDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

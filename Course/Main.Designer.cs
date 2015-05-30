@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using Course.CoursesDataSetTableAdapters;
+using Course.CourseDataSetTableAdapters;
 
 namespace Course
 {
@@ -41,7 +41,7 @@ namespace Course
             this.запросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.coursesDataSet = new Course.CoursesDataSet();
+            this.CourseDataSet = new Course.CourseDataSet();
             this.disciplineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.examBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -49,20 +49,25 @@ namespace Course
             this.timeSheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.paymentBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lecturerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.courseTableAdapter = new Course.CoursesDataSetTableAdapters.CourseTableAdapter();
-            this.disciplineTableAdapter = new Course.CoursesDataSetTableAdapters.DisciplineTableAdapter();
-            this.examTableAdapter = new Course.CoursesDataSetTableAdapters.ExamTableAdapter();
-            this.groupTableAdapter = new Course.CoursesDataSetTableAdapters.GroupTableAdapter();
-            this.traineesTableAdapter = new Course.CoursesDataSetTableAdapters.TraineesTableAdapter();
-            this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
-            this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
-            this.lecturerTableAdapter = new Course.CoursesDataSetTableAdapters.LecturerTableAdapter();
-            this.coursesDataSet1 = new Course.CoursesDataSet();
+            this.courseTableAdapter = new Course.CourseDataSetTableAdapters.CourseTableAdapter();
+            this.disciplineTableAdapter = new Course.CourseDataSetTableAdapters.DisciplineTableAdapter();
+            this.examTableAdapter = new Course.CourseDataSetTableAdapters.ExamTableAdapter();
+            this.groupTableAdapter = new Course.CourseDataSetTableAdapters.GroupTableAdapter();
+            this.traineesTableAdapter = new Course.CourseDataSetTableAdapters.TraineesTableAdapter();
+            this.timeSheetTableAdapter = new Course.CourseDataSetTableAdapters.TimeSheetTableAdapter();
+            this.paymentTableAdapter = new Course.CourseDataSetTableAdapters.PaymentTableAdapter();
+            this.lecturerTableAdapter = new Course.CourseDataSetTableAdapters.LecturerTableAdapter();
+            this.CourseDataSet1 = new Course.CourseDataSet();
             this.grpBoxMain = new System.Windows.Forms.GroupBox();
             this.btnLectures = new System.Windows.Forms.Button();
+            this.btnTimeTable = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnCoursesStat = new System.Windows.Forms.Button();
             this.btnLcInfo = new System.Windows.Forms.Button();
+            this.btnTimeSheetStat = new System.Windows.Forms.Button();
             this.btnTrInfo = new System.Windows.Forms.Button();
             this.btnTrainees = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -72,15 +77,10 @@ namespace Course
             this.btnGroup = new System.Windows.Forms.Button();
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnCourses = new System.Windows.Forms.Button();
-            this.btnTimeSheetStat = new System.Windows.Forms.Button();
-            this.btnCoursesStat = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.btnTimeTable = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
@@ -88,7 +88,7 @@ namespace Course
             ((System.ComponentModel.ISupportInitialize)(this.timeSheetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet1)).BeginInit();
             this.grpBoxMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,13 +124,13 @@ namespace Course
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = this.coursesDataSet;
+            this.bindingSource1.DataSource = this.CourseDataSet;
             this.bindingSource1.Position = 0;
             // 
-            // coursesDataSet
+            // CourseDataSet
             // 
-            this.coursesDataSet.DataSetName = "CoursesDataSet";
-            this.coursesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.CourseDataSet.DataSetName = "CourseDataSet";
+            this.CourseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // disciplineBindingSource
             // 
@@ -199,10 +199,10 @@ namespace Course
             // 
             this.lecturerTableAdapter.ClearBeforeFill = true;
             // 
-            // coursesDataSet1
+            // CourseDataSet1
             // 
-            this.coursesDataSet1.DataSetName = "CoursesDataSet";
-            this.coursesDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.CourseDataSet1.DataSetName = "CourseDataSet";
+            this.CourseDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // grpBoxMain
             // 
@@ -246,6 +246,29 @@ namespace Course
             this.btnLectures.UseVisualStyleBackColor = false;
             this.btnLectures.Click += new System.EventHandler(this.btn_Click);
             // 
+            // btnTimeTable
+            // 
+            this.btnTimeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimeTable.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnTimeTable.Location = new System.Drawing.Point(537, 396);
+            this.btnTimeTable.Name = "btnTimeTable";
+            this.btnTimeTable.Size = new System.Drawing.Size(221, 40);
+            this.btnTimeTable.TabIndex = 6;
+            this.btnTimeTable.Text = "Расписание";
+            this.btnTimeTable.UseVisualStyleBackColor = true;
+            this.btnTimeTable.Click += new System.EventHandler(this.btnTimeTable_Click);
+            // 
+            // button6
+            // 
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.Location = new System.Drawing.Point(442, 262);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(221, 40);
+            this.button6.TabIndex = 6;
+            this.button6.Text = "Информация о слушателях";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -256,6 +279,17 @@ namespace Course
             this.button4.TabIndex = 6;
             this.button4.Text = "Информация о слушателях";
             this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(442, 223);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(221, 40);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Информация о слушателях";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -268,6 +302,18 @@ namespace Course
             this.button3.Text = "Информация о слушателях";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // btnCoursesStat
+            // 
+            this.btnCoursesStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCoursesStat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnCoursesStat.Location = new System.Drawing.Point(442, 184);
+            this.btnCoursesStat.Name = "btnCoursesStat";
+            this.btnCoursesStat.Size = new System.Drawing.Size(221, 40);
+            this.btnCoursesStat.TabIndex = 6;
+            this.btnCoursesStat.Text = "Посещаемость курсов";
+            this.btnCoursesStat.UseVisualStyleBackColor = true;
+            this.btnCoursesStat.Click += new System.EventHandler(this.btnCoursesStat_Click);
+            // 
             // btnLcInfo
             // 
             this.btnLcInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -279,6 +325,18 @@ namespace Course
             this.btnLcInfo.Text = "Преподаватели";
             this.btnLcInfo.UseVisualStyleBackColor = true;
             this.btnLcInfo.Click += new System.EventHandler(this.btnLcInfo_Click);
+            // 
+            // btnTimeSheetStat
+            // 
+            this.btnTimeSheetStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTimeSheetStat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnTimeSheetStat.Location = new System.Drawing.Point(442, 146);
+            this.btnTimeSheetStat.Name = "btnTimeSheetStat";
+            this.btnTimeSheetStat.Size = new System.Drawing.Size(221, 40);
+            this.btnTimeSheetStat.TabIndex = 6;
+            this.btnTimeSheetStat.Text = "Нагрузка преподавателей";
+            this.btnTimeSheetStat.UseVisualStyleBackColor = true;
+            this.btnTimeSheetStat.Click += new System.EventHandler(this.btnTimeSheetStat_Click);
             // 
             // btnTrInfo
             // 
@@ -415,64 +473,6 @@ namespace Course
             this.btnCourses.UseVisualStyleBackColor = false;
             this.btnCourses.Click += new System.EventHandler(this.btn_Click);
             // 
-            // btnTimeSheetStat
-            // 
-            this.btnTimeSheetStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimeSheetStat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnTimeSheetStat.Location = new System.Drawing.Point(442, 146);
-            this.btnTimeSheetStat.Name = "btnTimeSheetStat";
-            this.btnTimeSheetStat.Size = new System.Drawing.Size(221, 40);
-            this.btnTimeSheetStat.TabIndex = 6;
-            this.btnTimeSheetStat.Text = "Нагрузка преподавателей";
-            this.btnTimeSheetStat.UseVisualStyleBackColor = true;
-            this.btnTimeSheetStat.Click += new System.EventHandler(this.btnTimeSheetStat_Click);
-            // 
-            // btnCoursesStat
-            // 
-            this.btnCoursesStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCoursesStat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCoursesStat.Location = new System.Drawing.Point(442, 184);
-            this.btnCoursesStat.Name = "btnCoursesStat";
-            this.btnCoursesStat.Size = new System.Drawing.Size(221, 40);
-            this.btnCoursesStat.TabIndex = 6;
-            this.btnCoursesStat.Text = "Посещаемость курсов";
-            this.btnCoursesStat.UseVisualStyleBackColor = true;
-            this.btnCoursesStat.Click += new System.EventHandler(this.btnCoursesStat_Click);
-            // 
-            // button5
-            // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(442, 223);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(221, 40);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Информация о слушателях";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(442, 262);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(221, 40);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Информация о слушателях";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // btnTimeTable
-            // 
-            this.btnTimeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTimeTable.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnTimeTable.Location = new System.Drawing.Point(537, 396);
-            this.btnTimeTable.Name = "btnTimeTable";
-            this.btnTimeTable.Size = new System.Drawing.Size(221, 40);
-            this.btnTimeTable.TabIndex = 6;
-            this.btnTimeTable.Text = "Расписание";
-            this.btnTimeTable.UseVisualStyleBackColor = true;
-            this.btnTimeTable.Click += new System.EventHandler(this.btnTimeTable_Click);
-            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(765, 467);
@@ -490,7 +490,7 @@ namespace Course
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
@@ -498,7 +498,7 @@ namespace Course
             ((System.ComponentModel.ISupportInitialize)(this.timeSheetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lecturerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet1)).EndInit();
             this.grpBoxMain.ResumeLayout(false);
             this.grpBoxMain.PerformLayout();
             this.ResumeLayout(false);
@@ -513,7 +513,7 @@ namespace Course
         public MenuStrip menuStrip1;
         private ToolStripMenuItem запросToolStripMenuItem;
         private BindingSource bindingSource1;
-        private CoursesDataSet coursesDataSet;
+        private CourseDataSet CourseDataSet;
         private BindingSource courseBindingSource;
         private CourseTableAdapter courseTableAdapter;
         private BindingSource disciplineBindingSource;
@@ -530,7 +530,7 @@ namespace Course
         private PaymentTableAdapter paymentTableAdapter;
         private BindingSource lecturerBindingSource;
         private LecturerTableAdapter lecturerTableAdapter;
-        private CoursesDataSet coursesDataSet1;
+        private CourseDataSet CourseDataSet1;
         private GroupBox grpBoxMain;
         private Button btnLectures;
         private Button btnTrainees;

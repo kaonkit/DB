@@ -29,8 +29,7 @@ namespace Course
         public Main()
         {
             InitializeComponent();
-            htThread = new Thread(check);
-            htThread.Start();
+            btnDiscipline.Visible = false;
             timetableThread = new Thread(genTimetable);
             timetableThread.Start();
         }
@@ -137,45 +136,40 @@ namespace Course
         }
         #endregion
 
-        private void check()
-        {
-            while (!close)
-            {
-                if (firstNeedOpen) grpBoxMain.Show();
-                Thread.Sleep(1000);
-            }
-        }
-
         public void CloseForms()
         {
-            grpBoxMain.Hide();
+            grpBoxMain.Visible = false;
             firstNeedOpen = false;
             foreach (Form mdicf in this.MdiChildren)
                 mdicf.Close();
+            if (info != null)
+            {
+                info.Close();
+            }
         }
 
         public void UpdateDb()
         {
-            traineesTableAdapter.Update(coursesDataSet);
-            lecturerTableAdapter.Update(coursesDataSet);
-            groupTableAdapter.Update(coursesDataSet);
-            disciplineTableAdapter.Update(coursesDataSet);
-            timeSheetTableAdapter.Update(coursesDataSet);
-            examTableAdapter.Update(coursesDataSet);
-            paymentTableAdapter.Update(coursesDataSet);
-            courseTableAdapter.Update(coursesDataSet);
+            traineesTableAdapter.Update(CourseDataSet);
+            lecturerTableAdapter.Update(CourseDataSet);
+            groupTableAdapter.Update(CourseDataSet);
+            disciplineTableAdapter.Update(CourseDataSet);
+            timeSheetTableAdapter.Update(CourseDataSet);
+            examTableAdapter.Update(CourseDataSet);
+            paymentTableAdapter.Update(CourseDataSet);
+            courseTableAdapter.Update(CourseDataSet);
         }
 
         public void FillDb()
         {
-            traineesTableAdapter.Fill(coursesDataSet.Trainees);
-            lecturerTableAdapter.Fill(coursesDataSet.Lecturer);
-            groupTableAdapter.Fill(coursesDataSet.Group);
-            disciplineTableAdapter.Fill(coursesDataSet.Discipline);
-            timeSheetTableAdapter.Fill(coursesDataSet.TimeSheet);
-            examTableAdapter.Fill(coursesDataSet.Exam);
-            paymentTableAdapter.Fill(coursesDataSet.Payment);
-            courseTableAdapter.Fill(coursesDataSet.Course);
+            traineesTableAdapter.Fill(CourseDataSet.Trainees);
+            lecturerTableAdapter.Fill(CourseDataSet.Lecturer);
+            groupTableAdapter.Fill(CourseDataSet.Group);
+            disciplineTableAdapter.Fill(CourseDataSet.Discipline);
+            timeSheetTableAdapter.Fill(CourseDataSet.TimeSheet);
+            examTableAdapter.Fill(CourseDataSet.Exam);
+            paymentTableAdapter.Fill(CourseDataSet.Payment);
+            courseTableAdapter.Fill(CourseDataSet.Course);
         }
 
         private void ReportForm(string querr, string owner)
@@ -197,6 +191,7 @@ namespace Course
             {
                 info.ClientSize = new Size(ClientSize.Width - 10, ClientSize.Height - 30);
                 info.Location = new Point(0, 0);
+
             }
             if (querry != null)
             {
@@ -213,9 +208,16 @@ namespace Course
         public void open(string owner)
         {
             CloseForms();
-            info = new Information(owner) { MdiParent = this };
-            Main_Resize(this, EventArgs.Empty);
-            info.Show();
+            try
+            {
+                info = new Information(owner) { MdiParent = this };
+                info.Show();
+                Main_Resize(this, EventArgs.Empty);
+            }
+            catch (InvalidOperationException ex) {
+                this.Refresh();
+                open(owner);
+            }
         }
 
         private void btn_Click(object sender, EventArgs e)
@@ -226,9 +228,6 @@ namespace Course
 
         private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            close = true;
-            htThread.Abort(); 
-            
             UpdateDb();
             traineesTableAdapter.Dispose();
             timeSheetTableAdapter.Dispose();
@@ -239,7 +238,6 @@ namespace Course
             disciplineTableAdapter.Dispose();
             courseTableAdapter.Dispose();
             Dispose();
-            
         }
 
         private void запросToolStripMenuItem_Click(object sender, EventArgs e)
@@ -250,7 +248,7 @@ namespace Course
             Main_Resize(this, EventArgs.Empty);
         }
 
-#region querries
+        #region querries
 
         private void btnTrInfo_Click(object sender, EventArgs e)
         {
@@ -294,6 +292,11 @@ namespace Course
             (new Report()).toExcel(timetabledt);
             timetable.Clear();
         }
-#endregion
+        #endregion
+
+        public void showgrp()
+        {
+            grpBoxMain.Visible = true;
+        }
     }
 }

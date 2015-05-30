@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
-using Course.CoursesDataSetTableAdapters;
+using Course.CourseDataSetTableAdapters;
 
 namespace Course
 {
@@ -38,7 +38,7 @@ namespace Course
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.coursesDataSet = new Course.CoursesDataSet();
+            this.CourseDataSet = new Course.CourseDataSet();
             this.disciplineBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.examBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -54,14 +54,14 @@ namespace Course
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.clbSearch = new System.Windows.Forms.CheckedListBox();
             this.btnStopSearch = new System.Windows.Forms.Button();
-            this.courseTableAdapter = new Course.CoursesDataSetTableAdapters.CourseTableAdapter();
-            this.disciplineTableAdapter = new Course.CoursesDataSetTableAdapters.DisciplineTableAdapter();
-            this.examTableAdapter = new Course.CoursesDataSetTableAdapters.ExamTableAdapter();
-            this.groupTableAdapter = new Course.CoursesDataSetTableAdapters.GroupTableAdapter();
-            this.traineesTableAdapter = new Course.CoursesDataSetTableAdapters.TraineesTableAdapter();
-            this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
-            this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
-            this.lecturerTableAdapter = new Course.CoursesDataSetTableAdapters.LecturerTableAdapter();
+            this.courseTableAdapter = new Course.CourseDataSetTableAdapters.CourseTableAdapter();
+            this.disciplineTableAdapter = new Course.CourseDataSetTableAdapters.DisciplineTableAdapter();
+            this.examTableAdapter = new Course.CourseDataSetTableAdapters.ExamTableAdapter();
+            this.groupTableAdapter = new Course.CourseDataSetTableAdapters.GroupTableAdapter();
+            this.traineesTableAdapter = new Course.CourseDataSetTableAdapters.TraineesTableAdapter();
+            this.timeSheetTableAdapter = new Course.CourseDataSetTableAdapters.TimeSheetTableAdapter();
+            this.paymentTableAdapter = new Course.CourseDataSetTableAdapters.PaymentTableAdapter();
+            this.lecturerTableAdapter = new Course.CourseDataSetTableAdapters.LecturerTableAdapter();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.bthDel = new System.Windows.Forms.Button();
@@ -70,7 +70,7 @@ namespace Course
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).BeginInit();
@@ -111,13 +111,13 @@ namespace Course
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = this.coursesDataSet;
+            this.bindingSource1.DataSource = this.CourseDataSet;
             this.bindingSource1.Position = 0;
             // 
-            // coursesDataSet
+            // CourseDataSet
             // 
-            this.coursesDataSet.DataSetName = "CoursesDataSet";
-            this.coursesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.CourseDataSet.DataSetName = "CourseDataSet";
+            this.CourseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // disciplineBindingSource
             // 
@@ -345,7 +345,7 @@ namespace Course
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupBindingSource)).EndInit();
@@ -364,7 +364,7 @@ namespace Course
 
        private PictureBox pictureBox1;
        public DataGridView dataGridView1;
-       private CoursesDataSet coursesDataSet;
+       private CourseDataSet CourseDataSet;
        private BindingSource bindingSource1;
        private BindingSource courseBindingSource;
        private CourseTableAdapter courseTableAdapter;

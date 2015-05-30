@@ -65,7 +65,7 @@ namespace Course
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(58, 173);
+            this.dataGridView1.Location = new System.Drawing.Point(54, 173);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(662, 141);
             this.dataGridView1.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace Course
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Course.Properties.Resources.back;
+            this.pictureBox1.Image = global::Course.Properties.Resources.forward;
             this.pictureBox1.Location = new System.Drawing.Point(12, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(34, 34);
@@ -104,6 +104,7 @@ namespace Course
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Querry";
             this.Text = "Querry";
+            this.Load += new System.EventHandler(this.Querry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

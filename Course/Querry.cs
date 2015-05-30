@@ -10,7 +10,7 @@ namespace Course
     public partial class Querry : Form
     {
         private IntelliSenseTextBox txtInput;
-
+        private Main main;
         public Querry()
         {
             InitializeComponent();
@@ -63,8 +63,13 @@ namespace Course
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Main.firstNeedOpen = true;
+            main.showgrp();
             Close();
+        }
+
+        private void Querry_Load(object sender, EventArgs e)
+        {
+            main = (Main)this.MdiParent;
         }
 
     }

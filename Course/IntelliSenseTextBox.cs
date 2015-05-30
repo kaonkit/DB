@@ -135,15 +135,19 @@ namespace Course
             changes++;
             if (listbox.Visible == true)
             {
-                if ((keyData == Keys.Down))
+                if (keyData == Keys.Down || keyData == Keys.Up)
                 {
                     listbox.Focus();
                     listbox.SelectedIndex = 0;
                 }
+                if (keyData == Keys.Down || keyData == Keys.Up || keyData == Keys.Left || keyData == Keys.Right)
+                {
+                    changes--;
+                }
                 else
                     this.Focus();
             }
-            if (keyData == Keys.Space || keyData == Keys.Back || keyData == Keys.Delete)
+            if (keyData == Keys.Space || keyData == Keys.Back || keyData == Keys.Delete || keyData == Keys.Oemcomma)
             {
                 if (lastIsInDictionary())
                 {

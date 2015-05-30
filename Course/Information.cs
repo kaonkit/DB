@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Course
 {
@@ -12,6 +13,9 @@ namespace Course
         private int colnum;
         private bool forSearch;
         private string owner;
+        private Main main;
+        private int lastFound;
+
         public Information()
         {
             InitializeComponent();
@@ -215,58 +219,66 @@ namespace Course
             Main.firstNeedOpen = true;
             Close();
         }
+
         public void UpdateDb()
         {
-            traineesTableAdapter.Update(coursesDataSet);
-            lecturerTableAdapter.Update(coursesDataSet);
-            groupTableAdapter.Update(coursesDataSet);
-            disciplineTableAdapter.Update(coursesDataSet);
-            timeSheetTableAdapter.Update(coursesDataSet);
-            examTableAdapter.Update(coursesDataSet);
-            paymentTableAdapter.Update(coursesDataSet);
-            courseTableAdapter.Update(coursesDataSet);
+            traineesTableAdapter.Update(CourseDataSet);
+            lecturerTableAdapter.Update(CourseDataSet);
+            groupTableAdapter.Update(CourseDataSet);
+            disciplineTableAdapter.Update(CourseDataSet);
+            timeSheetTableAdapter.Update(CourseDataSet);
+            examTableAdapter.Update(CourseDataSet);
+            paymentTableAdapter.Update(CourseDataSet);
+            courseTableAdapter.Update(CourseDataSet);
         }
 
         public void FillDb()
         {
-            traineesTableAdapter.Fill(coursesDataSet.Trainees);
-            lecturerTableAdapter.Fill(coursesDataSet.Lecturer);
-            groupTableAdapter.Fill(coursesDataSet.Group);
-            disciplineTableAdapter.Fill(coursesDataSet.Discipline);
-            timeSheetTableAdapter.Fill(coursesDataSet.TimeSheet);
-            examTableAdapter.Fill(coursesDataSet.Exam);
-            paymentTableAdapter.Fill(coursesDataSet.Payment);
-            courseTableAdapter.Fill(coursesDataSet.Course);
+            traineesTableAdapter.Fill(CourseDataSet.Trainees);
+            lecturerTableAdapter.Fill(CourseDataSet.Lecturer);
+            groupTableAdapter.Fill(CourseDataSet.Group);
+            disciplineTableAdapter.Fill(CourseDataSet.Discipline);
+            timeSheetTableAdapter.Fill(CourseDataSet.TimeSheet);
+            examTableAdapter.Fill(CourseDataSet.Exam);
+            paymentTableAdapter.Fill(CourseDataSet.Payment);
+            courseTableAdapter.Fill(CourseDataSet.Course);
         }
 
         private void Information_Load(object sender, EventArgs e)
         {
-            traineesTableAdapter.Fill(coursesDataSet.Trainees);
-            timeSheetTableAdapter.Fill(coursesDataSet.TimeSheet);
-            paymentTableAdapter.Fill(coursesDataSet.Payment);
-            lecturerTableAdapter.Fill(coursesDataSet.Lecturer);
-            groupTableAdapter.Fill(coursesDataSet.Group);
-            examTableAdapter.Fill(coursesDataSet.Exam);
-            disciplineTableAdapter.Fill(coursesDataSet.Discipline);
-            courseTableAdapter.Fill(coursesDataSet.Course);
+            traineesTableAdapter.Fill(CourseDataSet.Trainees);
+            timeSheetTableAdapter.Fill(CourseDataSet.TimeSheet);
+            paymentTableAdapter.Fill(CourseDataSet.Payment);
+            lecturerTableAdapter.Fill(CourseDataSet.Lecturer);
+            groupTableAdapter.Fill(CourseDataSet.Group);
+            examTableAdapter.Fill(CourseDataSet.Exam);
+            disciplineTableAdapter.Fill(CourseDataSet.Discipline);
+            courseTableAdapter.Fill(CourseDataSet.Course);
+
+            main = (Main)this.MdiParent;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.White;
+            }
+            dataGridView1.ClearSelection();
             getFilter();
-            
+
             if (!forSearch)
             {
                 MessageBox.Show("\tВыберите поле для поиска\t", "Ошибка");
                 return;
             }
-            dataGridView1.ClearSelection();
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 if (dataGridView1[colnum, i].Value.ToString().ToUpper().Contains(txtSearch.Text.ToUpper()))
                 {
                     dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.Goldenrod;
                     btnNext.Visible = true;
+                    lastFound = i;
                 }
             }
         }
@@ -326,6 +338,7 @@ namespace Course
             examTableAdapter.Dispose();
             disciplineTableAdapter.Dispose();
             courseTableAdapter.Dispose();
+            main.showgrp();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -333,7 +346,7 @@ namespace Course
             btnNext.Visible = false;
             UpdateDb();
             (new Edit(owner)).ShowDialog();
-            coursesDataSet.AcceptChanges();
+            CourseDataSet.AcceptChanges();
             FillDb();
             this.Refresh();
         }
@@ -346,48 +359,48 @@ namespace Course
             switch (owner)
             {
                 case "btnTrainees":
-                    var st = new CoursesDataSet.TraineesDataTable();
+                    var st = new CourseDataSet.TraineesDataTable();
                     traineesTableAdapter.FillBy(st, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                     args = st.Rows[0].ItemArray;
                     break;
                 case "btnLectures":
-                    var st1 = new CoursesDataSet.LecturerDataTable();
+                    var st1 = new CourseDataSet.LecturerDataTable();
                     lecturerTableAdapter.FillBy(st1, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                     args = st1.Rows[0].ItemArray;
                     break;
                 case "btnGroup":
-                    var st2 = new CoursesDataSet.GroupDataTable();
+                    var st2 = new CourseDataSet.GroupDataTable();
                     groupTableAdapter.FillBy(st2, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                     args = st2.Rows[0].ItemArray;
                     break;
                 case "btnCourses":
-                    var st3 = new CoursesDataSet.CourseDataTable();
+                    var st3 = new CourseDataSet.CourseDataTable();
                     courseTableAdapter.FillBy(st3, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
                     args = st3.Rows[0].ItemArray;
                     break;
                 case "btnExams":
-                    var st4 = new CoursesDataSet.ExamDataTable();
-                    examTableAdapter.FillBy(st4, dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[2].Value));
+                    var st4 = new CourseDataSet.ExamDataTable();
+                    examTableAdapter.FillBy(st4, dataGridView1.SelectedRows[0].Cells[2].Value.ToString(), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                     args = st4.Rows[0].ItemArray;
                     break;
                 case "btnDiscipline":
-                    var st5 = new CoursesDataSet.DisciplineDataTable();
+                    var st5 = new CourseDataSet.DisciplineDataTable();
                     disciplineTableAdapter.FillBy(st5, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                     args = st5.Rows[0].ItemArray;
                     break;
                 case "btnPayment":
-                    var st6 = new CoursesDataSet.PaymentDataTable();
+                    var st6 = new CourseDataSet.PaymentDataTable();
                     paymentTableAdapter.FillBy(st6, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value));
                     args = st6.Rows[0].ItemArray;
                     break;
                 case "btnTimeSheet":
-                    var st7 = new CoursesDataSet.TimeSheetDataTable();
+                    var st7 = new CourseDataSet.TimeSheetDataTable();
                     timeSheetTableAdapter.FillBy(st7, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                     args = st7.Rows[0].ItemArray;
                     break;
             }
             (new Edit(owner, args)).ShowDialog();
-            coursesDataSet.AcceptChanges();
+            CourseDataSet.AcceptChanges();
             FillDb();
             this.Refresh();
         }
@@ -395,36 +408,48 @@ namespace Course
         private void bthDel_Click(object sender, EventArgs e)
         {
             btnNext.Visible = false;
-            switch (owner)
+            if (MessageBox.Show("\tВы уверены?", "\tУдаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                case "btnTrainees":
-                    traineesTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    break;
-                case "btnLectures":
-                    lecturerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    break;
-                case "btnGroup":
-                    groupTableAdapter.DeleteQuery(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                    break;
-                case "btnCourses":
-                    courseTableAdapter.DeleteQuery(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                    break;
-                case "btnExams":
-                    examTableAdapter.DeleteQuery(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[2].Value));
-                    break;
-                case "btnDiscipline":
-                    disciplineTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    break;
-                case "btnPayment":
-                    paymentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value));
-                    break;
-                case "btnTimeSheet":
-                    timeSheetTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    break;
+                try
+                {
+                    switch (owner)
+                    {
+
+                        case "btnTrainees":
+                            traineesTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                            break;
+                        case "btnLectures":
+                            lecturerTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                            break;
+                        case "btnGroup":
+                            groupTableAdapter.DeleteQuery(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                            break;
+                        case "btnCourses":
+                            courseTableAdapter.DeleteQuery(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                            break;
+                        case "btnExams":
+                            examTableAdapter.DeleteQuery(dataGridView1.SelectedRows[0].Cells[2].Value.ToString(), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                            break;
+                        case "btnDiscipline":
+                            disciplineTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                            break;
+                        case "btnPayment":
+                            paymentTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value));
+                            break;
+                        case "btnTimeSheet":
+                            timeSheetTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                            break;
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("\tПожалуйста, удалите сначала все связанные данные", "Ошибка удаления");
+                }
+
+                CourseDataSet.AcceptChanges();
+                FillDb();
+                this.Refresh();
             }
-            coursesDataSet.AcceptChanges();
-            FillDb();
-            this.Refresh();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
@@ -435,10 +460,11 @@ namespace Course
                 i = dataGridView1.SelectedRows[0].Cells[0].RowIndex;
             else
             {
-                dataGridView1.Rows[0].Selected = true;
-                return;
+                enter = false;
             }
-            if (i == dataGridView1.Rows.Count - 1) {i = 0;
+            if (i == lastFound)
+            {
+                i = 0;
                 enter = false;
             }
             for (; i < dataGridView1.Rows.Count; i++)
@@ -447,11 +473,15 @@ namespace Course
                 {
                     if (enter)
                     {
-                        enter = false; continue;
+                        enter = false;
+                        continue;
                     }
-                    dataGridView1.ClearSelection();
-                    dataGridView1.Rows[i].Selected = true;
-                    break;
+                    else
+                    {
+                        dataGridView1.ClearSelection();
+                        dataGridView1.Rows[i].Selected = true;
+                        break;
+                    }
                 }
             }
         }

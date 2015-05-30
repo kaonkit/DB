@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows.Forms;
-using Course.CoursesDataSetTableAdapters;
+using Course.CourseDataSetTableAdapters;
 
 namespace Course
 {
@@ -36,26 +36,26 @@ namespace Course
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.coursesDataSet = new Course.CoursesDataSet();
+            this.CourseDataSet = new Course.CourseDataSet();
             this.disciplineBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.disciplineTableAdapter = new Course.CoursesDataSetTableAdapters.DisciplineTableAdapter();
+            this.disciplineTableAdapter = new Course.CourseDataSetTableAdapters.DisciplineTableAdapter();
             this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.courseTableAdapter = new Course.CoursesDataSetTableAdapters.CourseTableAdapter();
+            this.courseTableAdapter = new Course.CourseDataSetTableAdapters.CourseTableAdapter();
             this.examBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.examTableAdapter = new Course.CoursesDataSetTableAdapters.ExamTableAdapter();
+            this.examTableAdapter = new Course.CourseDataSetTableAdapters.ExamTableAdapter();
             this.groupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupTableAdapter = new Course.CoursesDataSetTableAdapters.GroupTableAdapter();
+            this.groupTableAdapter = new Course.CourseDataSetTableAdapters.GroupTableAdapter();
             this.lecturerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lecturerTableAdapter = new Course.CoursesDataSetTableAdapters.LecturerTableAdapter();
+            this.lecturerTableAdapter = new Course.CourseDataSetTableAdapters.LecturerTableAdapter();
             this.paymentBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.paymentTableAdapter = new Course.CoursesDataSetTableAdapters.PaymentTableAdapter();
+            this.paymentTableAdapter = new Course.CourseDataSetTableAdapters.PaymentTableAdapter();
             this.specialityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.timeSheetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.timeSheetTableAdapter = new Course.CoursesDataSetTableAdapters.TimeSheetTableAdapter();
+            this.timeSheetTableAdapter = new Course.CourseDataSetTableAdapters.TimeSheetTableAdapter();
             this.traineesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.traineesTableAdapter = new Course.CoursesDataSetTableAdapters.TraineesTableAdapter();
+            this.traineesTableAdapter = new Course.CourseDataSetTableAdapters.TraineesTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).BeginInit();
@@ -69,10 +69,10 @@ namespace Course
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(51, 316);
+            this.btnOK.Location = new System.Drawing.Point(51, 313);
             this.btnOK.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(100, 25);
+            this.btnOK.Size = new System.Drawing.Size(100, 29);
             this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -80,10 +80,10 @@ namespace Course
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(405, 316);
+            this.btnCancel.Location = new System.Drawing.Point(405, 313);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(100, 25);
+            this.btnCancel.Size = new System.Drawing.Size(100, 29);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -91,13 +91,13 @@ namespace Course
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = this.coursesDataSet;
+            this.bindingSource1.DataSource = this.CourseDataSet;
             this.bindingSource1.Position = 0;
             // 
-            // coursesDataSet
+            // CourseDataSet
             // 
-            this.coursesDataSet.DataSetName = "CoursesDataSet";
-            this.coursesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.CourseDataSet.DataSetName = "CourseDataSet";
+            this.CourseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // disciplineBindingSource
             // 
@@ -173,18 +173,18 @@ namespace Course
             // 
             // Edit
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 359);
+            this.ClientSize = new System.Drawing.Size(556, 361);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Edit";
             this.Text = "Edit";
             this.Load += new System.EventHandler(this.Edit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplineBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.examBindingSource)).EndInit();
@@ -203,7 +203,7 @@ namespace Course
         private Button btnOK;
         private Button btnCancel;
         private BindingSource bindingSource1;
-        private CoursesDataSet coursesDataSet;
+        private CourseDataSet CourseDataSet;
         private BindingSource disciplineBindingSource;
         private DisciplineTableAdapter disciplineTableAdapter;
         private BindingSource courseBindingSource;

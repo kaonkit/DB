@@ -19,6 +19,7 @@ namespace Course
         private Application xlApp;
         private Worksheet xlSheet;
         private Range xlSheetRange;
+        private Main main;
 
         public Report()
         {
@@ -226,7 +227,7 @@ namespace Course
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Main.firstNeedOpen = true;
+            main.showgrp();
             Close();
         }
 
@@ -242,6 +243,8 @@ namespace Course
                     break;
             }
             doSql("");
+
+            main = (Main)this.MdiParent;
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
