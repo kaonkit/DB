@@ -214,7 +214,8 @@ namespace Course
                 info.Show();
                 Main_Resize(this, EventArgs.Empty);
             }
-            catch (InvalidOperationException ex) {
+            catch (InvalidOperationException ex)
+            {
                 this.Refresh();
                 open(owner);
             }
@@ -290,11 +291,31 @@ namespace Course
             (new Report()).toExcel(timetabledt);
             timetable.Clear();
         }
+
+        private void btmPayment_Click(object sender, EventArgs e)
+        {
+            sqlquerry = "SELECT T.FIO as 'ФИО слушателя', C.CourseFulName as 'Название курса', P.Data as 'Дата оплаты', P.Summa as 'Сумма' " +
+                        "FROM Trainees T, Discipline D, Course C, Payment P " +
+                        "WHERE C.CourseAbbr = D.CourseAbbr AND P.DisciplineID = D.Id AND T.Id = P.TraineesID;";
+            ReportForm(sqlquerry, "payment");
+        }
+
+        private void btnExam_Click(object sender, EventArgs e)
+        {
+            sqlquerry = "SELECT C.CourseFulName as 'Название курса', T.FIO as 'ФИО слушателя', E.Mark as 'Оценка', E.Data as 'Дата сдачи'" +
+                        "FROM Trainees T, Discipline D, Course C, Exam E " +
+                        "WHERE C.CourseAbbr = D.CourseAbbr AND E.DiscID = D.Id AND T.Id = E.TraineeID;";
+            ReportForm(sqlquerry, "exam");
+        }
         #endregion
 
         public void showgrp()
         {
             grpBoxMain.Visible = true;
         }
+
+
+
+
     }
 }

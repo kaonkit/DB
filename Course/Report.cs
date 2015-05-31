@@ -36,6 +36,14 @@ namespace Course
 
         }
 
+        private void changeVisible(bool list = false, bool nud = false, bool date = false)
+        {
+            lstCondition.Visible = list;
+            nudCondition.Visible = nud;
+            cmbCondition.Visible = nud || date;
+            dateTimePicker.Visible = date;
+        }
+
         private string completeSql(string filter, bool having)
         {
 
@@ -66,7 +74,8 @@ namespace Course
                 }
                 return res.ToString();
             }
-            else {
+            else
+            {
                 string c = querry.Substring(0, querry.Length - 1) + filter + ";";
                 return c;
             }
@@ -241,8 +250,7 @@ namespace Course
 
         private void Report_Load(object sender, EventArgs e)
         {
-            txtCondition.Visible = false;
-            lstCondition.Visible = false;
+            changeVisible(false, false, false);
             switch (owner)
             {
                 case "trainees":
@@ -256,6 +264,12 @@ namespace Course
                     break;
                 case "courses":
                     lstFilter.Items.AddRange(new string[] { "по количеству слушателей" });
+                    break;
+                case "payment":
+                    lstFilter.Items.AddRange(new string[] { "по курсу", "по дате", "по сумме" });
+                    break;
+                case "exam":
+                    lstFilter.Items.AddRange(new string[] { "по курсу", "по оценке", "по дате" });
                     break;
             }
             doSql("", false);
@@ -274,26 +288,29 @@ namespace Course
                     doSql(" AND L.Qualification LIKE N'" + lstCondition.SelectedItem.ToString() + "'", false);
                     break;
                 case "по количеству часов":
-                    doSql(" HAVING SUM(TS.NumberOfHours) " + txtCondition.Text + "", true);
+                    doSql(" HAVING SUM(TS.NumberOfHours) " + cmbCondition.Text + " " + nudCondition.Value + "", true);
                     break;
                 case "по количеству слушателей":
-                    doSql(" HAVING SUM(G.NumberOfTrainees) " + txtCondition.Text + "", true);
+                    doSql(" HAVING SUM(G.NumberOfTrainees) " + cmbCondition.Text + " " + nudCondition.Value + "", true);
                     break;
-
-
-                case "btnGroup":
+                case "по дате":
+                    if (owner == "exam")
+                        doSql(" AND E.DATA " + cmbCondition.Text + "'" + convertDate(dateTimePicker.Value.ToString()) + "'", false);
+                    else
+                        doSql(" AND P.DATA " + cmbCondition.Text + "'" + convertDate(dateTimePicker.Value.ToString()) + "'", false);
                     break;
-                case "btnCourses":
+                case "по сумме":
+                    doSql(" AND P.Summa" + cmbCondition.Text + nudCondition.Value.ToString(), false);
                     break;
-                case "btnExams":
-                    break;
-                case "btnDiscipline":
-                    break;
-                case "btnPayment":
-                    break;
-                case "btnTimeSheet":
+                case "по оценке":
+                    doSql(" AND E.Mark" + cmbCondition.Text + nudCondition.Value.ToString(), false);
                     break;
             }
+        }
+
+        private string convertDate(string date)
+        {
+            return date.Substring(6, 4) + "-" + date.Substring(3, 2) + "-" + date.Substring(0, 2);
         }
 
         private void clbFilter_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -307,7 +324,7 @@ namespace Course
         private void btnReset_Click(object sender, EventArgs e)
         {
             doSql("", false);
-            txtCondition.Clear();
+            nudCondition.Value = 0;
         }
 
         private void lstFilter_SelectedIndexChanged(object sender, EventArgs e)
@@ -317,25 +334,33 @@ namespace Course
             {
                 case "по курсу":
                     lstCondition.Items.Clear();
-                    lstCondition.Visible = true;
-                    txtCondition.Visible = false;
+                    changeVisible(true, false, false);
                     lstCondition.Items.AddRange(getFilter("SELECT CourseFulName FROM Course;"));
                     break;
                 case "по квалификации":
                     lstCondition.Items.Clear();
-                    lstCondition.Visible = true;
-                    txtCondition.Visible = false;
+                    changeVisible(true, false, false);
                     lstCondition.Items.AddRange(getFilter("SELECT DISTINCT Qualification FROM Lecturer;"));
                     break;
                 case "по количеству часов":
-                    lstCondition.Visible = false;
-                    txtCondition.Visible = true;
-                    txtCondition.Clear();
+                    changeVisible(false, true, false);
+                    nudCondition.Value = 0;
                     break;
                 case "по количеству слушателей":
-                    lstCondition.Visible = false;
-                    txtCondition.Visible = true;
-                    txtCondition.Clear();
+                    changeVisible(false, true, false);
+                    nudCondition.Value = 0;
+                    break;
+                case "по дате":
+                    changeVisible(false, false, true);
+                    dateTimePicker.MaxDate = DateTime.Now;
+                    break;
+                case "по сумме":
+                    changeVisible(false, true, false);
+                    nudCondition.Maximum = 10000;
+                    break;
+                case "по оценке":
+                    changeVisible(false, true, false);
+                    nudCondition.Maximum = 5;
                     break;
             }
         }

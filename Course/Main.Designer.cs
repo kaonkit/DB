@@ -36,7 +36,6 @@ namespace Course
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.запросToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.courseBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -61,10 +60,8 @@ namespace Course
             this.grpBoxMain = new System.Windows.Forms.GroupBox();
             this.btnLectures = new System.Windows.Forms.Button();
             this.btnTimeTable = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnExam = new System.Windows.Forms.Button();
+            this.btmPayment = new System.Windows.Forms.Button();
             this.btnCoursesStat = new System.Windows.Forms.Button();
             this.btnLcInfo = new System.Windows.Forms.Button();
             this.btnTimeSheetStat = new System.Windows.Forms.Button();
@@ -77,6 +74,9 @@ namespace Course
             this.btnGroup = new System.Windows.Forms.Button();
             this.btnPayment = new System.Windows.Forms.Button();
             this.btnCourses = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -92,17 +92,10 @@ namespace Course
             this.grpBoxMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // файлToolStripMenuItem
-            // 
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.файлToolStripMenuItem.Text = "&Файл";
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
             this.запросToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -206,12 +199,13 @@ namespace Course
             // 
             // grpBoxMain
             // 
+            this.grpBoxMain.Controls.Add(this.label4);
+            this.grpBoxMain.Controls.Add(this.label3);
+            this.grpBoxMain.Controls.Add(this.label2);
             this.grpBoxMain.Controls.Add(this.btnLectures);
             this.grpBoxMain.Controls.Add(this.btnTimeTable);
-            this.grpBoxMain.Controls.Add(this.button6);
-            this.grpBoxMain.Controls.Add(this.button4);
-            this.grpBoxMain.Controls.Add(this.button5);
-            this.grpBoxMain.Controls.Add(this.button3);
+            this.grpBoxMain.Controls.Add(this.btnExam);
+            this.grpBoxMain.Controls.Add(this.btmPayment);
             this.grpBoxMain.Controls.Add(this.btnCoursesStat);
             this.grpBoxMain.Controls.Add(this.btnLcInfo);
             this.grpBoxMain.Controls.Add(this.btnTimeSheetStat);
@@ -238,7 +232,7 @@ namespace Course
             this.btnLectures.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnLectures.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLectures.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnLectures.Location = new System.Drawing.Point(12, 146);
+            this.btnLectures.Location = new System.Drawing.Point(12, 185);
             this.btnLectures.Name = "btnLectures";
             this.btnLectures.Size = new System.Drawing.Size(221, 40);
             this.btnLectures.TabIndex = 5;
@@ -248,6 +242,9 @@ namespace Course
             // 
             // btnTimeTable
             // 
+            this.btnTimeTable.FlatAppearance.BorderSize = 0;
+            this.btnTimeTable.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnTimeTable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnTimeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimeTable.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnTimeTable.Location = new System.Drawing.Point(537, 396);
@@ -258,52 +255,44 @@ namespace Course
             this.btnTimeTable.UseVisualStyleBackColor = true;
             this.btnTimeTable.Click += new System.EventHandler(this.btnTimeTable_Click);
             // 
-            // button6
+            // btnExam
             // 
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button6.Location = new System.Drawing.Point(442, 262);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(221, 40);
-            this.button6.TabIndex = 6;
-            this.button6.Text = "Информация о слушателях";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnExam.FlatAppearance.BorderSize = 0;
+            this.btnExam.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnExam.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnExam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnExam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExam.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnExam.Location = new System.Drawing.Point(239, 263);
+            this.btnExam.Name = "btnExam";
+            this.btnExam.Size = new System.Drawing.Size(197, 40);
+            this.btnExam.TabIndex = 6;
+            this.btnExam.Text = "Сдача экзаменов";
+            this.btnExam.UseVisualStyleBackColor = true;
+            this.btnExam.Click += new System.EventHandler(this.btnExam_Click);
             // 
-            // button4
+            // btmPayment
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(239, 263);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(197, 40);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Информация о слушателях";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(442, 223);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(221, 40);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Информация о слушателях";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(239, 224);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(197, 40);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Информация о слушателях";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btmPayment.FlatAppearance.BorderSize = 0;
+            this.btmPayment.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btmPayment.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btmPayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btmPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btmPayment.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btmPayment.Location = new System.Drawing.Point(239, 224);
+            this.btmPayment.Name = "btmPayment";
+            this.btmPayment.Size = new System.Drawing.Size(197, 40);
+            this.btmPayment.TabIndex = 6;
+            this.btmPayment.Text = "Данные об оплате";
+            this.btmPayment.UseVisualStyleBackColor = true;
+            this.btmPayment.Click += new System.EventHandler(this.btmPayment_Click);
             // 
             // btnCoursesStat
             // 
+            this.btnCoursesStat.FlatAppearance.BorderSize = 0;
+            this.btnCoursesStat.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnCoursesStat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnCoursesStat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnCoursesStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCoursesStat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnCoursesStat.Location = new System.Drawing.Point(442, 184);
@@ -316,6 +305,10 @@ namespace Course
             // 
             // btnLcInfo
             // 
+            this.btnLcInfo.FlatAppearance.BorderSize = 0;
+            this.btnLcInfo.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnLcInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnLcInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnLcInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLcInfo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnLcInfo.Location = new System.Drawing.Point(239, 185);
@@ -328,6 +321,10 @@ namespace Course
             // 
             // btnTimeSheetStat
             // 
+            this.btnTimeSheetStat.FlatAppearance.BorderSize = 0;
+            this.btnTimeSheetStat.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnTimeSheetStat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnTimeSheetStat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnTimeSheetStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimeSheetStat.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnTimeSheetStat.Location = new System.Drawing.Point(442, 146);
@@ -340,6 +337,10 @@ namespace Course
             // 
             // btnTrInfo
             // 
+            this.btnTrInfo.FlatAppearance.BorderSize = 0;
+            this.btnTrInfo.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnTrInfo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnTrInfo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnTrInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrInfo.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnTrInfo.Location = new System.Drawing.Point(239, 146);
@@ -358,7 +359,7 @@ namespace Course
             this.btnTrainees.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnTrainees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrainees.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnTrainees.Location = new System.Drawing.Point(12, 107);
+            this.btnTrainees.Location = new System.Drawing.Point(12, 146);
             this.btnTrainees.Name = "btnTrainees";
             this.btnTrainees.Size = new System.Drawing.Size(221, 40);
             this.btnTrainees.TabIndex = 6;
@@ -385,7 +386,7 @@ namespace Course
             this.btnDiscipline.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnDiscipline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscipline.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnDiscipline.Location = new System.Drawing.Point(12, 380);
+            this.btnDiscipline.Location = new System.Drawing.Point(286, 387);
             this.btnDiscipline.Name = "btnDiscipline";
             this.btnDiscipline.Size = new System.Drawing.Size(221, 40);
             this.btnDiscipline.TabIndex = 1;
@@ -401,7 +402,7 @@ namespace Course
             this.btnExams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnExams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExams.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnExams.Location = new System.Drawing.Point(12, 341);
+            this.btnExams.Location = new System.Drawing.Point(12, 380);
             this.btnExams.Name = "btnExams";
             this.btnExams.Size = new System.Drawing.Size(221, 40);
             this.btnExams.TabIndex = 2;
@@ -417,7 +418,7 @@ namespace Course
             this.btnTimeSheet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnTimeSheet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTimeSheet.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnTimeSheet.Location = new System.Drawing.Point(12, 302);
+            this.btnTimeSheet.Location = new System.Drawing.Point(12, 341);
             this.btnTimeSheet.Name = "btnTimeSheet";
             this.btnTimeSheet.Size = new System.Drawing.Size(221, 40);
             this.btnTimeSheet.TabIndex = 3;
@@ -433,7 +434,7 @@ namespace Course
             this.btnGroup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGroup.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnGroup.Location = new System.Drawing.Point(12, 263);
+            this.btnGroup.Location = new System.Drawing.Point(12, 302);
             this.btnGroup.Name = "btnGroup";
             this.btnGroup.Size = new System.Drawing.Size(221, 40);
             this.btnGroup.TabIndex = 0;
@@ -449,7 +450,7 @@ namespace Course
             this.btnPayment.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayment.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnPayment.Location = new System.Drawing.Point(12, 224);
+            this.btnPayment.Location = new System.Drawing.Point(12, 263);
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(221, 40);
             this.btnPayment.TabIndex = 0;
@@ -465,13 +466,43 @@ namespace Course
             this.btnCourses.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnCourses.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCourses.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnCourses.Location = new System.Drawing.Point(12, 185);
+            this.btnCourses.Location = new System.Drawing.Point(12, 224);
             this.btnCourses.Name = "btnCourses";
             this.btnCourses.Size = new System.Drawing.Size(221, 40);
             this.btnCourses.TabIndex = 0;
             this.btnCourses.Text = "Список доступных курсов";
             this.btnCourses.UseVisualStyleBackColor = false;
             this.btnCourses.Click += new System.EventHandler(this.btn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(32, 121);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(190, 18);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Доступ к информации";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(291, 121);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 18);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Ведомости";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(514, 121);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 18);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Отчеты";
             // 
             // Main
             // 
@@ -508,8 +539,7 @@ namespace Course
 
         #endregion
 
-        private ToolStripMenuItem файлToolStripMenuItem;
-        
+
         public MenuStrip menuStrip1;
         private ToolStripMenuItem запросToolStripMenuItem;
         private BindingSource bindingSource1;
@@ -541,15 +571,16 @@ namespace Course
         private Button btnGroup;
         private Button btnPayment;
         private Button btnCourses;
-        private Button button4;
-        private Button button3;
+        private Button btnExam;
+        private Button btmPayment;
         private Button btnLcInfo;
         private Button btnTrInfo;
-        private Button button6;
-        private Button button5;
         private Button btnCoursesStat;
         private Button btnTimeSheetStat;
         private Button btnTimeTable;
+        private Label label4;
+        private Label label3;
+        private Label label2;
     }
 }
 
