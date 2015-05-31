@@ -356,65 +356,72 @@ namespace Course
             btnNext.Visible = false;
             object[] args = null;
             UpdateDb();
-            switch (owner)
+            try
             {
-                case "btnTrainees":
-                    var st = new CourseDataSet.TraineesDataTable();
-                    traineesTableAdapter.FillBy(st, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    args = st.Rows[0].ItemArray;
-                    break;
-                case "btnLectures":
-                    var st1 = new CourseDataSet.LecturerDataTable();
-                    lecturerTableAdapter.FillBy(st1, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    args = st1.Rows[0].ItemArray;
-                    break;
-                case "btnGroup":
-                    var st2 = new CourseDataSet.GroupDataTable();
-                    groupTableAdapter.FillBy(st2, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                    args = st2.Rows[0].ItemArray;
-                    break;
-                case "btnCourses":
-                    var st3 = new CourseDataSet.CourseDataTable();
-                    courseTableAdapter.FillBy(st3, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
-                    args = st3.Rows[0].ItemArray;
-                    break;
-                case "btnExams":
-                    var st4 = new CourseDataSet.ExamDataTable();
-                    examTableAdapter.FillBy(st4, dataGridView1.SelectedRows[0].Cells[2].Value.ToString(), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    args = st4.Rows[0].ItemArray;
-                    break;
-                case "btnDiscipline":
-                    var st5 = new CourseDataSet.DisciplineDataTable();
-                    disciplineTableAdapter.FillBy(st5, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    args = st5.Rows[0].ItemArray;
-                    break;
-                case "btnPayment":
-                    var st6 = new CourseDataSet.PaymentDataTable();
-                    paymentTableAdapter.FillBy(st6, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value));
-                    args = st6.Rows[0].ItemArray;
-                    break;
-                case "btnTimeSheet":
-                    var st7 = new CourseDataSet.TimeSheetDataTable();
-                    timeSheetTableAdapter.FillBy(st7, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-                    args = st7.Rows[0].ItemArray;
-                    break;
+                switch (owner)
+                {
+                    case "btnTrainees":
+                        var st = new CourseDataSet.TraineesDataTable();
+                        traineesTableAdapter.FillBy(st, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        args = st.Rows[0].ItemArray;
+                        break;
+                    case "btnLectures":
+                        var st1 = new CourseDataSet.LecturerDataTable();
+                        lecturerTableAdapter.FillBy(st1, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        args = st1.Rows[0].ItemArray;
+                        break;
+                    case "btnGroup":
+                        var st2 = new CourseDataSet.GroupDataTable();
+                        groupTableAdapter.FillBy(st2, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                        args = st2.Rows[0].ItemArray;
+                        break;
+                    case "btnCourses":
+                        var st3 = new CourseDataSet.CourseDataTable();
+                        courseTableAdapter.FillBy(st3, dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                        args = st3.Rows[0].ItemArray;
+                        break;
+                    case "btnExams":
+                        var st4 = new CourseDataSet.ExamDataTable();
+                        examTableAdapter.FillBy(st4, dataGridView1.SelectedRows[0].Cells[2].Value.ToString(), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        args = st4.Rows[0].ItemArray;
+                        break;
+                    case "btnDiscipline":
+                        var st5 = new CourseDataSet.DisciplineDataTable();
+                        disciplineTableAdapter.FillBy(st5, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        args = st5.Rows[0].ItemArray;
+                        break;
+                    case "btnPayment":
+                        var st6 = new CourseDataSet.PaymentDataTable();
+                        paymentTableAdapter.FillBy(st6, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value), Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[1].Value));
+                        args = st6.Rows[0].ItemArray;
+                        break;
+                    case "btnTimeSheet":
+                        var st7 = new CourseDataSet.TimeSheetDataTable();
+                        timeSheetTableAdapter.FillBy(st7, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        args = st7.Rows[0].ItemArray;
+                        break;
+                }
+                (new Edit(owner, args)).ShowDialog();
+                CourseDataSet.AcceptChanges();
+                FillDb();
+                this.Refresh();
             }
-            (new Edit(owner, args)).ShowDialog();
-            CourseDataSet.AcceptChanges();
-            FillDb();
-            this.Refresh();
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("\tПожалуйста, выберите данные", "\tОшибка");
+            }
         }
 
         private void bthDel_Click(object sender, EventArgs e)
         {
             btnNext.Visible = false;
-            if (MessageBox.Show("\tВы уверены?", "\tУдаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            try
             {
-                try
+                if (MessageBox.Show("\tВы уверены?", "\tУдаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+
                     switch (owner)
                     {
-
                         case "btnTrainees":
                             traineesTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                             break;
@@ -441,15 +448,19 @@ namespace Course
                             break;
                     }
                 }
-                catch (SqlException ex)
-                {
-                    MessageBox.Show("\tПожалуйста, удалите сначала все связанные данные", "Ошибка удаления");
-                }
-
-                CourseDataSet.AcceptChanges();
-                FillDb();
-                this.Refresh();
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("\tПожалуйста, удалите сначала все связанные данные", "Ошибка удаления");
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                MessageBox.Show("\tПожалуйста, выберите данные", "\tОшибка");
+            }
+            CourseDataSet.AcceptChanges();
+            FillDb();
+            this.Refresh();
+
         }
 
         private void btnNext_Click(object sender, EventArgs e)

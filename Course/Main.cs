@@ -189,18 +189,18 @@ namespace Course
         {
             if (info != null)
             {
-                info.ClientSize = new Size(ClientSize.Width - 10, ClientSize.Height - 30);
+                info.ClientSize = new Size(ClientSize.Width - 5, ClientSize.Height - 28);
                 info.Location = new Point(0, 0);
 
             }
             if (querry != null)
             {
-                querry.ClientSize = new Size(ClientSize.Width - 10, ClientSize.Height - 30);
+                querry.ClientSize = new Size(ClientSize.Width - 5, ClientSize.Height - 28);
                 querry.Location = new Point(0, 0);
             }
             if (report != null)
             {
-                report.ClientSize = new Size(ClientSize.Width - 10, ClientSize.Height - 30);
+                report.ClientSize = new Size(ClientSize.Width - 5, ClientSize.Height - 28);
                 report.Location = new Point(0, 0);
             }
         }
@@ -312,10 +312,10 @@ namespace Course
         public void showgrp()
         {
             grpBoxMain.Visible = true;
+            this.Size = new Size(781, 506);
+            this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
+                                      (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
+
         }
-
-
-
-
     }
 }

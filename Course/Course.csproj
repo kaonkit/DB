@@ -213,6 +213,21 @@
       <DependentUpon>Courses.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\30.png" />
+    <None Include="Resources\27l.png" />
+    <None Include="Resources\27r2.png" />
+    <None Include="Resources\50ld2.png" />
+    <None Include="Resources\50ld1.png" />
+    <None Include="Resources\50l.png" />
+    <None Include="Resources\50ld.png" />
+    <None Include="Resources\50ur.png" />
+    <None Include="Resources\27r1.png" />
+    <None Include="Resources\160l1.png" />
+    <None Include="Resources\160l.png" />
+    <None Include="Resources\40r.png" />
+    <None Include="Resources\27r.png" />
+    <None Include="Resources\up1.png" />
+    <None Include="Resources\up.png" />
     <None Include="Resources\back.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

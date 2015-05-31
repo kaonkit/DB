@@ -147,13 +147,13 @@ namespace Course
                 else
                     this.Focus();
             }
-            if (keyData == Keys.Space || keyData == Keys.Back || keyData == Keys.Delete || keyData == Keys.Oemcomma)
+            if (keyData == Keys.Space || keyData == Keys.Back || keyData == Keys.Delete || keyData == Keys.Oemcomma || keyData == Keys.OemPeriod)
             {
-                if (lastIsInDictionary())
-                {
+                //if (lastIsInDictionary())
+                //{
                     this.ClearUndo();
                     changes = 0;
-                }
+                //}
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
