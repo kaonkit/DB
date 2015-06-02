@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using Application = Microsoft.Office.Interop.Excel.Application;
 using DataTable = System.Data.DataTable;
+using System.Threading;
 
 namespace Course
 {
@@ -19,7 +20,7 @@ namespace Course
         private Worksheet xlSheet;
         private Range xlSheetRange;
         private Main main;
-        private bool done = false;
+        private bool done;
 
         public Report()
         {
@@ -128,6 +129,69 @@ namespace Course
             }
         }
 
+        public void Done()
+        {
+            done = true;
+        }
+
+        public void thr(DataTable dtDataTable)
+        {
+            Thread thread = new Thread(() => toExcelBackground(dtDataTable));
+            thread.Start();
+        }
+
+        public void toExcelBackground(DataTable dtDataTable)
+        {
+        start: xlApp = new Application();
+            try
+            {
+                xlApp.Workbooks.Add(Type.Missing);
+                xlApp.Interactive = false;
+                xlApp.EnableEvents = false;
+                xlSheet = (Worksheet)xlApp.Sheets[1];
+                xlSheet.Name = "Данные";
+                int collInd = 0;
+                int rowInd = 0;
+                string data = "";
+                for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                {
+                    data = dtDataTable.Columns[i].ColumnName;
+                    xlSheet.Cells[1, i + 1] = data;
+                    xlSheetRange = xlSheet.Range["A1:Z1", Type.Missing];
+                    xlSheetRange.WrapText = true;
+                    xlSheetRange.Font.Bold = true;
+                }
+                for (rowInd = 0; rowInd < dtDataTable.Rows.Count; rowInd++)
+                {
+                    for (collInd = 0; collInd < dtDataTable.Columns.Count; collInd++)
+                    {
+                        data = dtDataTable.Rows[rowInd].ItemArray[collInd].ToString();
+                        xlSheet.Cells[rowInd + 2, collInd + 1] = data;
+                    }
+                }
+                xlSheetRange = xlSheet.UsedRange;
+                xlSheetRange.Columns.AutoFit();
+                xlSheetRange.Rows.AutoFit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                while (!done) { Thread.Sleep(5000); }
+                xlApp.WindowState = XlWindowState.xlMaximized;
+                xlApp.Visible = true;
+                xlApp.Interactive = true;
+                xlApp.ScreenUpdating = true;
+                xlApp.UserControl = true;
+                done = false;
+                releaseObject(xlSheetRange);
+                releaseObject(xlSheet);
+                releaseObject(xlApp);
+            }
+            goto start;
+        }
 
         public void toExcel(DataTable dtDataTable)
         {
@@ -218,7 +282,7 @@ namespace Course
                 xlApp.Interactive = true;
                 xlApp.ScreenUpdating = true;
                 xlApp.UserControl = true;
-                
+
                 //Отсоединяемся от Excel
                 releaseObject(xlSheetRange);
                 releaseObject(xlSheet);

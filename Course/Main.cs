@@ -16,7 +16,7 @@ namespace Course
     {
         private Information info;
         private Querry querry;
-        private Report report;
+        private Report report, r = new Report();
         private string sqlquerry;
         private DataTable dt, timetabledt;
         private string owner;
@@ -35,6 +35,7 @@ namespace Course
             timetableThread.Start();
             pictureBox1.Visible = false;
             label5.Visible = false;
+
         }
         #region timetable
         private void genTimetable()
@@ -73,6 +74,8 @@ namespace Course
             //foreach (var c in timetable)
             //   count += c.Count;
             timetabledt = GetTable();
+            r.thr(timetabledt);
+
         }
 
         private void FillTimetable(int step, int row, int quantity)
@@ -125,15 +128,23 @@ namespace Course
             table.Columns.Add("Курс");
             table.Columns.Add("Группа");
             table.Columns.Add("Тип занятия");
-
-            for (int i = 0; i < timetable.Count; i++)
+            table.Columns.Add("Начало занятия");
+            for (int m = 1; m <= 6; m++)
             {
-                for (int k = 0; k < timetable[i].Count; k++)
+                Random rnd = new Random();
+                int t = rnd.Next(1, 4) + rnd.Next(0, 2);
+                for (int i = 0; i < timetable.Count; i++)
                 {
-                    string[] str = timetable[i][k].Split('_');
-                    table.Rows.Add(i + 1 + "-е число", str[0], str[1], str[2], str[3]);
+                    string[] c = { "14:30", "15:40", "16:20", "17:50", "18:10", "20:00" };
+                    for (int k = 0; k < timetable[i].Count; k++)
+                    {
+                        
+                        
+                        string[] str = timetable[i][k].Split('_');
+                        table.Rows.Add(i + 1 + ". " + (m <= 9 ? "0" : "") + m, str[0], str[1], str[2], str[3], c[k*t]);
+                    }
+                    table.Rows.Add();
                 }
-                table.Rows.Add();
             }
             return table;
         }
@@ -292,8 +303,8 @@ namespace Course
         private void btnTimeTable_Click(object sender, EventArgs e)
         {
 
-            (new Report() { MdiParent = this }).toExcel(timetabledt);
-            timetable.Clear();
+
+            r.Done();
 
         }
 
