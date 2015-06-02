@@ -18,7 +18,7 @@ namespace Course
         ListBox listbox;
         private List<string> ISList;
         string[] commands, tables, columns;
-        private int changes = 0;
+        private int changes = 0, deletions = 0;
         [DllImport("user32")]
         private extern static int GetCaretPos(out Point p);
 
@@ -55,6 +55,25 @@ namespace Course
         private static string GetLastString(string s)
         {
             string[] strArray = s.Split(' ');
+            string[] res;
+            if (strArray[strArray.Length - 1].Contains(','))
+            {
+                res = strArray[strArray.Length - 1].Split(',');
+                if (res[res.Length - 1].Contains('.'))
+                {
+                    string[] r = res[res.Length - 1].Split('.');
+                    return r[r.Length - 1] == "" ? r[r.Length - 2] : r[r.Length - 1];
+                }
+                else
+                    return res[res.Length - 1];
+            }
+            if (strArray[strArray.Length - 1].Contains('.'))
+            {
+                string[] r = strArray[strArray.Length - 1].Split('.');
+                return r[r.Length - 1] == "" ? r[r.Length - 2] : r[r.Length - 1];
+            }
+            else
+                return strArray[strArray.Length - 1];
             return strArray[strArray.Length - 1];
         }
 
@@ -77,6 +96,30 @@ namespace Course
             this.Select(this.Text.Length, 0);
         }
 
+        private void ChangeColor()
+        {
+            string s = this.Text;
+            string[] strArray = s.Split(',', '.', ' ');
+            int LIOLS = 0;
+            for (int i = 0; i < strArray.Length; i++)
+            {
+                
+
+                this.SelectionStart = LIOLS;
+                this.SelectionLength = strArray[i].Length;
+                if (commands.Contains(strArray[i]))
+                    this.SelectionColor = Color.DarkGreen;
+
+                if (columns.Contains(strArray[i]))
+                    this.SelectionColor = Color.DarkSlateBlue;
+                if (tables.Contains(strArray[i]))
+                    this.SelectionColor = Color.DarkRed;
+                this.Select(this.Text.Length, 0);
+                this.SelectionColor = Color.Black;
+                LIOLS += strArray[i].Length + 1;
+            }
+        }
+
         protected override void OnTextChanged(EventArgs e)
         {
             base.OnTextChanged(e);
@@ -93,7 +136,8 @@ namespace Course
                 listbox.DataSource = lstTemp;
                 listbox.Visible = true;
                 listbox.ClearSelected();
-                ChangeColor(last);
+                ChangeColor();
+                //ChangeColor(last);
             }
             else
                 listbox.Visible = false;
@@ -107,17 +151,12 @@ namespace Course
 
                 string StrLS = GetLastString(this.Text);
                 int LIOLS = this.Text.LastIndexOf(StrLS);
-                string TempStr = this.Text.Remove(LIOLS);
-                //this.Text = TempStr + item;
 
-                for (; changes > 0; changes--)
-                {
-                    this.Undo();
-                    //this.ClearUndo();
-                }
-                this.AppendText((this.Text.Length != 0)? " ":"");
+                this.Text = this.Text.Remove(LIOLS);
+                //this.AppendText((this.Text.Length != 0) ? " " : "");
                 this.AppendText(item);
-                ChangeColor(item);
+                //ChangeColor();
+                //ChangeColor(item);
                 this.Select(this.Text.Length, 0);
                 this.SelectionColor = Color.Black;
                 listbox.Hide();
@@ -132,7 +171,6 @@ namespace Course
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            changes++;
             if (listbox.Visible == true)
             {
                 if (keyData == Keys.Down || keyData == Keys.Up)
@@ -140,19 +178,24 @@ namespace Course
                     listbox.Focus();
                     listbox.SelectedIndex = 0;
                 }
-                if (keyData == Keys.Down || keyData == Keys.Up || keyData == Keys.Left || keyData == Keys.Right)
-                {
-                    changes--;
-                }
                 else
                     this.Focus();
             }
-            if (keyData == Keys.Space || keyData == Keys.Back || keyData == Keys.Delete || keyData == Keys.Oemcomma || keyData == Keys.OemPeriod)
+            if (keyData == Keys.Space || keyData == Keys.Oemcomma || keyData == Keys.OemPeriod)
             {
                 //if (lastIsInDictionary())
                 //{
-                    this.ClearUndo();
-                    changes = 0;
+                this.ClearUndo();
+                changes = 0;
+                //}
+            }
+            if (keyData == Keys.Back || keyData == Keys.Delete)
+            {
+                //if (lastIsInDictionary())
+                //{
+                this.ClearUndo();
+                changes -= 2;
+                deletions++;
                 //}
             }
             return base.ProcessCmdKey(ref msg, keyData);

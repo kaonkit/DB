@@ -162,12 +162,15 @@ namespace Course
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSearch.Location = new System.Drawing.Point(44, 111);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Поиск";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox1
@@ -184,12 +187,15 @@ namespace Course
             // 
             // btnSort
             // 
+            this.btnSort.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSort.FlatAppearance.BorderSize = 0;
+            this.btnSort.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnSort.Location = new System.Drawing.Point(79, 111);
             this.btnSort.Name = "btnSort";
             this.btnSort.Size = new System.Drawing.Size(92, 23);
             this.btnSort.TabIndex = 1;
             this.btnSort.Text = "Сортировать";
-            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.UseVisualStyleBackColor = false;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
             // clbSort
@@ -228,12 +234,15 @@ namespace Course
             // 
             // btnStopSearch
             // 
+            this.btnStopSearch.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnStopSearch.FlatAppearance.BorderSize = 0;
+            this.btnStopSearch.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnStopSearch.Location = new System.Drawing.Point(125, 111);
             this.btnStopSearch.Name = "btnStopSearch";
             this.btnStopSearch.Size = new System.Drawing.Size(75, 23);
             this.btnStopSearch.TabIndex = 3;
             this.btnStopSearch.Text = "Сброс";
-            this.btnStopSearch.UseVisualStyleBackColor = true;
+            this.btnStopSearch.UseVisualStyleBackColor = false;
             this.btnStopSearch.Click += new System.EventHandler(this.btnStopSearch_Click);
             // 
             // courseTableAdapter
@@ -315,6 +324,7 @@ namespace Course
             // 
             // btnNext
             // 
+            this.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnNext.Location = new System.Drawing.Point(331, 400);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(75, 23);
@@ -327,6 +337,7 @@ namespace Course
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(732, 446);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.bthDel);

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace Course
 {
@@ -32,6 +33,8 @@ namespace Course
             btnDiscipline.Visible = false;
             timetableThread = new Thread(genTimetable);
             timetableThread.Start();
+            pictureBox1.Visible = false;
+            label5.Visible = false;
         }
         #region timetable
         private void genTimetable()
@@ -288,8 +291,10 @@ namespace Course
 
         private void btnTimeTable_Click(object sender, EventArgs e)
         {
-            (new Report()).toExcel(timetabledt);
+
+            (new Report() { MdiParent = this }).toExcel(timetabledt);
             timetable.Clear();
+
         }
 
         private void btmPayment_Click(object sender, EventArgs e)
@@ -316,6 +321,11 @@ namespace Course
             this.Location = new Point((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2,
                                       (Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 2);
 
+        }
+        public void showPicture(bool b)
+        {
+            pictureBox1.Visible = b;
+            label5.Visible = b;
         }
     }
 }

@@ -19,10 +19,13 @@ namespace Course
         private Worksheet xlSheet;
         private Range xlSheetRange;
         private Main main;
+        private bool done = false;
 
         public Report()
         {
             InitializeComponent();
+
+            main = (Main)this.MdiParent;
         }
 
         public Report(string owner, string querry)
@@ -125,8 +128,12 @@ namespace Course
             }
         }
 
+
         public void toExcel(DataTable dtDataTable)
         {
+            main = (Main)this.MdiParent;
+
+            main.showPicture(true);
 
             xlApp = new Application();
             try
@@ -211,12 +218,14 @@ namespace Course
                 xlApp.Interactive = true;
                 xlApp.ScreenUpdating = true;
                 xlApp.UserControl = true;
-
+                
                 //Отсоединяемся от Excel
                 releaseObject(xlSheetRange);
                 releaseObject(xlSheet);
                 releaseObject(xlApp);
             }
+            main.showPicture(false);
+
         }
 
         private void btneExcel_Click(object sender, EventArgs e)

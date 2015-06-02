@@ -36,14 +36,14 @@ namespace Course
             this.btneExcel = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbCondition = new System.Windows.Forms.ComboBox();
+            this.nudCondition = new System.Windows.Forms.NumericUpDown();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
             this.lstFilter = new System.Windows.Forms.ListBox();
             this.lstCondition = new System.Windows.Forms.ListBox();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.nudCondition = new System.Windows.Forms.NumericUpDown();
-            this.cmbCondition = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -85,9 +85,9 @@ namespace Course
             this.groupBox3.Controls.Add(this.nudCondition);
             this.groupBox3.Controls.Add(this.dateTimePicker);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.btnReset);
             this.groupBox3.Controls.Add(this.btnFilter);
             this.groupBox3.Controls.Add(this.lstFilter);
+            this.groupBox3.Controls.Add(this.btnReset);
             this.groupBox3.Controls.Add(this.lstCondition);
             this.groupBox3.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(167, 4);
@@ -96,6 +96,33 @@ namespace Course
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Фильтр";
+            // 
+            // cmbCondition
+            // 
+            this.cmbCondition.FormattingEnabled = true;
+            this.cmbCondition.Items.AddRange(new object[] {
+            ">",
+            "<",
+            "=",
+            "!="});
+            this.cmbCondition.Location = new System.Drawing.Point(202, 58);
+            this.cmbCondition.Name = "cmbCondition";
+            this.cmbCondition.Size = new System.Drawing.Size(37, 21);
+            this.cmbCondition.TabIndex = 9;
+            // 
+            // nudCondition
+            // 
+            this.nudCondition.Location = new System.Drawing.Point(245, 59);
+            this.nudCondition.Name = "nudCondition";
+            this.nudCondition.Size = new System.Drawing.Size(147, 21);
+            this.nudCondition.TabIndex = 8;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Location = new System.Drawing.Point(245, 58);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(146, 21);
+            this.dateTimePicker.TabIndex = 7;
             // 
             // label1
             // 
@@ -145,37 +172,11 @@ namespace Course
             this.lstCondition.Size = new System.Drawing.Size(154, 95);
             this.lstCondition.TabIndex = 6;
             // 
-            // dateTimePicker
-            // 
-            this.dateTimePicker.Location = new System.Drawing.Point(256, 59);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(136, 21);
-            this.dateTimePicker.TabIndex = 7;
-            // 
-            // nudCondition
-            // 
-            this.nudCondition.Location = new System.Drawing.Point(256, 59);
-            this.nudCondition.Name = "nudCondition";
-            this.nudCondition.Size = new System.Drawing.Size(136, 21);
-            this.nudCondition.TabIndex = 8;
-            // 
-            // cmbCondition
-            // 
-            this.cmbCondition.FormattingEnabled = true;
-            this.cmbCondition.Items.AddRange(new object[] {
-            ">",
-            "<",
-            "=",
-            "!="});
-            this.cmbCondition.Location = new System.Drawing.Point(202, 58);
-            this.cmbCondition.Name = "cmbCondition";
-            this.cmbCondition.Size = new System.Drawing.Size(47, 21);
-            this.cmbCondition.TabIndex = 9;
-            // 
             // Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(737, 406);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.pictureBox1);

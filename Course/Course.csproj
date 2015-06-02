@@ -213,6 +213,8 @@
       <DependentUpon>Courses.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\482.GIF" />
+    <None Include="Resources\292.GIF" />
     <None Include="Resources\30.png" />
     <None Include="Resources\27l.png" />
     <None Include="Resources\27r2.png" />

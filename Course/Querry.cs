@@ -19,7 +19,7 @@ namespace Course
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             txtInput = new IntelliSenseTextBox(listBox1)
             {
-                Location = new Point(50, 20),
+                Location = new Point(41, 60),
                 Size = new Size(600, 100),
                 Multiline = true,
                 Font = new System.Drawing.Font("Verdana", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)))
@@ -33,9 +33,9 @@ namespace Course
             List<string> ISList = new List<string>(new string[] { "SELECT", "FROM", "WHERE", "COUNT", "HAVING", "GROUP BY", "MAX", "MIN", "AVG", "SUM", "ANY", "ALL" });
             ISList.AddRange(new string[] { "Course", "Discipline", "Exam", "Group", "Lecturer", "Payment", "TimeSheet", "Trainees" });
             ISList.AddRange(new string[] { "CourseAbbr", "CourseFulName", "Id", "NumberOfHours", "TraineeID", "DiscID", "Data", "Mark", "GroupNum", "NumberOfTrainees", "FIO", "Qualification", "RecordOfService", "Phone", "Email", "DisciplineID", "TraineesID", "Summa", "LectureID", "TypeOfTraining", "Payment", "DOB" });
-            
+
             txtInput.Dictionary = ISList;
-            
+
         }
 
         private void txtDo_Click(object sender, EventArgs e)
@@ -70,30 +70,58 @@ namespace Course
 
         private void Querry_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "courseDataSet.Course". При необходимости она может быть перемещена или удалена.
-            this.courseTableAdapter.Fill(this.courseDataSet.Course);
             main = (Main)this.MdiParent;
             main.Size = new Size(1130, 450);
             main.Location = new Point(100, 100);
-            lists = new List<ListBox>() {listBox2, listBox3, listBox4, listBox5, listBox6, listBox7, listBox8, listBox9 };
-            listBox2.Items.AddRange(new string[] { "CourseAbbr", "CourseFulName" });
-            listBox3.Items.AddRange(new string[] { "Id", "Group", "NumberOfHours", "CourseAbbr" });
-            listBox4.Items.AddRange(new string[] { "TraineeID", "DiscID", "Data", "Mark" });
-            listBox5.Items.AddRange(new string[] { "GroupNum", "Course", "NumberOfHours", "CourseAbbr" });
-            listBox6.Items.AddRange(new string[] { "Id", "FIO", "Qualification", "RecordOfService", "Phone", "Email" });
-            listBox7.Items.AddRange(new string[] { "TraineesID", "DisciplineID", "Data", "Summa" });
-            listBox8.Items.AddRange(new string[] { "Id", "DisciplineID", "LectureID", "TypeOfTraining", "NumberOfHours", "Payment" });
-            listBox9.Items.AddRange(new string[] { "Id", "FIO", "Group", "DOB", "Phone", "Email" });
+            lists = new List<ListBox>() { lstCourse, lstDiscipline, lstExam, lstGroupe, lstLecturer, lstPayment, lstTimeSheet, lstTrainees };
+            lstCourse.Items.AddRange(new string[] { "CourseAbbr", "CourseFulName" });
+            lstDiscipline.Items.AddRange(new string[] { "Id", "Group", "NumberOfHours", "CourseAbbr" });
+            lstExam.Items.AddRange(new string[] { "TraineeID", "DiscID", "Data", "Mark" });
+            lstGroupe.Items.AddRange(new string[] { "GroupNum", "Course", "NumberOfHours", "CourseAbbr" });
+            lstLecturer.Items.AddRange(new string[] { "Id", "FIO", "Qualification", "RecordOfService", "Phone", "Email" });
+            lstPayment.Items.AddRange(new string[] { "TraineesID", "DisciplineID", "Data", "Summa" });
+            lstTimeSheet.Items.AddRange(new string[] { "Id", "DisciplineID", "LectureID", "TypeOfTraining", "NumberOfHours", "Payment" });
+            lstTrainees.Items.AddRange(new string[] { "Id", "FIO", "Group", "DOB", "Phone", "Email" });
         }
 
-        private void OnCheck(object sender, EventArgs e) {
+        private void OnCheck(object sender, EventArgs e)
+        {
             ListBox list = (ListBox)sender;
-            txtInput.Text += list.SelectedItem != null ? list.SelectedItem.ToString():"";
-            foreach (ListBox l in lists) {
-                if (list != l) {
-                    l.ClearSelected();
-                }
+            string c = "", res = "";
+            c = list.SelectedItem != null ? list.SelectedItem.ToString() : "";
+            if (c == "") return;
+            switch (list.Name)
+            {
+                case "lstCourse":
+                    res = "Course.";
+                    break;
+                case "lstDiscipline":
+                    res = "Discipline.";
+                    break;
+                case "lstExam":
+                    res = "Exam.";
+                    break;
+                case "lstGroupe":
+                    res = "Groupe.";
+                    break;
+                case "lstLecturer":
+                    res = "Lecturer.";
+                    break;
+                case "lstPayment":
+                    res = "Payment.";
+                    break;
+                case "lstTimeSheet":
+                    res = "TimeSheet.";
+                    break;
+                case "lstTrainees":
+                    res = "Trainees.";
+                    break;
             }
+            res += c;
+            txtInput.AppendText(res);
+            list.ClearSelected();
+            listBox1.Visible = false;
+            txtInput.Focus();
         }
     }
 

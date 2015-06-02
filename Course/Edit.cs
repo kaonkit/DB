@@ -267,7 +267,7 @@ namespace Course
             MaskedTextBox mtxtPhone = new MaskedTextBox
             {
                 Location = new Point(lbl4.Width + 160, 180),
-                Mask = "+38 (000) 000 0000",
+                Mask = "+38(000)0000000",
                 Text = !forEdit ? "" : args[4].ToString(),
                 Size = new Size(200, 20)
             };
@@ -350,7 +350,7 @@ namespace Course
             MaskedTextBox mtxtPhone = new MaskedTextBox
             {
                 Location = new Point(lbl4.Width + 160, 180),
-                Mask = "+38 (000) 000 0000",
+                Mask = "+38(000)0000000",
                 Text = !forEdit ? "" : args[4].ToString()
             };
 
