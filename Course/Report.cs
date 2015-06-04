@@ -20,8 +20,8 @@ namespace Course
         private Worksheet xlSheet;
         private Range xlSheetRange;
         private Main main;
-        private bool done;
-
+        private bool done, close;
+        Thread thread;
         public Report()
         {
             InitializeComponent();
@@ -133,10 +133,14 @@ namespace Course
         {
             done = true;
         }
+        public void Closing()
+        {
+            thread.Abort();
+        }
 
         public void thr(DataTable dtDataTable)
         {
-            Thread thread = new Thread(() => toExcelBackground(dtDataTable));
+            thread = new Thread(() => toExcelBackground(dtDataTable));
             thread.Start();
         }
 
@@ -179,7 +183,7 @@ namespace Course
             }
             finally
             {
-                while (!done) { Thread.Sleep(5000); }
+                while (!done) { Thread.Sleep(1000); }
                 xlApp.WindowState = XlWindowState.xlMaximized;
                 xlApp.Visible = true;
                 xlApp.Interactive = true;
@@ -344,6 +348,9 @@ namespace Course
                 case "exam":
                     lstFilter.Items.AddRange(new string[] { "по курсу", "по оценке", "по дате" });
                     break;
+                case "examstat":
+                    lstFilter.Items.AddRange(new string[] { "по курсу", "по оценке", "по дате" });
+                    break;
             }
             doSql("", false);
 
@@ -367,7 +374,7 @@ namespace Course
                     doSql(" HAVING SUM(G.NumberOfTrainees) " + cmbCondition.Text + " " + nudCondition.Value + "", true);
                     break;
                 case "по дате":
-                    if (owner == "exam")
+                    if (owner == "exam" || owner == "examstat")
                         doSql(" AND E.DATA " + cmbCondition.Text + "'" + convertDate(dateTimePicker.Value.ToString()) + "'", false);
                     else
                         doSql(" AND P.DATA " + cmbCondition.Text + "'" + convertDate(dateTimePicker.Value.ToString()) + "'", false);

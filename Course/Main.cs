@@ -16,7 +16,7 @@ namespace Course
     {
         private Information info;
         private Querry querry;
-        private Report report, r = new Report();
+        private Report report, r;
         private string sqlquerry;
         private DataTable dt, timetabledt;
         private string owner;
@@ -35,7 +35,7 @@ namespace Course
             timetableThread.Start();
             pictureBox1.Visible = false;
             label5.Visible = false;
-
+            r = new Report() { MdiParent = this};
         }
         #region timetable
         private void genTimetable()
@@ -138,10 +138,10 @@ namespace Course
                     string[] c = { "14:30", "15:40", "16:20", "17:50", "18:10", "20:00" };
                     for (int k = 0; k < timetable[i].Count; k++)
                     {
-                        
-                        
+
+
                         string[] str = timetable[i][k].Split('_');
-                        table.Rows.Add(i + 1 + ". " + (m <= 9 ? "0" : "") + m, str[0], str[1], str[2], str[3], c[k*t]);
+                        table.Rows.Add(i + 1 + ". " + (m <= 9 ? "0" : "") + m, str[0], str[1], str[2], str[3], c[k * t]);
                     }
                     table.Rows.Add();
                 }
@@ -253,6 +253,7 @@ namespace Course
             disciplineTableAdapter.Dispose();
             courseTableAdapter.Dispose();
             Dispose();
+            r.Closing();
         }
 
         private void запросToolStripMenuItem_Click(object sender, EventArgs e)
@@ -337,6 +338,15 @@ namespace Course
         {
             pictureBox1.Visible = b;
             label5.Visible = b;
+        }
+
+        private void btnExamStat_Click(object sender, EventArgs e)
+        {
+ sqlquerry = "SELECT C.CourseFulName as 'Название курса', CONCAT(MONTH(E.Data),'.', YEAR(E.Data)) as 'Месяц', AVG(E.Mark) as 'Средняя оценка'" +
+            "FROM Course C, Discipline D, Exam E" + 
+            " WHERE D.Id = E.DiscID AND D.CourseAbbr = C.CourseAbbr"+
+            " GROUP BY C.CourseFulName,CONCAT(MONTH(E.Data),'.', YEAR(E.Data))";
+            ReportForm(sqlquerry, "examstat");
         }
     }
 }

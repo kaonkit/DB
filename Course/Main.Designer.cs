@@ -58,6 +58,8 @@ namespace Course
             this.lecturerTableAdapter = new Course.CourseDataSetTableAdapters.LecturerTableAdapter();
             this.CourseDataSet1 = new Course.CourseDataSet();
             this.grpBoxMain = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnLectures = new System.Windows.Forms.Button();
             this.btnExam = new System.Windows.Forms.Button();
@@ -77,12 +79,11 @@ namespace Course
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnTimeTable = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnExamStat = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.courseBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -96,10 +97,11 @@ namespace Course
             ((System.ComponentModel.ISupportInitialize)(this.lecturerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet1)).BeginInit();
             this.grpBoxMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -238,6 +240,28 @@ namespace Course
             this.grpBoxMain.Size = new System.Drawing.Size(775, 454);
             this.grpBoxMain.TabIndex = 6;
             this.grpBoxMain.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Course.Properties.Resources._482;
+            this.pictureBox1.Location = new System.Drawing.Point(454, 343);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(105, 105);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.Color.Blue;
+            this.label5.Location = new System.Drawing.Point(268, 381);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(192, 32);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Подождите";
             // 
             // label4
             // 
@@ -527,11 +551,29 @@ namespace Course
             // groupBox4
             // 
             this.groupBox4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox4.Controls.Add(this.btnExamStat);
             this.groupBox4.Location = new System.Drawing.Point(524, 101);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(229, 153);
+            this.groupBox4.Size = new System.Drawing.Size(229, 188);
             this.groupBox4.TabIndex = 8;
             this.groupBox4.TabStop = false;
+            // 
+            // btnExamStat
+            // 
+            this.btnExamStat.FlatAppearance.BorderSize = 0;
+            this.btnExamStat.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnExamStat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Wheat;
+            this.btnExamStat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Wheat;
+            this.btnExamStat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExamStat.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnExamStat.ForeColor = System.Drawing.Color.CadetBlue;
+            this.btnExamStat.Location = new System.Drawing.Point(6, 135);
+            this.btnExamStat.Name = "btnExamStat";
+            this.btnExamStat.Size = new System.Drawing.Size(217, 40);
+            this.btnExamStat.TabIndex = 6;
+            this.btnExamStat.Text = "Успеваемость";
+            this.btnExamStat.UseVisualStyleBackColor = true;
+            this.btnExamStat.Click += new System.EventHandler(this.btnExamStat_Click);
             // 
             // groupBox3
             // 
@@ -576,28 +618,6 @@ namespace Course
             this.label2.Text = "Доступ\r\nк информации";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Course.Properties.Resources._482;
-            this.pictureBox1.Location = new System.Drawing.Point(454, 343);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(105, 105);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Verdana", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(268, 381);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(192, 32);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Подождите";
-            // 
             // Main
             // 
             this.ClientSize = new System.Drawing.Size(765, 467);
@@ -626,12 +646,13 @@ namespace Course
             ((System.ComponentModel.ISupportInitialize)(this.CourseDataSet1)).EndInit();
             this.grpBoxMain.ResumeLayout(false);
             this.grpBoxMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -687,6 +708,7 @@ namespace Course
         private GroupBox groupBox2;
         private PictureBox pictureBox1;
         private Label label5;
+        private Button btnExamStat;
     }
 }
 
